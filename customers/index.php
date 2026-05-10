@@ -20,10 +20,9 @@
         <h3>Available Services</h3>
 
         <ul>
-            <li>Gardening</li>
-            <li>Cleaning</li>
-            <li>Delivery</li>
-            <li>Maintenance</li>
+            <li>Tutoring</li>
+            <li>NBT Prep</li>
+            <li>Exam preparation material</li>
         </ul>
 
         <a href="customerLogin.php">

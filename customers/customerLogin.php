@@ -72,6 +72,7 @@ if ($message != "") {
 <p>
     Don't have an account?
     <a href="customerRegistration.php">Register</a>
+    <a href="customerBrowse.php">NEXT PAGE</a>
 </p>
 
 </body>
