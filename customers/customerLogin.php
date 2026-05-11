@@ -46,12 +46,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Customer Login</title>
+    <title>Student Driver Login</title>
 </head>
 
 <body>
 
-<h2>Customer Login</h2>
+<h2>Student Driver Login</h2>
 
 <?php
 if ($message != "") {
