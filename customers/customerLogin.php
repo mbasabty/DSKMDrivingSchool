@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $_SESSION['student_id'] = $row['student_id'];
             $_SESSION['username'] = $row['username'];
 
-            header("Location: ../customers/customerBrowse.php");
+            header("Location: ../customers/customerMenu.php");
             exit();
 
         } else {
