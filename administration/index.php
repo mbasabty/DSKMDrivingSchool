@@ -1,26 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Administration</title>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration</title>
 </head>
-
 <body>
 
-    <h1>Administration</h1>
-    <p>Please log in to continue.</p>
+    <div>
+        <img src="../incl/images/logo.png" alt="Logo" width="60" height="60">
 
-    <form action="login.php" method="post">
+        <h1>Administration</h1>
 
-        <label>Username:</label><br>
-        <input type="text" name="user_name" required><br><br>
+        <p>
+            Authorized Access Only
+        </p>
 
-        <label>Password:</label><br>
-        <input type="password" name="user_pwd" required><br><br>
+        <a href="login.php">
+            PROCEED
+        </a>
 
-        <input type="submit" value="Log In">
-
-    </form>
+        <p>Services — Est. 2026</p>
+    </div>
 
 </body>
 </html>

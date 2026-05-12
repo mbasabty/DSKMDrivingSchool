@@ -1,36 +1,41 @@
 <?php
 include_once '../incl/DatabaseConnection/dbconn.php';
 
+session_start();
+
 $message = "";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    $username = $_POST['user_name'];
+    $username = trim($_POST['user_name']);
     $password = $_POST['user_pwd'];
 
-    // Check user
-    $sql = "SELECT * FROM customerLogin WHERE username = ?";
+    $sql = "SELECT student_id, username, password 
+            FROM student 
+            WHERE username = ? 
+            LIMIT 1";
+
     $stmt = $conn->prepare($sql);
+
+    if (!$stmt) {
+        die("Database error: " . $conn->error);
+    }
 
     $stmt->bind_param("s", $username);
     $stmt->execute();
 
     $result = $stmt->get_result();
 
-    if ($result->num_rows == 1) {
+    if ($row = $result->fetch_assoc()) {
 
-        $row = $result->fetch_assoc();
+        
+        if ($password === $row['password']) {
 
-        // Verify password
-        if (password_verify($password, $row['password_hash'])) {
+            $_SESSION['logged'] = true;
+            $_SESSION['student_id'] = $row['student_id'];
+            $_SESSION['username'] = $row['username'];
 
-            // Create cookies
-            setcookie("logged", "1", time() + 3600, "/");
-            setcookie("customer_id", $row['customer_id'], time() + 3600, "/");
-            setcookie("username", $row['username'], time() + 3600, "/");
-
-            // Redirect
-            header("Location: ../customers/placeOrder.php");
+            header("Location: ../customers/customerMenu.php");
             exit();
 
         } else {
@@ -40,26 +45,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $message = "User not found.";
     }
+
+    $stmt->close();
 }
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Customer Login</title>
+    <title>Student Driver Login</title>
 </head>
 
 <body>
 
-<h2>Customer Login</h2>
+<h2>Student Driver Login</h2>
 
-<?php
-if ($message != "") {
-    echo "<p style='color:red;'>$message</p>";
-}
-?>
+<?php if (!empty($message)): ?>
+    <p style="color:red;"><?= htmlspecialchars($message) ?></p>
+<?php endif; ?>
 
-<form action="" method="post">
+<form method="post">
 
     <input type="text" name="user_name" placeholder="Username" required><br><br>
 
