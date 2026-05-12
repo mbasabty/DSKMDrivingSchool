@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if ($row = $result->fetch_assoc()) {
 
-        // ✅ FIXED: plain text comparison
+        
         if ($password === $row['password']) {
 
             $_SESSION['logged'] = true;

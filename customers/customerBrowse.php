@@ -12,12 +12,12 @@
 
 <form action="customerBooking.php" method="post" enctype="multipart/form-data">
 
-    <!-- 🚨 MANDATORY UPLOAD -->
+    <!-- MANDATORY UPLOAD -->
     <h2>Upload Learner's Licence (Required)</h2>
     <input type="file" name="learners_license" accept="image/*,application/pdf" required>
     <br><br>
 
-    <!-- TUTORING SERVICES -->
+   
     <h2>Code on the learners license</h2>
     <table border="1" cellpadding="5">
 

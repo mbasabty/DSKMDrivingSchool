@@ -21,7 +21,7 @@ if (!isset($_SESSION['logged']) || $_SESSION['logged'] !== true) {
 
     <h2>Menu</h2>
 
-    <!-- 👇 SHOW LOGGED IN USER -->
+    <!-- SHOW LOGGED IN USER -->
     <p class="welcome">
         Logged in as: 
         <b>
