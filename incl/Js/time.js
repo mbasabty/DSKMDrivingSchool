@@ -1,17 +1,21 @@
-function updateDateTime() {
-  const now = new Date();
+function updateDate() {
 
-  const options = {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  };
+    const now = new Date();
 
-  const date = now.toLocaleDateString(undefined, options);
+    const options = {
+        weekday: 'long',
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+    };
 
-  document.getElementById("datetime").textContent = date;
+    const fullDate = now.toLocaleDateString(undefined, options);
+
+    document.getElementById("datetime").textContent = fullDate;
+
+    document.getElementById("footer-day").textContent = fullDate;
 }
 
-updateDateTime(); // run once immediately
-setInterval(updateDateTime, 60000); // update every minute
+updateDate();
+
+setInterval(updateDate, 60000);

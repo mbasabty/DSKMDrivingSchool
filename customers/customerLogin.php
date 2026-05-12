@@ -47,10 +47,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmt->close();
 }
 ?>
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Student Driver Login</title>
+
     <link rel="stylesheet" href="../incl/style/customers/customerLogin.css">
 </head>
 
@@ -58,13 +64,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 <div class="login-wrapper">
 
-    <!-- OUTSIDE THE BOX (page heading) -->
+    <!-- PAGE HEADING -->
     <div class="login-header">
         <h1>Student Driver Login</h1>
         <p>Sign in to continue your journey</p>
     </div>
 
-    <!-- LOGIN CARD (the box) -->
+    <!-- LOGIN CARD -->
     <div class="login-box">
 
         <?php if (!empty($message)): ?>
@@ -73,9 +79,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         <form method="post">
 
-            <input type="text" name="user_name" placeholder="Username" required>
+            <input 
+                type="text" 
+                name="user_name" 
+                placeholder="Username" 
+                required
+            >
 
-            <input type="password" name="user_pwd" placeholder="Password" required>
+            <input 
+                type="password" 
+                name="user_pwd" 
+                placeholder="Password" 
+                required
+            >
 
             <button type="submit">Login</button>
 
