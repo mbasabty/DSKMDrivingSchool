@@ -12,7 +12,7 @@ if (!isset($_SESSION['logged']) || $_SESSION['logged'] !== true) {
 <head>
     <meta charset="UTF-8">
     <title>Student Driver Menu</title>
-    <link rel="stylesheet" href="../incl/css/login.css">
+    <link rel="stylesheet" href="../incl/style/customers/customerMenu.css">
 </head>
 
 <body>
@@ -23,10 +23,11 @@ if (!isset($_SESSION['logged']) || $_SESSION['logged'] !== true) {
 
     <!-- SHOW LOGGED IN USER -->
     <p class="welcome">
-        Logged in as: 
+       Welcome, 
         <b>
             <?= htmlspecialchars($_SESSION['username'] ?? 'User') ?>
         </b>
+        the journey starts here
     </p>
 
     <p class="menu-title">Please choose an administrative function:</p>

@@ -1,3 +1,52 @@
+<?php
+session_start();
+include_once '../incl/DatabaseConnection/dbconn.php';
+
+$message = "";
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+    $username = trim($_POST['user_name']);
+    $password = $_POST['user_pwd'];
+
+    $sql = "SELECT student_id, username, password 
+            FROM student 
+            WHERE username = ? 
+            LIMIT 1";
+
+    $stmt = $conn->prepare($sql);
+
+    if (!$stmt) {
+        die("Database error: " . $conn->error);
+    }
+
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+
+    if ($row = $result->fetch_assoc()) {
+
+        if ($password === $row['password']) {
+
+            $_SESSION['logged'] = true;
+            $_SESSION['student_id'] = $row['student_id'];
+            $_SESSION['username'] = $row['username'];
+
+            header("Location: ../customers/customerMenu.php");
+            exit();
+
+        } else {
+            $message = "Incorrect password.";
+        }
+
+    } else {
+        $message = "User not found.";
+    }
+
+    $stmt->close();
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
