@@ -71,12 +71,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Customer Registration</title>
+    <title>Student Driver Registration</title>
 </head>
 
 <body>
 
-<h2>Customer Registration</h2>
+<h2>Student Driver Registration</h2>
 
 <?php if (!empty($message)): ?>
     <p><?= htmlspecialchars($message) ?></p>

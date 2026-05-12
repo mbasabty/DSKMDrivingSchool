@@ -28,14 +28,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if ($row = $result->fetch_assoc()) {
 
-        // ✅ FIXED: plain text comparison
+        
         if ($password === $row['password']) {
 
             $_SESSION['logged'] = true;
             $_SESSION['student_id'] = $row['student_id'];
             $_SESSION['username'] = $row['username'];
 
-            header("Location: ../customers/customerBrowse.php");
+            header("Location: ../customers/customerMenu.php");
             exit();
 
         } else {
