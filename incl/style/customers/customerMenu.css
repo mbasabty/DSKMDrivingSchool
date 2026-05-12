@@ -1,0 +1,84 @@
+body {
+    margin: 0;
+    padding: 0;
+
+    font-family: Georgia, serif;
+
+    background-color: #E6E8EA;
+    color: #0B1F33;
+
+    /* FULL PAGE CENTERING */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* MAIN WRAPPER (replaces margin centering) */
+.page-container {
+    max-width: 600px;
+    width: 100%;
+
+    background-color: #ffffff;
+
+    padding: 40px;
+    border-radius: 10px;
+
+    box-shadow: 0 12px 30px rgba(11, 31, 51, 0.2);
+
+    text-align: center;
+}
+
+/* TITLE */
+.page-container h2 {
+    font-size: 32px;
+    color: #0B1F33;
+
+    border-left: 5px solid #6C8EAD;
+    display: inline-block;
+
+    padding-left: 12px;
+    margin-bottom: 20px;
+}
+
+/* WELCOME TEXT */
+.welcome {
+    color: #6C8EAD;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* SUB TITLE */
+.menu-title {
+    color: #0B1F33;
+    margin-bottom: 30px;
+}
+
+/* BUTTON GROUP */
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* LINKS AS BUTTONS */
+.button-group a {
+    display: block;
+
+    background-color: #0B1F33;
+    color: #ffffff;
+
+    text-decoration: none;
+    font-weight: bold;
+
+    padding: 14px;
+    border-radius: 6px;
+
+    transition: 0.3s ease;
+}
+
+/* HOVER */
+.button-group a:hover {
+    background-color: #6C8EAD;
+    color: #ffffff;
+}

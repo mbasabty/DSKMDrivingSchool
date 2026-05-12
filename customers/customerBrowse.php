@@ -1,185 +1,143 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book your lesson</title>
+
+    <link rel="stylesheet" href="../incl/style/customers/customerBrowse.css">
 </head>
 
 <body>
 
-<h1>Book a driving lesson</h1>
-<p>Select the code of your learners and upload your licence</p>
+<div class="container">
+    <h1>Book a Driving Lesson</h1>
+    <p class="subtitle">
+        Select your learner's license code and choose your lesson package
+    </p>
+    
+    <form action="customerBooking.php" method="post" enctype="multipart/form-data">
 
-<form action="customerBooking.php" method="post" enctype="multipart/form-data">
+        <!-- LICENSE UPLOAD -->
+        <h2>Upload Learner's Licence</h2>
 
-    <!-- MANDATORY UPLOAD -->
-    <h2>Upload Learner's Licence (Required)</h2>
-    <input type="file" name="learners_license" accept="image/*,application/pdf" required>
-    <br><br>
+        <input 
+            type="file" 
+            name="learners_license" 
+            accept="image/*,application/pdf" 
+            required
+        >
 
-   
-    <h2>Code on the learners license</h2>
-    <table border="1" cellpadding="5">
+        <!-- LICENSE CODES -->
+        <h2>Select Learner's License Code</h2>
 
-        <tr>
-            <th>Service</th>
-            <th>Select</th>
-        </tr>
+        <div class="license-grid">
 
-        <tr>
-            <td>Code A: Motorcycle license</td>
-            <td>
+            <div class="license-card">
+                <label>Code A: Motorcycle</label>
                 <select name="code_a">
                     <option value="No">No</option>
                     <option value="Yes">Yes</option>
                 </select>
-            </td>
-        </tr>
+            </div>
 
-        <tr>
-            <td>Code B (08): Light motor Vehicles</td>
-            <td>
+            <div class="license-card">
+                <label>Code B (08): Light Motor Vehicle</label>
                 <select name="code_b">
                     <option value="No">No</option>
                     <option value="Yes">Yes</option>
                 </select>
-            </td>
-        </tr>
+            </div>
 
-        <tr>
-            <td>Code EB: Light vehicle with heavy trailer</td>
-            <td>
+            <div class="license-card">
+                <label>Code EB: Light Vehicle + Trailer</label>
                 <select name="code_eb">
                     <option value="No">No</option>
                     <option value="Yes">Yes</option>
                 </select>
-            </td>
-        </tr>
+            </div>
 
-        <tr>
-            <td>Code C1/C (10): Medium/heavy rigid trucks</td>
-            <td>
+            <div class="license-card">
+                <label>Code C1/C (10): Medium/Heavy Trucks</label>
                 <select name="code_c1">
                     <option value="No">No</option>
                     <option value="Yes">Yes</option>
                 </select>
-            </td>
-        </tr>
+            </div>
 
-        <tr>
-            <td>Code EC (14): Heavy trucks</td>
-            <td>
+            <div class="license-card">
+                <label>Code EC (14): Heavy Trucks</label>
                 <select name="code_ec">
                     <option value="No">No</option>
                     <option value="Yes">Yes</option>
                 </select>
-            </td>
-        </tr>
+            </div>
 
-    </table>
+        </div>
 
-    <br>
+        <!-- PACKAGE SECTION -->
+        <h2>Select Your Package</h2>
 
-    <p>Select your package</p>
+        <div class="package-scroll">
 
-    <table border="1" cellpadding="5">
+            <label class="package-card">
+                <input type="radio" name="package" value="200" required>
+                <h3>R200</h3>
+                <p>1 x Lesson (Personal Car)</p>
+            </label>
 
-        <tr>
-            <th>Package</th>
-            <th>Select</th>
-        </tr>
+            <label class="package-card">
+                <input type="radio" name="package" value="300">
+                <h3>R300</h3>
+                <p>1 x Lesson (Driving School Car)</p>
+            </label>
 
-        <tr>
-            <td>R200 1 x Lesson with personal Car</td>
-            <td>
-                <select name="pkg_200">
-                    <option value="No">No</option>
-                    <option value="Yes">Yes</option>
-                </select>
-            </td>
-        </tr>
+            <label class="package-card">
+                <input type="radio" name="package" value="1770">
+                <h3>R1770</h3>
+                <p>6 x Lessons (Driving School Car)</p>
+            </label>
 
-        <tr>
-            <td>R300 1 x Lesson with Driving School Car</td>
-            <td>
-                <select name="pkg_300">
-                    <option value="No">No</option>
-                    <option value="Yes">Yes</option>
-                </select>
-            </td>
-        </tr>
+            <label class="package-card">
+                <input type="radio" name="package" value="2720">
+                <h3>R2720</h3>
+                <p>6 x Lessons + Test Car</p>
+            </label>
 
-        <tr>
-            <td>R1770 6 x Lessons with Driving School Car</td>
-            <td>
-                <select name="pkg_1770">
-                    <option value="No">No</option>
-                    <option value="Yes">Yes</option>
-                </select>
-            </td>
-        </tr>
+            <label class="package-card">
+                <input type="radio" name="package" value="2900">
+                <h3>R2900</h3>
+                <p>10 x Lessons</p>
+            </label>
 
-        <tr>
-            <td>R2720 6 x Lessons + car rental for test</td>
-            <td>
-                <select name="pkg_2720">
-                    <option value="No">No</option>
-                    <option value="Yes">Yes</option>
-                </select>
-            </td>
-        </tr>
+            <label class="package-card">
+                <input type="radio" name="package" value="3850">
+                <h3>R3850</h3>
+                <p>10 x Lessons + Test Car</p>
+            </label>
 
-        <tr>
-            <td>R2900 10 x Lessons</td>
-            <td>
-                <select name="pkg_2900">
-                    <option value="No">No</option>
-                    <option value="Yes">Yes</option>
-                </select>
-            </td>
-        </tr>
+            <label class="package-card">
+                <input type="radio" name="package" value="5700">
+                <h3>R5700</h3>
+                <p>20 x Lessons</p>
+            </label>
 
-        <tr>
-            <td>R3850 10 x Lessons + test car</td>
-            <td>
-                <select name="pkg_3850">
-                    <option value="No">No</option>
-                    <option value="Yes">Yes</option>
-                </select>
-            </td>
-        </tr>
+            <label class="package-card">
+                <input type="radio" name="package" value="6650">
+                <h3>R6650</h3>
+                <p>20 x Lessons + Test Car</p>
+            </label>
 
-        <tr>
-            <td>R5700 20 x Lessons</td>
-            <td>
-                <select name="pkg_5700">
-                    <option value="No">No</option>
-                    <option value="Yes">Yes</option>
-                </select>
-            </td>
-        </tr>
+        </div>
 
-        <tr>
-            <td>R6650 20 x Lessons + test car</td>
-            <td>
-                <select name="pkg_6650">
-                    <option value="No">No</option>
-                    <option value="Yes">Yes</option>
-                </select>
-            </td>
-        </tr>
+        <!-- SUBMIT -->
+        <input type="submit" value="Book Lesson" class="submit-btn">
 
-    </table>
+    </form>
 
-    <br>
+    <a href="index.php" class="back-link">← Back to Home</a>
 
-    <input type="submit" value="Book Lesson">
-
-</form>
-
-<br>
-
-<a href="index.php">Back to Home</a>
+</div>
 
 </body>
 </html>

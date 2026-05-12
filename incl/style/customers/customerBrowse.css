@@ -1,0 +1,224 @@
+body {
+    margin: 0;
+    padding: 20px;
+
+    font-family: Georgia, serif;
+
+    background-color: #E6E8EA;
+    color: #0B1F33;
+}
+
+/* MAIN CONTAINER */
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+
+    background-color: #ffffff;
+
+    padding: 40px;
+    border-radius: 10px;
+
+    box-shadow: 0 12px 30px rgba(11, 31, 51, 0.2);
+}
+
+/* MAIN TITLE */
+h1 {
+    text-align: center;
+    margin-bottom: 10px;
+
+    color: #0B1F33;
+}
+
+/* SUBTITLE */
+.subtitle {
+    text-align: center;
+    color: #6C8EAD;
+
+    margin-bottom: 30px;
+}
+
+/* SECTION TITLES */
+h2 {
+    font-size: 24px;
+
+    color: #0B1F33;
+
+    border-left: 5px solid #6C8EAD;
+
+    padding-left: 12px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+/* FILE INPUT */
+input[type="file"] {
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid #ccc;
+    border-radius: 6px;
+
+    background-color: #ffffff;
+}
+
+/* LICENSE GRID */
+.license-grid {
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+    gap: 15px;
+}
+
+/* LICENSE CARD */
+.license-card {
+    background-color: #f8f8f8;
+
+    padding: 15px;
+
+    border-radius: 8px;
+
+    border: 1px solid #dcdcdc;
+}
+
+/* LABELS */
+.license-card label {
+    display: block;
+
+    margin-bottom: 10px;
+
+    font-weight: bold;
+}
+
+/* SELECT INPUTS */
+.license-card select {
+    width: 100%;
+
+    padding: 10px;
+
+    border-radius: 5px;
+    border: 1px solid #ccc;
+
+    background-color: #ffffff;
+}
+
+/* PACKAGE SCROLL */
+.package-scroll {
+    display: flex;
+
+    gap: 15px;
+
+    overflow-x: auto;
+
+    padding: 10px 5px;
+
+    scroll-snap-type: x mandatory;
+}
+
+/* SCROLLBAR */
+.package-scroll::-webkit-scrollbar {
+    height: 8px;
+}
+
+.package-scroll::-webkit-scrollbar-thumb {
+    background-color: #6C8EAD;
+    border-radius: 10px;
+}
+
+/* PACKAGE CARD */
+.package-card {
+    min-width: 220px;
+
+    background-color: #ffffff;
+
+    border: 2px solid #0B1F33;
+    border-radius: 10px;
+
+    padding: 20px;
+
+    text-align: center;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+
+    scroll-snap-align: start;
+
+    position: relative;
+}
+
+/* HOVER EFFECT */
+.package-card:hover {
+    background-color: #0B1F33;
+    color: #ffffff;
+
+    transform: translateY(-5px);
+}
+
+/* HIDE RADIO BUTTON */
+.package-card input {
+    position: absolute;
+    opacity: 0;
+}
+
+/* PACKAGE PRICE */
+.package-card h3 {
+    margin: 0 0 10px;
+
+    font-size: 24px;
+}
+
+/* PACKAGE TEXT */
+.package-card p {
+    margin: 0;
+
+    font-size: 15px;
+}
+
+/* SUBMIT BUTTON */
+.submit-btn {
+    width: 100%;
+
+    margin-top: 30px;
+
+    padding: 15px;
+
+    border: none;
+    border-radius: 8px;
+
+    background-color: #0B1F33;
+    color: #ffffff;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+/* BUTTON HOVER */
+.submit-btn:hover {
+    background-color: #6C8EAD;
+}
+
+/* BACK LINK */
+.back-link {
+    display: block;
+
+    margin-top: 20px;
+
+    text-align: center;
+
+    text-decoration: none;
+
+    color: #0B1F33;
+
+    font-weight: bold;
+}
+
+/* BACK LINK HOVER */
+.back-link:hover {
+    color: #6C8EAD;
+}
