@@ -1,0 +1,98 @@
+body {
+    margin: 0;
+    font-family: Georgia, serif;
+    background-color: #E6E8EA;
+    color: #0B1F33;
+}
+
+/* FULL PAGE CENTERING */
+.login-wrapper {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+/* OUT OF BOX HEADER */
+.login-header {
+    text-align: center;
+}
+
+.login-header h1 {
+    margin: 0;
+    font-size: 42px;
+    color: #0B1F33;
+    letter-spacing: 1px;
+}
+
+.login-header p {
+    margin-top: 8px;
+    color: #6C8EAD;
+}
+
+/* LOGIN CARD */
+.login-box {
+    background-color: #ffffff;
+    width: 380px;
+
+    padding: 40px;
+    border-radius: 10px;
+
+    box-shadow: 0 12px 30px rgba(11, 31, 51, 0.2);
+    text-align: center;
+}
+
+/* INPUTS */
+.login-box input {
+    width: 100%;
+    max-width: 350px;
+
+    display: block;
+    margin: 0 auto 15px auto;
+
+    padding: 12px;
+
+    border: 1px solid #B0B6BB;
+    border-radius: 6px;
+
+    text-align: center;
+}
+
+/* BUTTON */
+.login-box button {
+    width: 100%;
+    padding: 12px;
+
+    background-color: #0B1F33;
+    color: #ffffff;
+
+    border: none;
+    border-radius: 6px;
+
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.login-box button:hover {
+    background-color: #6C8EAD;
+}
+
+/* ERROR */
+.error {
+    color: #B00020;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* REGISTER LINK */
+.register-text {
+    margin-top: 20px;
+}
+
+.register-text a {
+    color: #6C8EAD;
+    font-weight: bold;
+    text-decoration: none;
+}
