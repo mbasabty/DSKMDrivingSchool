@@ -6,12 +6,18 @@ body {
 
     background-color: #E6E8EA;
     color: #0B1F33;
+
+    /* FULL PAGE CENTERING */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
-/* MAIN CONTAINER */
-.login-container {
+/* MAIN WRAPPER (replaces margin centering) */
+.page-container {
     max-width: 600px;
-    margin: 100px auto;
+    width: 100%;
 
     background-color: #ffffff;
 
@@ -24,7 +30,7 @@ body {
 }
 
 /* TITLE */
-.login-container h2 {
+.page-container h2 {
     font-size: 32px;
     color: #0B1F33;
 
