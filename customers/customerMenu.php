@@ -23,9 +23,9 @@ if (!isset($_SESSION['logged']) || $_SESSION['logged'] !== true) {
 
     <!-- SHOW LOGGED IN USER -->
     <p class="welcome">
-        Welcome,
+        Welcome, 
         <b>
-            <?= ucfirst(htmlspecialchars($_SESSION['username'] ?? 'User')) ?>
+            @<?= ucfirst(htmlspecialchars($_SESSION['username'] ?? 'User')) ?>
         </b>
         — the journey starts here
     </p>
