@@ -1,84 +1,103 @@
-body {
+/* RESET */
+* {
     margin: 0;
     padding: 0;
-
-    font-family: Georgia, serif;
-
-    background-color: #E6E8EA;
-    color: #0B1F33;
-
-    /* FULL PAGE CENTERING */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    box-sizing: border-box;
 }
 
-/* MAIN WRAPPER (replaces margin centering) */
-.page-container {
-    max-width: 600px;
-    width: 100%;
+/* BODY */
+body {
+    font-family: sans-serif;
 
-    background-color: #ffffff;
+    min-height: 100vh;
 
-    padding: 40px;
-    border-radius: 10px;
+    /* BACKGROUND IMAGE */
+    background:
+        linear-gradient(
+            rgba(11, 31, 51, 0.65),
+            rgba(11, 31, 51, 0.65)
+        ),
+        url("../../images/BG1.jpg");
 
-    box-shadow: 0 12px 30px rgba(11, 31, 51, 0.2);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    /* CENTER CONTENT */
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+/* TITLE */
+h2 {
+    font-size: 32px;
+
+    color: #ffffff;
+
+    margin-bottom: 10px;
 
     text-align: center;
 }
 
-/* TITLE */
-.page-container h2 {
-    font-size: 32px;
-    color: #0B1F33;
-
-    border-left: 5px solid #6C8EAD;
-    display: inline-block;
-
-    padding-left: 12px;
-    margin-bottom: 20px;
-}
-
 /* WELCOME TEXT */
 .welcome {
-    color: #6C8EAD;
+    color: #ffffff;
+
     font-size: 16px;
-    margin-bottom: 10px;
+
+    margin-bottom: 30px;
+
+    text-align: center;
 }
 
-/* SUB TITLE */
-.menu-title {
-    color: #0B1F33;
-    margin-bottom: 30px;
+/* BUTTON CONTAINER */
+.page-container {
+    background-color: rgba(255, 255, 255, 0.95);
+
+    padding: 40px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 12px 30px rgba(11, 31, 51, 0.2);
 }
 
 /* BUTTON GROUP */
 .button-group {
     display: flex;
     flex-direction: column;
+
     gap: 15px;
 }
 
-/* LINKS AS BUTTONS */
+/* BUTTON LINKS */
 .button-group a {
     display: block;
+
+    width: 320px;
 
     background-color: #0B1F33;
     color: #ffffff;
 
     text-decoration: none;
+    text-align: center;
+
     font-weight: bold;
 
     padding: 14px;
-    border-radius: 6px;
+
+    border-radius: 8px;
 
     transition: 0.3s ease;
 }
 
-/* HOVER */
+/* HOVER EFFECT */
 .button-group a:hover {
     background-color: #6C8EAD;
-    color: #ffffff;
+
+    transform: translateY(-2px);
 }
