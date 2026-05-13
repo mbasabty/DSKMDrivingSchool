@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Jost:wght@300;400;500&display=swap');
-
 :root {
     --primary: #0B1F33;
     --secondary: #6C8EAD;
@@ -16,7 +14,7 @@
 
 /* BODY */
 body {
-    font-family: 'Jost', sans-serif;
+    font-family: sans-serif;
 
     min-height: 100vh;
 
@@ -55,7 +53,7 @@ body {
 }
 
 .login-header h1 {
-    font-family: 'Playfair Display', serif;
+    font-family: serif;
 
     font-size: 3rem;
 
@@ -85,7 +83,7 @@ body {
 .error {
     background: #ffe5e5;
 
-   lor: #b00020;
+    color: #b00020; /* fixed typo */
 
     padding: 12px;
 
@@ -113,7 +111,7 @@ input {
 
     font-size: 1rem;
 
-    font-family: 'Jost', sans-serif;
+    font-family: sans-serif;
 
     outline: none;
 
