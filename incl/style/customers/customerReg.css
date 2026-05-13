@@ -1,0 +1,157 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY */
+body {
+    font-family: sans-serif;
+
+    min-height: 100vh;
+
+    background:
+        linear-gradient(
+            rgba(11, 31, 51, 0.65),
+            rgba(11, 31, 51, 0.65)
+        ),
+        url("../../images/BG1.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+/* WRAPPER */
+.register-wrapper {
+    width: 100%;
+    max-width: 450px;
+}
+
+/* HEADER */
+.register-header {
+    text-align: center;
+
+    color: #ffffff;
+
+    margin-bottom: 25px;
+}
+
+.register-header h1 {
+    font-size: 3rem;
+
+    margin-bottom: 10px;
+}
+
+.register-header p {
+    opacity: 0.9;
+}
+
+/* REGISTER BOX */
+.register-box {
+    background: rgba(255,255,255,0.95);
+
+    padding: 40px;
+
+    border-radius: 14px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* MESSAGE */
+.message {
+    background: #e8f5e9;
+
+    color: #2e7d32;
+
+    padding: 12px;
+
+    border-radius: 6px;
+
+    margin-bottom: 20px;
+
+    text-align: center;
+}
+
+/* FORM */
+form {
+    display: flex;
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+/* INPUTS */
+input {
+    padding: 14px;
+
+    border: 1px solid #ccc;
+    border-radius: 8px;
+
+    font-size: 1rem;
+
+    outline: none;
+
+    transition: 0.3s;
+}
+
+input:focus {
+    border-color: #6C8EAD;
+
+    box-shadow: 0 0 0 3px rgba(108, 142, 173, 0.2);
+}
+
+/* BUTTON */
+button {
+    background: #0B1F33;
+
+    color: #ffffff;
+
+    border: none;
+
+    padding: 14px;
+
+    border-radius: 8px;
+
+    font-size: 1rem;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+button:hover {
+    background: #6C8EAD;
+
+    transform: translateY(-2px);
+}
+
+/* LOGIN TEXT */
+.login-text {
+    margin-top: 20px;
+
+    text-align: center;
+
+    color: #444;
+}
+
+/* LOGIN LINK */
+.login-text a {
+    color: #6C8EAD;
+
+    text-decoration: none;
+
+    font-weight: bold;
+}
+
+.login-text a:hover {
+    text-decoration: underline;
+}

@@ -19,7 +19,10 @@
     <form action="customerBooking.php" method="post" enctype="multipart/form-data">
 
         <!-- LICENSE UPLOAD -->
-        <h2>Upload Learner's Licence</h2>
+       <h2>
+            Upload Learner's Licence
+            <span class="required-text">* Required</span>
+       </h2>
 
         <input 
             type="file" 
@@ -33,47 +36,52 @@
 
         <div class="license-grid">
 
-            <div class="license-card">
-                <label>Code A: Motorcycle</label>
-                <select name="code_a">
-                    <option value="No">No</option>
-                    <option value="Yes">Yes</option>
-                </select>
-            </div>
+    <div class="license-card">
+        <label>Code A: Motorcycle</label>
+        <img src="../incl/images/Motorcycle.png" alt="Motorcycle license icon">
+        <select name="code_a">
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
+        </select>
+    </div>
 
-            <div class="license-card">
-                <label>Code B (08): Light Motor Vehicle</label>
-                <select name="code_b">
-                    <option value="No">No</option>
-                    <option value="Yes">Yes</option>
-                </select>
-            </div>
+    <div class="license-card">
+        <label>Code B (08): Light Motor Vehicle</label>
+        <img src="../incl/images/Light Motor Vehicle.png" alt="Car license icon">
+        <select name="code_b">
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
+        </select>
+    </div>
 
-            <div class="license-card">
-                <label>Code EB: Light Vehicle + Trailer</label>
-                <select name="code_eb">
-                    <option value="No">No</option>
-                    <option value="Yes">Yes</option>
-                </select>
-            </div>
+    <div class="license-card">
+        <label>Code EB: Light Vehicle + Trailer</label>
+        <img src="../incl/images/Light Vehicle + Trailer.png" alt="Trailer license icon">
+        <select name="code_eb">
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
+        </select>
+    </div>
 
-            <div class="license-card">
-                <label>Code C1/C (10): Medium/Heavy Trucks</label>
-                <select name="code_c1">
-                    <option value="No">No</option>
-                    <option value="Yes">Yes</option>
-                </select>
-            </div>
+    <div class="license-card">
+        <label>Code C1/C (10): Medium/Heavy Trucks</label>
+        <img src="../incl/images/MediumTrucks.png" alt="Truck license icon">
+        <select name="code_c1">
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
+        </select>
+    </div>
 
-            <div class="license-card">
-                <label>Code EC (14): Heavy Trucks</label>
-                <select name="code_ec">
-                    <option value="No">No</option>
-                    <option value="Yes">Yes</option>
-                </select>
-            </div>
+    <div class="license-card">
+        <label>Code EC (14): Heavy Trucks</label>
+        <img src="../incl/images/HeavyTrucks.png" alt="Heavy truck icon">
+        <select name="code_ec">
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
+        </select>
+    </div>
 
-        </div>
+</div>
 
         <!-- PACKAGE SECTION -->
         <h2>Select Your Package</h2>
