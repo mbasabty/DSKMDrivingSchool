@@ -22,7 +22,14 @@ body {
 /* HEADER */
 
 header {
-  background-color: #0B1F33;
+  background:
+    linear-gradient(rgba(11, 31, 51, 0.9), rgba(11, 31, 51, 0.9)),
+    url("../../images/BG1.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
   color: #ffffff;
 
   padding: 40px 60px;
@@ -59,8 +66,8 @@ header p:first-of-type {
 /* NAVIGATION */
 
 nav {
-  background-color: #6C8EAD;
-  padding: 14px 60px;
+  background-color: #aeb2b7d3;
+  padding: 20px 60px;
   text-align: right;
 }
 
@@ -74,8 +81,9 @@ nav a {
   letter-spacing: 1px;
   text-transform: uppercase;
 
-  border: 2px solid #B0B6BB;
-  padding: 10px 22px;
+ 
+  
+  padding: 15px 22px;
   border-radius: 4px;
 }
 
@@ -217,6 +225,10 @@ section ol li::before {
   border-radius: 6px;
 }
 
+.instructor-list li:not(:first-child) {
+  border-left: 5px solid #0B1F33;
+}
+
 .instructor-initial {
   width: 52px;
   height: 52px;
@@ -254,25 +266,35 @@ section ol li::before {
 
 /* FOOTER */
 
-footer {
-  background-color: #0B1F33;
+/* FOOTER CONTAINER ONLY */
+
+.footer-container .custom-footer {
+  background:
+    linear-gradient(
+      rgba(11, 31, 51, 0.95),
+      rgba(11, 31, 51, 0.95)
+    ),
+    url("../../images/bg1.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
   color: #ffffff;
 
   padding: 40px 60px;
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
-
   flex-wrap: wrap;
   gap: 20px;
 }
 
-footer p {
-  color: #D5DADF;
-}
+/* Move button right */
 
-footer a {
+.footer-container .custom-footer a {
+  margin-left: auto;
+
   background-color: #ffffff;
   color: #0B1F33;
 
@@ -282,6 +304,35 @@ footer a {
   padding: 12px 28px;
   border-radius: 4px;
 }
+
+.footer-container .custom-footer a:hover {
+  background-color: #6C8EAD;
+  color: #ffffff;
+}
+
+.footer-container .custom-footer p {
+  color: #D5DADF;
+}
+
+
+footer a {
+  margin-left: auto;
+
+  background-color: #ffffff;
+  color: #0B1F33;
+
+  text-decoration: none;
+  font-weight: bold;
+
+  padding: 12px 28px;
+  border-radius: 4px;
+}
+
+footer p {
+  color: #D5DADF;
+}
+
+
 
 footer a:hover {
   background-color: #6C8EAD;
