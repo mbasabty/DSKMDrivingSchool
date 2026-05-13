@@ -1,0 +1,173 @@
+:root {
+    --primary: #0B1F33;
+    --secondary: #6C8EAD;
+    --white: #ffffff;
+    --background: #E6E8EA;
+}
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY */
+body {
+    font-family: sans-serif;
+
+    min-height: 100vh;
+
+    /* BACKGROUND IMAGE */
+    background:
+        linear-gradient(
+            rgba(11, 31, 51, 0.65),
+            rgba(11, 31, 51, 0.65)
+        ),
+        url("../../images/BG1.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+/* MAIN WRAPPER */
+.login-wrapper {
+    width: 100%;
+    max-width: 420px;
+
+    text-align: center;
+}
+
+/* HEADER */
+.login-header {
+    margin-bottom: 25px;
+
+    color: white;
+}
+
+.login-header h1 {
+    font-family: serif;
+
+    font-size: 3rem;
+
+    margin-bottom: 10px;
+}
+
+.login-header p {
+    font-size: 1rem;
+
+    opacity: 0.9;
+}
+
+/* LOGIN CARD */
+.login-box {
+    background: rgba(255,255,255,0.95);
+
+    padding: 40px;
+
+    border-radius: 14px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+
+    backdrop-filter: blur(5px);
+}
+
+/* ERROR MESSAGE */
+.error {
+    background: #ffe5e5;
+
+    color: #b00020; /* fixed typo */
+
+    padding: 12px;
+
+    border-radius: 6px;
+
+    margin-bottom: 20px;
+
+    font-size: 0.95rem;
+}
+
+/* FORM */
+form {
+    display: flex;
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+/* INPUTS */
+input {
+    padding: 14px;
+
+    border: 1px solid #ccc;
+    border-radius: 8px;
+
+    font-size: 1rem;
+
+    font-family: sans-serif;
+
+    outline: none;
+
+    transition: 0.3s;
+}
+
+input:focus {
+    border-color: var(--secondary);
+
+    box-shadow: 0 0 0 3px rgba(108, 142, 173, 0.2);
+}
+
+/* BUTTON */
+button {
+    background: var(--primary);
+
+    color: white;
+
+    border: none;
+
+    padding: 14px;
+
+    border-radius: 8px;
+
+    font-size: 1rem;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+button:hover {
+    background: var(--secondary);
+
+    transform: translateY(-2px);
+}
+
+/* REGISTER TEXT */
+.register-text {
+    margin-top: 20px;
+
+    font-size: 0.95rem;
+
+    color: #444;
+}
+
+/* REGISTER LINK */
+.register-text a {
+    color: var(--secondary);
+
+    text-decoration: none;
+
+    font-weight: 500;
+}
+
+.register-text a:hover {
+    text-decoration: underline;
+}

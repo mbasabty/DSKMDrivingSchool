@@ -1,7 +1,6 @@
 <?php
-include_once '../incl/DatabaseConnection/dbconn.php';
-
 session_start();
+include_once '../incl/DatabaseConnection/dbconn.php';
 
 $message = "";
 
@@ -28,7 +27,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if ($row = $result->fetch_assoc()) {
 
-        
         if ($password === $row['password']) {
 
             $_SESSION['logged'] = true;
@@ -51,33 +49,62 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Student Driver Login</title>
+
+    <link rel="stylesheet" href="../incl/style/customers/customerLogin.css">
 </head>
 
 <body>
 
-<h2>Student Driver Login</h2>
+<div class="login-wrapper">
 
-<?php if (!empty($message)): ?>
-    <p style="color:red;"><?= htmlspecialchars($message) ?></p>
-<?php endif; ?>
+    <!-- PAGE HEADING -->
+    <div class="login-header">
+        <h1>Student Driver Login</h1>
+        <p>Sign in to continue your journey</p>
+    </div>
 
-<form method="post">
+    <!-- LOGIN CARD -->
+    <div class="login-box">
 
-    <input type="text" name="user_name" placeholder="Username" required><br><br>
+        <?php if (!empty($message)): ?>
+            <p class="error"><?= htmlspecialchars($message) ?></p>
+        <?php endif; ?>
 
-    <input type="password" name="user_pwd" placeholder="Password" required><br><br>
+        <form method="post">
 
-    <input type="submit" value="Login">
+            <input 
+                type="text" 
+                name="user_name" 
+                placeholder="Username" 
+                required
+            >
 
-</form>
+            <input 
+                type="password" 
+                name="user_pwd" 
+                placeholder="Password" 
+                required
+            >
 
-<p>
-    Don't have an account?
-    <a href="customerRegistration.php">Register</a>
-</p>
+            <button type="submit">Login</button>
+
+        </form>
+
+        <p class="register-text">
+            Don't have an account?
+            <a href="customerRegistration.php">Register</a>
+        </p>
+
+    </div>
+
+</div>
 
 </body>
 </html>
