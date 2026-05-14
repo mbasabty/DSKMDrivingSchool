@@ -25,7 +25,7 @@ if (!isset($_SESSION['logged']) || $_SESSION['logged'] !== true) {
     <p class="welcome">
         Welcome, 
         <b>
-            @<?= ucfirst(htmlspecialchars($_SESSION['username'] ?? 'User')) ?>
+            @<?= strtolower(htmlspecialchars($_SESSION['username'] ?? 'User')) ?>
         </b>
         — the journey starts here
     </p>

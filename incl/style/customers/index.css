@@ -131,7 +131,14 @@ section > ul:not(.why-list):not(.instructor-list) {
 }
 
 section > ul:not(.why-list):not(.instructor-list) li {
-  background-color: #0B1F33;
+  background:
+    linear-gradient(rgba(11, 31, 51, 0.9), rgba(11, 31, 51, 0.9)),
+    url("../../images/BG1.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
   color: #ffffff;
 
   padding: 20px 30px;
@@ -178,11 +185,22 @@ section ol {
 }
 
 section ol li {
-  background-color: #0B1F33;
+  background:
+    linear-gradient(rgba(11, 31, 51, 0.9), rgba(11, 31, 51, 0.9)),
+    url("../../images/BG1.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
   color: #ffffff;
   padding: 28px 24px;
   border-radius: 6px;
   counter-increment: service-counter;
+}
+
+section ol li p {
+  color: #ffffff;
 }
 
 section ol li::before {
