@@ -42,25 +42,24 @@ CREATE TABLE student (
     student_id INT AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(50),
     last_name VARCHAR(50),
+    home_address VARCHAR(50),
     username VARCHAR(50),
     password VARCHAR(50),
     email VARCHAR(100),
     phone VARCHAR(15),
     id_number VARCHAR(20),
-
     learners_license_file VARCHAR(255),
     learners_status VARCHAR(30) DEFAULT 'Pending',
-
     date_registered DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
 INSERT INTO student
-(first_name,last_name,username,password,email,phone,id_number,learners_license_file,learners_status)
+(first_name,last_name,,username,home_address,password,email,phone,id_number,learners_license_file,learners_status)
 VALUES
-('Lerato','Nkosi','lerato','1234','lerato@gmail.com','0812345678','0201011234088','uploads/lerato.pdf','Approved'),
-('Siphesihle','Dlamini','sipho','1234','sipho@gmail.com','0823456789','0105055678088','uploads/sipho.pdf','Approved'),
-('Ayanda','Mthembu','ayanda','1234','ayanda@gmail.com','0811111111','0001015009088','uploads/ayanda.pdf','Approved'),
-('Thando','Zulu','thando','1234','thando@gmail.com','0822222222','0102026009088','uploads/thando.pdf','Pending');
+('Lerato','Nkosi','lerato','234 Kingsway str','1234','lerato@gmail.com','0812345678','0201011234088','uploads/lerato.pdf','Approved'),
+('Siphesihle','Dlamini','sipho','2A Church str','1234','sipho@gmail.com','0823456789','0105055678088','uploads/sipho.pdf','Approved'),
+('Ayanda','Mthembu','ayanda','324 Queens str','1234','ayanda@gmail.com','0811111111','0001015009088','uploads/ayanda.pdf','Approved'),
+('Thando','Zulu','thando','678 Owens str','1234','thando@gmail.com','0822222222','0102026009088','uploads/thando.pdf','Pending');
 
 
 -- SERVICES -------------------------------
@@ -88,22 +87,34 @@ VALUES
 -- BOOKINGS -------------------------------
 
 
-CREATE TABLE booking (
-    booking_id INT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE booking_details (
+    booking_details_id INT AUTO_INCREMENT PRIMARY KEY,
     student_id INT,
     service_id INT,
     booking_date DATE,
     booking_time TIME,
-    booking_status VARCHAR(30) DEFAULT 'Pending'
+    booking_status VARCHAR(30) DEFAULT 'Pending',
+    licence_document VARCHAR(255),
+    selected_licence_code VARCHAR(100),
+    selected_package VARCHAR(100)
 );
 
-INSERT INTO booking
-(student_id,service_id,booking_date,booking_time,booking_status)
+INSERT INTO booking_details
+(
+    student_id,
+    service_id,
+    booking_date,
+    booking_time,
+    booking_status,
+    licence_document,
+    selected_licence_code,
+    selected_package
+)
 VALUES
-(1,1,'2026-05-20','10:00:00','Confirmed'),
-(2,2,'2026-05-21','11:00:00','Confirmed'),
-(3,3,'2026-05-22','12:00:00','Completed'),
-(4,4,'2026-05-23','13:00:00','Pending');
+(1,1,'2026-05-20','10:00:00','Confirmed','licence1.pdf','Code 08','Gold Package'),
+(2,2,'2026-05-21','11:00:00','Confirmed','licence2.pdf','Code 10','Silver Package'),
+(3,3,'2026-05-22','12:00:00','Completed','licence3.pdf','Code 14','Premium Package'),
+(4,4,'2026-05-23','13:00:00','Pending','licence4.pdf','Code A','Basic Package');
  
 
 -- STUDENT PROGRESS -------------------------------
