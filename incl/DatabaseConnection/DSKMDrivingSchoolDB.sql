@@ -88,22 +88,41 @@ VALUES
 -- BOOKINGS -------------------------------
 
 
-CREATE TABLE booking (
-    booking_id INT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE booking_details (
+    booking_details_id INT AUTO_INCREMENT PRIMARY KEY,
+
     student_id INT,
     service_id INT,
+
     booking_date DATE,
     booking_time TIME,
-    booking_status VARCHAR(30) DEFAULT 'Pending'
+
+    booking_status VARCHAR(30) DEFAULT 'Pending',
+
+    licence_document VARCHAR(255),
+    selected_licence_code VARCHAR(100),
+    selected_package VARCHAR(100)
 );
 
-INSERT INTO booking
-(student_id,service_id,booking_date,booking_time,booking_status)
+INSERT INTO booking_details
+(
+    student_id,
+    service_id,
+    booking_date,
+    booking_time,
+    booking_status,
+    licence_document,
+    selected_licence_code,
+    selected_package
+)
 VALUES
-(1,1,'2026-05-20','10:00:00','Confirmed'),
-(2,2,'2026-05-21','11:00:00','Confirmed'),
-(3,3,'2026-05-22','12:00:00','Completed'),
-(4,4,'2026-05-23','13:00:00','Pending');
+(1,1,'2026-05-20','10:00:00','Confirmed','licence1.pdf','Code 08','Gold Package'),
+
+(2,2,'2026-05-21','11:00:00','Confirmed','licence2.pdf','Code 10','Silver Package'),
+
+(3,3,'2026-05-22','12:00:00','Completed','licence3.pdf','Code 14','Premium Package'),
+
+(4,4,'2026-05-23','13:00:00','Pending','licence4.pdf','Code A','Basic Package');
  
 
 -- STUDENT PROGRESS -------------------------------
