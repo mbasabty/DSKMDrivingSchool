@@ -23,6 +23,7 @@
             first_name,
             last_name,
             username,
+            home_address,
             password,
             email,
             phone,
@@ -31,7 +32,7 @@
             learners_status,
             date_registered
         )
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         $stmt = $conn->prepare($sql);
 
@@ -40,10 +41,11 @@
         }
 
         $stmt->bind_param(
-            "ssssssssss",
+            "sssssssssss",
             $first_name,
             $last_name,
             $username,
+            $address,
             $password_plain,
             $email,
             $phone,
@@ -54,14 +56,10 @@
         );
 
         if ($stmt->execute()) {
-
             $message = "Registration successful!";
-
         } else {
-
             $message = "Insert error: " . $stmt->error;
         }
-
         $stmt->close();
     }
 ?>
