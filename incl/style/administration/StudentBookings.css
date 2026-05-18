@@ -1,0 +1,172 @@
+:root {
+    --primary: #0B1F33;
+    --secondary: #6C8EAD;
+    --success: #28a745;
+    --danger: #dc3545;
+    --warning: #ffc107;
+    --white: #ffffff;
+    --yellow: #ffd84c;
+}
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY */
+body {
+    min-height: 100vh;
+    background: url("../../images/BG4.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: Arial, sans-serif;
+    color: var(--white);
+    padding: 20px;
+}
+
+/* WRAPPER */
+.students-wrapper {
+    width: 100%;
+}
+
+/* HEADER */
+.students-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.students-header h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+/* CARD */
+.students-box {
+    background: rgba(16, 2, 2, 0.75);
+    border-radius: 12px;
+    padding: 25px;
+    backdrop-filter: blur(6px);
+    overflow-x: auto;
+}
+
+/* TABLE */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 1400px;
+}
+
+/* HEADER */
+thead {
+    background: var(--yellow);
+}
+
+thead th {
+    padding: 14px;
+    text-align: left;
+    color: var(--white);
+}
+
+/* BODY */
+tbody tr {
+    background: rgba(255, 255, 255, 0.05);
+    transition: 0.3s ease;
+}
+
+tbody tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+tbody tr:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+tbody td {
+    padding: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+/* STATUS */
+.status {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.approved {
+    background: rgba(40,167,69,0.2);
+    color: #4cff88;
+}
+
+.declined {
+    background: rgba(220,53,69,0.2);
+    color: #ff6b81;
+}
+
+.pending {
+    background: rgba(255,193,7,0.2);
+    color: #ffd54f;
+}
+
+/* BUTTONS */
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+    transition: 0.3s ease;
+}
+
+.btn-approve {
+    background: var(--success);
+}
+
+.btn-approve:hover {
+    background: #218838;
+}
+
+.btn-decline {
+    background: var(--danger);
+}
+
+.btn-decline:hover {
+    background: #c82333;
+}
+
+/* FILE LINK */
+.file-link {
+    color: #87cefa;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.file-link:hover {
+    text-decoration: underline;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+    .students-header h2 {
+        font-size: 1.6rem;
+    }
+
+    .students-box {
+        padding: 15px;
+    }
+
+    table {
+        min-width: 1400px;
+    }
+}
