@@ -1,6 +1,5 @@
 <?php
     session_start();
-
     if (!isset($_SESSION['logged']) || $_SESSION['logged'] !== true) {
         die("Access denied. Please login first.");
     }
@@ -27,10 +26,10 @@
                     SALES DASHBOARD
                 </a>
                 <a href="#">
-                    VIEW STAFF DETAILS
+                     STAFF DETAILS
                 </a>
-                <a href="#">
-                    ASSIGNING INSTRUCTORS TO DRIVERS
+                <a href="StudentBookings.php">
+                     STUDENT BOOKINGS
                 </a>
             </div>
         </div>
