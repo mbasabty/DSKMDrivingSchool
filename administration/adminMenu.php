@@ -25,7 +25,7 @@
                 <a href="#">
                     SALES DASHBOARD
                 </a>
-                <a href="#">
+                <a href="Staff.php">
                      STAFF DETAILS
                 </a>
                 <a href="StudentBookings.php">

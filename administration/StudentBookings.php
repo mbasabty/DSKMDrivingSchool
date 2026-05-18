@@ -1,29 +1,29 @@
 <?php
-// Database connection
-include_once "../incl/DatabaseConnection/dbConn.php";
+    // Database connection
+    include_once "../incl/DatabaseConnection/dbConn.php";
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
 
-// Fetch students
-$sql = "SELECT 
-            student_id,
-            first_name,
-            last_name,
-            home_address,
-            username,
-            password,
-            email,
-            phone,
-            id_number,
-            learners_license_file,
-            learners_status,
-            date_registered
-        FROM student";
+    // Fetch students
+    $sql = "SELECT 
+                student_id,
+                first_name,
+                last_name,
+                home_address,
+                username,
+                password,
+                email,
+                phone,
+                id_number,
+                learners_license_file,
+                learners_status,
+                date_registered
+            FROM student";
 
-$result = $conn->query($sql);
+    $result = $conn->query($sql);
 ?>
 
 <!DOCTYPE html>
