@@ -6,53 +6,37 @@
 
 body {
     min-height: 100vh;
-
-    background:
-        linear-gradient(rgba(11, 31, 51, 0.9), rgba(11, 31, 51, 0.9)),
-        url("../../images/BG1.jpg");
-
+    background: url("../../images/bg4.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
     color: #ffffff;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     padding: 20px;
-
     font-family: Arial, sans-serif;
 }
 
 .admin-box {
     width: 100%;
     max-width: 420px;
-
     padding: 40px 30px;
-
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 15px;
-
-    background: rgba(255, 255, 255, 0.05);
-
+    background: rgba(16, 2, 2, 0.704);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
-
     backdrop-filter: blur(6px);
-
     text-align: center;
 }
 
 .admin-box img {
     width: 60px;
     height: 60px;
-
     object-fit: contain;
-
     margin-bottom: 10px;
 }
 
@@ -73,18 +57,12 @@ body {
 
 .admin-box a {
     width: 100%;
-
     text-decoration: none;
-
     background: #ffffff;
     color: #0b1f33;
-
     padding: 14px 20px;
-
     border-radius: 6px;
-
     font-weight: bold;
-
     transition: 0.3s ease;
 }
 
