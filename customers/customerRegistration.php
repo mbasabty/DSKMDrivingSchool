@@ -14,15 +14,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $username = trim($_POST['username']);
     $password_plain = $_POST['password'];
 
-    // Hash password
-    $password_hash = password_hash($password_plain, PASSWORD_DEFAULT);
-
-    // Default values for missing fields
     $license_file = NULL;
     $learners_status = "Pending";
     $date_registered = date("Y-m-d H:i:s");
 
-    // Insert query (MATCHES YOUR TABLE EXACTLY)
     $sql = "INSERT INTO student
     (
         first_name,
@@ -49,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $first_name,
         $last_name,
         $username,
-        $password_hash,
+        $password_plain,
         $email,
         $phone,
         $id_number,
@@ -59,8 +54,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     );
 
     if ($stmt->execute()) {
+
         $message = "Registration successful!";
+
     } else {
+
         $message = "Insert error: " . $stmt->error;
     }
 
@@ -69,45 +67,98 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+    <meta charset="UTF-8">
+
     <title>Student Driver Registration</title>
+
+    <link rel="stylesheet"
+          href="../incl/style/customers/customerReg.css">
 </head>
 
 <body>
 
-<h2>Student Driver Registration</h2>
+<div class="register-wrapper">
 
-<?php if (!empty($message)): ?>
-    <p><?= htmlspecialchars($message) ?></p>
-<?php endif; ?>
+    <div class="register-header">
 
-<form method="post">
+        <h1>Register</h1>
 
-    <input type="text" name="first_name" placeholder="First Name" required><br><br>
+        <p>Create your student driver account</p>
 
-    <input type="text" name="surname" placeholder="Last Name" required><br><br>
+    </div>
 
-    <input type="email" name="email_address" placeholder="Email Address" required><br><br>
+    <div class="register-box">
 
-    <input type="text" name="phone_number" placeholder="Phone Number"><br><br>
+        <?php if (!empty($message)): ?>
 
-    <input type="text" name="home_address" placeholder="Home Address"><br><br>
+            <div class="message">
+                <?= htmlspecialchars($message) ?>
+            </div>
 
-    <input type="text" name="id_number" placeholder="ID Number" required><br><br>
+        <?php endif; ?>
 
-    <input type="text" name="username" placeholder="Username" required><br><br>
+        <form method="post">
 
-    <input type="password" name="password" placeholder="Password" required><br><br>
+            <input type="text"
+                   name="first_name"
+                   placeholder="First Name"
+                   required>
 
-    <input type="submit" value="Register">
+            <input type="text"
+                   name="surname"
+                   placeholder="Last Name"
+                   required>
 
-</form>
+            <input type="email"
+                   name="email_address"
+                   placeholder="Email Address"
+                   required>
 
-<p>
-    Already have an account?
-    <a href="customerLogin.php">Login</a>
-</p>
+            <input type="text"
+                   name="phone_number"
+                   placeholder="Phone Number">
+
+            <input type="text"
+                   name="home_address"
+                   placeholder="Home Address">
+
+            <input type="text"
+                   name="id_number"
+                   placeholder="ID Number"
+                   required>
+
+            <input type="text"
+                   name="username"
+                   placeholder="Username"
+                   required>
+
+            <input type="password"
+                   name="password"
+                   placeholder="Password"
+                   required>
+
+            <button type="submit">
+                Register
+            </button>
+
+        </form>
+
+        <p class="login-text">
+
+            Already have an account?
+
+            <a href="customerLogin.php">
+                Login
+            </a>
+
+        </p>
+
+    </div>
+
+</div>
 
 </body>
 </html>

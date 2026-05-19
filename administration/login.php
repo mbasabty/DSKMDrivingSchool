@@ -4,8 +4,8 @@ session_start();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    $username = $_POST['user_name'];
-    $password = $_POST['user_pwd'];
+    $username = trim($_POST['user_name']);
+    $password = trim($_POST['user_pwd']);
 
     $sql = "SELECT user_id, user_name, user_pwd, user_full_name, user_level_id 
             FROM users 
@@ -20,53 +20,110 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if ($row = $result->fetch_assoc()) {
 
-    
+        // Check password
         if ($password === $row['user_pwd']) {
 
+            // Sessions
             $_SESSION['logged'] = true;
             $_SESSION['user_id'] = $row['user_id'];
             $_SESSION['level'] = $row['user_level_id'];
             $_SESSION['name'] = $row['user_full_name'];
 
-            header("Location: menu.php");
-            exit();
+            // Cookies (valid for 1 hour)
+            setcookie("user_id", $row['user_id'], time() + 3600, "/");
+            setcookie("user_name", $row['user_full_name'], time() + 3600, "/");
+            setcookie("user_level", $row['user_level_id'], time() + 3600, "/");
+
+            // Redirect based on user level
+            if ($row['user_level_id'] == 1) {
+
+                header("Location: adminMenu.php");
+                exit();
+                
+
+            } elseif ($row['user_level_id'] == 2) {
+
+                header("Location: instructors.php");
+                exit();
+
+            } else {
+
+                header("Location: menu.php");
+                exit();
+            }
 
         } else {
+
             echo "Incorrect password.";
         }
 
     } else {
+
         echo "User not found.";
     }
 
     $stmt->close();
+    $conn->close();
 }
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Administration</title>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Administration Login</title>
+
+    <link rel="stylesheet" href="../incl/style/administration/adminLogin.css">
 </head>
 
 <body>
 
-    <h1>Administration</h1>
-    <p>Please log in to continue.</p>
+<div class="login-wrapper">
 
-    <form action="login.php" method="post">
+    <!-- PAGE HEADING -->
+    <div class="login-header">
+        <h1>Administration Login</h1>
+        <p>Please enter your staff details to login</p>
+        
+    </div>
 
-        <label>Username:</label><br>
-        <input type="text" name="user_name" required><br><br>
+    <!-- LOGIN CARD -->
+    <div class="login-box">
 
-        <label>Password:</label><br>
-        <input type="password" name="user_pwd" required><br><br>
+        <?php if (!empty($message)): ?>
+            <p class="error"><?= htmlspecialchars($message) ?></p>
+        <?php endif; ?>
 
-        <input type="submit" value="Log In">
+        <form action="login.php" method="post">
 
-    </form>
-    <P><a href="menu.php">next page</a></P>
+            <input 
+                type="text" 
+                name="user_name" 
+                placeholder="Username" 
+                required
+            >
+
+            <input 
+                type="password" 
+                name="user_pwd" 
+                placeholder="Password" 
+                required
+            >
+
+            <button type="submit">Login</button>
+
+        </form>
+
+        <p class="register-text">
+            <a href="#">Forgot password?</a>
+        </p>
+
+    </div>
+
+</div>
 
 </body>
-</html> 
+</html>
