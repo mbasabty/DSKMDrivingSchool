@@ -1,10 +1,3 @@
-:root {
-    --primary: #0B1F33;
-    --secondary: #6C8EAD;
-    --white: #ffffff;
-    --background: #E6E8EA;
-}
-
 /* RESET */
 * {
     margin: 0;
@@ -16,7 +9,6 @@
 body {
     font-family: sans-serif;
     min-height: 100vh;
-    /* BACKGROUND IMAGE */
     background: url("../../images/bg4.jpg");
     background-size: cover;
     background-position: center;
@@ -27,47 +19,45 @@ body {
     padding: 20px;
 }
 
-/* MAIN WRAPPER */
-.login-wrapper {
+/* WRAPPER */
+.register-wrapper {
     width: 100%;
-    max-width: 420px;
-    text-align: center;
+    max-width: 450px;
 }
 
 /* HEADER */
-.login-header {
+.register-header {
+    text-align: center;
+    color: #ffffff;
     margin-bottom: 25px;
-    color: white;
 }
 
-.login-header h1 {
-    font-size: 2rem;
+.register-header h1 {
+    font-size: 3rem;
     margin-bottom: 10px;
 }
 
-.login-header p {
-    font-size: 1rem;
+.register-header p {
     opacity: 0.9;
     color : black;
 }
 
-/* LOGIN CARD */
-.login-box {
-    background:white;
+/* REGISTER BOX */
+.register-box {
+    background: rgba(255,255,255,0.95);
     padding: 40px;
     border-radius: 14px;
     box-shadow: 0 10px 30px black;
-    backdrop-filter: blur(5px);
 }
 
-/* ERROR MESSAGE */
-.error {
-    background: #ffe5e5;
-    color: #b00020; /* fixed typo */
+/* MESSAGE */
+.message {
+    background: #e8f5e9;
+    color: #2e7d32;
     padding: 12px;
     border-radius: 6px;
     margin-bottom: 20px;
-    font-size: 0.95rem;
+    text-align: center;
 }
 
 /* FORM */
@@ -83,25 +73,24 @@ input {
     border: 1px solid #ccc;
     border-radius: 8px;
     font-size: 1rem;
-    font-family: sans-serif;
     outline: none;
     transition: 0.3s;
 }
 
 input:focus {
-    border-color: var(--secondary);
+    border-color: black;
     box-shadow: 0 0 0 3px rgba(108, 142, 173, 0.2);
 }
 
 /* BUTTON */
 button {
     background: black;
-    color: white;
+    color: #ffffff;
     border: none;
     padding: 14px;
     border-radius: 8px;
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: bold;
     cursor: pointer;
     transition: 0.3s ease;
 }
@@ -111,20 +100,20 @@ button:hover {
     transform: translateY(-2px);
 }
 
-/* REGISTER TEXT */
-.register-text {
+/* LOGIN TEXT */
+.login-text {
     margin-top: 20px;
-    font-size: 0.95rem;
+    text-align: center;
     color: black;
 }
 
-/* REGISTER LINK */
-.register-text a {
+/* LOGIN LINK */
+.login-text a {
     color: black;
     text-decoration: none;
-    font-weight: 1000;
+    font-weight: bold;
 }
 
-.register-text a:hover {
+.login-text a:hover {
     text-decoration: underline;
 }

@@ -1,72 +1,100 @@
 <?php
-include_once '../incl/DatabaseConnection/dbconn.php';
-session_start();
+    include_once '../incl/DatabaseConnection/dbconn.php';
+    $message = "";
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        $username = trim($_POST['user_name']);
+        $password = trim($_POST['user_pwd']);
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        $sqlQuery = "SELECT user_id,
+                       user_name, 
+                       user_pwd, 
+                       user_full_name, 
+                       user_level_id 
+                FROM users 
+                WHERE user_name = ? 
+                LIMIT 1";
 
-    $username = $_POST['user_name'];
-    $password = $_POST['user_pwd'];
+        $sql = $conn->prepare($sqlQuery);
+        $sql->bind_param("s", $username);
+        $sql->execute();
 
-    $sql = "SELECT user_id, user_name, user_pwd, user_full_name, user_level_id 
-            FROM users 
-            WHERE user_name = ? 
-            LIMIT 1";
-
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-
-    $result = $stmt->get_result();
-
-    if ($row = $result->fetch_assoc()) {
-
-    
-        if ($password === $row['user_pwd']) {
-
-            $_SESSION['logged'] = true;
-            $_SESSION['user_id'] = $row['user_id'];
-            $_SESSION['level'] = $row['user_level_id'];
-            $_SESSION['name'] = $row['user_full_name'];
-
-            header("Location: menu.php");
-            exit();
-
+        $result = $sql->get_result();
+        if ($row = $result->fetch_assoc()) {
+            // CHECK PASSWORD
+            if ($password === $row['user_pwd']) {
+                // REDIRECT BASED ON USER LEVEL
+                if ($row['user_level_id'] == 1) {
+                    header("Location: adminMenu.php");
+                    exit();
+                } elseif ($row['user_level_id'] == 2) {
+                    header("Location: instructors.php");
+                    exit();
+                } else {
+                    header("Location: menu.php");
+                    exit();
+                }
+            } else {
+                $message = "Incorrect password.";
+            }
         } else {
-            echo "Incorrect password.";
+            $message = "User not found.";
         }
-
-    } else {
-        echo "User not found.";
+        $sql->close();
+        $sql->close();
     }
-
-    $stmt->close();
-}
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Administration</title>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration Login</title>
+
+    <link rel="stylesheet" href="../incl/style/administration/adminLogin.css">
 </head>
 
 <body>
 
-    <h1>Administration</h1>
-    <p>Please log in to continue.</p>
+    <div class="login-wrapper">
+        <!-- PAGE HEADING -->
+        <div class="login-header">
+            <h1>Administration Login</h1>
+            <p>Please enter your staff details to login</p>
+        </div>
 
-    <form action="login.php" method="post">
+        <!-- LOGIN CARD -->
+        <div class="login-box">
+            <?php if (!empty($message)): ?>
+                <p class="error">
+                    <?= htmlspecialchars($message) ?>
+                </p>
+            <?php endif; ?>
 
-        <label>Username:</label><br>
-        <input type="text" name="user_name" required><br><br>
+            <form action="login.php" method="post">
+                <input 
+                    type="text" 
+                    name="user_name" 
+                    placeholder="Username" 
+                    required
+                >
 
-        <label>Password:</label><br>
-        <input type="password" name="user_pwd" required><br><br>
+                <input 
+                    type="password" 
+                    name="user_pwd" 
+                    placeholder="Password" 
+                    required
+                >
 
-        <input type="submit" value="Log In">
+                <button type="submit">
+                    Login
+                </button>
+            </form>
 
-    </form>
-    <P><a href="menu.php">next page</a></P>
-
+            <p class="register-text">
+                <a href="#">Forgot password?</a>
+            </p>
+        </div>
+    </div>
 </body>
-</html> 
+</html>
