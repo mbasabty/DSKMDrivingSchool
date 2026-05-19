@@ -6,7 +6,6 @@
 
 /* COLOR PALETTE
 Deep Navy Blue : #0B1F33
-Dusty Blue     : #6C8EAD
 Light Grey      : #E6E8EA
 Soft White      : #ffffff
 Accent Grey     : #D5DADF
@@ -15,16 +14,14 @@ Accent Grey     : #D5DADF
 body {
   font-family: Georgia, serif;
   background-color: #E6E8EA;
-  color: #0B1F33;
+  color: BLACK;
   line-height: 1.6;
 }
 
 /* HEADER */
 
 header {
-  background:
-    linear-gradient(rgba(11, 31, 51, 0.9), rgba(11, 31, 51, 0.9)),
-    url("../../images/BG1.jpg");
+  background:url("../../images/BG4.jpg");
 
   background-size: cover;
   background-position: center;
@@ -54,7 +51,7 @@ header h1 {
 }
 
 header p {
-  color: #D5DADF;
+  color: black;
   font-size: 16px;
 }
 
@@ -67,14 +64,14 @@ header p:first-of-type {
 /* NAVIGATION */
 
 nav {
-  background-color: #aeb2b7d3;
+  background-color: #000000;
   padding: 20px 60px;
   text-align: right;
 }
 
 nav a {
-  background-color: #0B1F33;
-  color: #ffffff;
+  background-color: #ffffff;
+  color: black;
   text-decoration: none;
   font-weight: bold;
   font-size: 14px;
@@ -85,7 +82,7 @@ nav a {
 }
 
 nav a:hover {
-  background-color: #ffffff;
+  background-color: rgb(253, 231, 34);
   color: #0B1F33;
 }
 
@@ -97,18 +94,18 @@ section {
 }
 
 section:nth-child(odd) {
-  background-color: #ffffff;
+  background-color: black;
 }
 
 section:nth-child(even) {
-  background-color: #E6E8EA;
+  background-color: white;
 }
 
 section h2 {
   font-size: 30px;
-  color: #0B1F33;
+  color: rgb(253, 231, 34);
 
-  border-left: 5px solid #6C8EAD;
+  border-left: 5px solid rgb(253, 231, 34);
   padding-left: 16px;
   margin-bottom: 24px;
 }
@@ -132,9 +129,7 @@ section > ul:not(.why-list):not(.instructor-list) {
 }
 
 section > ul:not(.why-list):not(.instructor-list) li {
-  background:
-    linear-gradient(rgba(11, 31, 51, 0.9), rgba(11, 31, 51, 0.9)),
-    url("../../images/BG1.jpg");
+  background: url("../../images/bg4.jpg");
 
   background-size: cover;
   background-position: center;
@@ -169,7 +164,7 @@ section > ul:not(.why-list):not(.instructor-list) strong {
 
 .why-list li {
   background-color: #ffffff;
-  border-left: 5px solid #6C8EAD;
+  border-left: 5px solid rgb(253, 231, 34);
   padding: 20px;
   border-radius: 6px;
 }
@@ -186,9 +181,7 @@ section ol {
 }
 
 section ol li {
-  background:
-    linear-gradient(rgba(11, 31, 51, 0.9), rgba(11, 31, 51, 0.9)),
-    url("../../images/BG1.jpg");
+  background:url("../../images/bg4.jpg");
 
   background-size: cover;
   background-position: center;
@@ -236,7 +229,7 @@ section ol li::before {
 .instructor-initial {
   width: 52px;
   height: 52px;
-  background-color: #6C8EAD;
+  background-color: rgb(253, 231, 34);
   color: #ffffff;
   border-radius: 50%;
   display: flex;
@@ -257,7 +250,7 @@ section ol li::before {
 
 .reviews-grid blockquote {
   background-color: #ffffff;
-  border-left: 5px solid #6C8EAD;
+  border-left: 5px solid rgb(253, 231, 34);
   padding: 24px;
   border-radius: 6px;
 }
@@ -267,12 +260,7 @@ section ol li::before {
 /* FOOTER CONTAINER ONLY */
 
 .footer-container .custom-footer {
-  background:
-    linear-gradient(
-      rgba(11, 31, 51, 0.95),
-      rgba(11, 31, 51, 0.95)
-    ),
-    url("../../images/bg1.jpg");
+  background: url("../../images/bg4.jpg");
 
   background-size: cover;
   background-position: center;
@@ -298,19 +286,19 @@ section ol li::before {
 }
 
 .footer-container .custom-footer a:hover {
-  background-color: #6C8EAD;
+  background-color: rgb(253, 231, 34);
   color: #ffffff;
 }
 
 .footer-container .custom-footer p {
-  color: #D5DADF;
+  color: black;
 }
 
 
 footer a {
   margin-left: auto;
   background-color: #ffffff;
-  color: #0B1F33;
+  color: black;
   text-decoration: none;
   font-weight: bold;
   padding: 12px 28px;
@@ -318,13 +306,13 @@ footer a {
 }
 
 footer p {
-  color: #D5DADF;
+  color: black;
 }
 
 
 
 footer a:hover {
-  background-color: #6C8EAD;
+  background-color: rgb(253, 231, 34);
   color: #ffffff;
 }
 
