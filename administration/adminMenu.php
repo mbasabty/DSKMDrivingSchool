@@ -25,8 +25,12 @@
                 STAFF DETAILS
             </a>
 
-            <a href="StudentBookings.php">
-                STUDENT BOOKINGS
+            <a href="Students.php">
+                VIEW STUDENTS
+            </a>
+
+            <a href="Bookings.php">
+                Student Bookings
             </a>
         </div>
     </div>
