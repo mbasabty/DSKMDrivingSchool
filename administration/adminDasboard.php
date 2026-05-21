@@ -90,8 +90,9 @@ $greeting = $hour < 12 ? 'Good morning' : ($hour < 17 ? 'Good afternoon' : 'Good
   <!-- Sidebar -->
   <aside class="sidebar">
     <div class="sidebar-logo">
-      <div class="wordmark">DSKM<em>Driving School
-      </em></div>
+      <div class="wordmark">
+        DSKM<em>Driving School</em>
+      </div>
       <div class="sub">Administration</div>
     </div>
 
