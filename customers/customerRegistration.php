@@ -148,7 +148,7 @@
 
             Already have an account?
 
-            <a href="customerLogin.php">
+            <a href="/DSKMDrivingSchool/administration/login.php">
                 Login
             </a>
 
