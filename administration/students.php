@@ -47,7 +47,7 @@ $result = $conn->query($sql);
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
     <title>Students Table</title>
-    <!-- CSS -->
+    <link rel="icon" type="image/x-icon" href="../incl/images/logo2.png">
     <link rel="stylesheet" href="../incl/style/administration/Students.css">
 
 </head>

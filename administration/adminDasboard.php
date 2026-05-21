@@ -80,6 +80,7 @@ $greeting = $hour < 12 ? 'Good morning' : ($hour < 17 ? 'Good afternoon' : 'Good
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard</title>
+  <link rel="icon" type="image/x-icon" href="/DSKMDrivingSchool/incl/images/logo2.png">
   <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
@@ -90,10 +91,11 @@ $greeting = $hour < 12 ? 'Good morning' : ($hour < 17 ? 'Good afternoon' : 'Good
   <!-- Sidebar -->
   <aside class="sidebar">
     <div class="sidebar-logo">
-      <div class="wordmark">DSKM<em>Driving School
-      </em></div>
-      <div class="sub">Administration</div>
-    </div>
+      <div class="wordmark">
+        DSKM<em>Driving School</em>
+      </div>
+        <div class="sub">Administration</div>
+      </div>
 
     <ul class="nav">
       <li><a href="#" class="active">Overview</a></li>

@@ -57,9 +57,8 @@ $result = $conn->query($sql);
 
     <title>Student Bookings</title>
 
-    <!-- CSS -->
-    <link rel="stylesheet"
-          href="../incl/style/administration/Bookings.css">
+    <link rel="icon" type="image/x-icon" href="../incl/images/logo2.png">
+    <link rel="stylesheet" href="../incl/style/administration/Bookings.css">
 
 </head>
 
