@@ -93,8 +93,8 @@ $greeting = $hour < 12 ? 'Good morning' : ($hour < 17 ? 'Good afternoon' : 'Good
       <div class="wordmark">
         DSKM<em>Driving School</em>
       </div>
-      <div class="sub">Administration</div>
-    </div>
+        <div class="sub">Administration</div>
+      </div>
 
     <ul class="nav">
       <li><a href="#" class="active">Overview</a></li>

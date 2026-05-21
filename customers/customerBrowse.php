@@ -198,8 +198,8 @@
             >
     </form>
 
-    <a href="index.php" class="back-link">
-        ← Back to Home
+    <a href="index.html" class="back-link">
+        ← Logout
     </a>
 
 </div>
