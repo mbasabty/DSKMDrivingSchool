@@ -94,7 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-
+    <link rel="icon" type="image/x-icon" href="../incl/images/logo2.png">
     <link rel="stylesheet" href="../incl/style/customers/login.css">
 </head>
 

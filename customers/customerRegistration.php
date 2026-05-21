@@ -71,9 +71,8 @@
     <meta charset="UTF-8">
 
     <title>Student Driver Registration</title>
-
-    <link rel="stylesheet"
-          href="../incl/style/customers/customerReg.css">
+    <link rel="icon" type="image/x-icon" href="../incl/images/logo2.png">
+    <link rel="stylesheet" href="../incl/style/customers/customerReg.css">
 </head>
 
 <body>
