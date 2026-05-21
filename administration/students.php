@@ -48,7 +48,7 @@ $result = $conn->query($sql);
           content="width=device-width, initial-scale=1.0">
     <title>Students Table</title>
     <!-- CSS -->
-    <link rel="stylesheet" href="../incl/style/administration/StudentBookings.css">
+    <link rel="stylesheet" href="../incl/style/administration/Students.css">
 
 </head>
 <body>
