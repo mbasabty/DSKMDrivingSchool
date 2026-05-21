@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             setcookie("user_level_id", $row['user_level_id'], time() + 3600, "/");
 
             if ($row['user_level_id'] == 1) {
-                header("Location: adminMenu.php");
+                header("Location: /DSKMDrivingSchool/administration/adminDasboard.php");
                 exit();
             } elseif ($row['user_level_id'] == 2) {
                 header("Location: instructors.php");
