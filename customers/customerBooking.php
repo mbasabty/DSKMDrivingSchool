@@ -4,23 +4,6 @@ include_once '../incl/DatabaseConnection/dbconn.php';
 
 $student_id = $_COOKIE['student_id'];
 
-$sqlStudent = $conn->prepare("
-SELECT first_name,
-       last_name,
-       username,
-       email
-FROM student
-WHERE student_id = ?
-");
-
-$sqlStudent->bind_param("i", $student_id);
-$sqlStudent->execute();
-
-$resultStudent = $sqlStudent->get_result();
-$student = $resultStudent->fetch_assoc();
-
-$full_name = $student['first_name'] . " " . $student['last_name'];
-
 $code = "";
 
 if ($_POST['code_a'] == "Yes") {
@@ -48,16 +31,21 @@ $total = $package;
 $booking_date = date("Y-m-d");
 $booking_time = date("H:i:s");
 
-$licence_document = $_FILES['learners_license']['name'];
+$service_id = 1;
+$booking_status = "Pending";
 
-$target_folder = "../uploads/";
-
-move_uploaded_file(
-    $_FILES['learners_license']['tmp_name'],
-    $target_folder . $licence_document
-);
+$success = false;
 
 if ($_POST['confirm_booking'] == 1) {
+
+    $licence_document = $_FILES['learners_license']['name'];
+
+    $target_folder = "../uploads/";
+
+    move_uploaded_file(
+        $_FILES['learners_license']['tmp_name'],
+        $target_folder . $licence_document
+    );
 
     $sqlQuery = "
     INSERT INTO booking_details
@@ -75,9 +63,6 @@ if ($_POST['confirm_booking'] == 1) {
     (?,?,?,?,?,?,?,?)
     ";
 
-    $service_id = 1;
-    $booking_status = "Pending";
-
     $sql = $conn->prepare($sqlQuery);
 
     $sql->bind_param(
@@ -92,15 +77,7 @@ if ($_POST['confirm_booking'] == 1) {
         $package
     );
 
-    if($sql->execute()){
-
-        header("Location: customerMenu.php");
-        exit();
-
-    } else {
-
-        echo $sql->error;
-    }
+    $success = $sql->execute();
 }
 
 ?>
@@ -108,57 +85,68 @@ if ($_POST['confirm_booking'] == 1) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confirm Booking</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Confirm Booking</title>
 
-    <style>
+<style>
 
-        body{
-            font-family: Arial;
-            background:#f4f4f4;
-        }
+body{
+    font-family:Arial;
+    background:#f4f4f4;
+}
 
-        .container{
-            width:500px;
-            margin:40px auto;
-            background:white;
-            padding:30px;
-            border-radius:10px;
-        }
+.container{
+    width:500px;
+    margin:40px auto;
+    background:white;
+    padding:30px;
+    border-radius:10px;
+}
 
-        h1{
-            text-align:center;
-        }
+h1{
+    text-align:center;
+}
 
-        .summary{
-            margin-top:20px;
-        }
+.summary{
+    margin-top:20px;
+}
 
-        .summary p{
-            padding:10px 0;
-            border-bottom:1px solid #ddd;
-        }
+.summary p{
+    padding:10px 0;
+    border-bottom:1px solid #ddd;
+}
 
-        .total{
-            font-size:20px;
-            font-weight:bold;
-            color:green;
-        }
+.total{
+    font-size:20px;
+    font-weight:bold;
+    color:green;
+}
 
-        button{
-            width:100%;
-            padding:15px;
-            background:#007bff;
-            border:none;
-            color:white;
-            font-size:16px;
-            border-radius:5px;
-            cursor:pointer;
-            margin-top:20px;
-        }
+button{
+    width:100%;
+    padding:15px;
+    background:#007bff;
+    border:none;
+    color:white;
+    font-size:16px;
+    border-radius:5px;
+    cursor:pointer;
+    margin-top:20px;
+}
 
-    </style>
+.success{
+    text-align:center;
+    color:green;
+    font-size:24px;
+    margin-top:20px;
+}
+
+.logout-btn{
+    background:red;
+}
+
+</style>
 
 </head>
 
@@ -166,56 +154,79 @@ if ($_POST['confirm_booking'] == 1) {
 
 <div class="container">
 
-    <h1>Booking Summary</h1>
+<h1>Booking Summary</h1>
 
-    <div class="summary">
+<div class="summary">
 
-        <p>
-            <strong>Licence Code:</strong>
-            <?= $code ?>
-        </p>
+    <p>
+        <strong>Licence Code:</strong>
+        <?= $code ?>
+    </p>
 
-        <p>
-            <strong>Selected Package:</strong>
-            R<?= number_format($package,2) ?>
-        </p>
+    <p>
+        <strong>Selected Package:</strong>
+        R<?= number_format($package,2) ?>
+    </p>
 
-        <p>
-            <strong>VAT Exclusive:</strong>
-            R<?= number_format($vat_excl,2) ?>
-        </p>
+    <p>
+        <strong>VAT Exclusive:</strong>
+        R<?= number_format($vat_excl,2) ?>
+    </p>
 
-        <p>
-            <strong>VAT 15%:</strong>
-            R<?= number_format($vat,2) ?>
-        </p>
+    <p>
+        <strong>VAT 15%:</strong>
+        R<?= number_format($vat,2) ?>
+    </p>
 
-        <p class="total">
-            Grand Total:
-            R<?= number_format($total,2) ?>
-        </p>
+    <p class="total">
+        Grand Total:
+        R<?= number_format($total,2) ?>
+    </p>
 
+</div>
+
+<?php if($success == false){ ?>
+
+<form method="post" enctype="multipart/form-data">
+
+    <input type="hidden" name="confirm_booking" value="1">
+
+    <input type="hidden" name="package" value="<?= $package ?>">
+
+    <input type="hidden" name="code_a" value="<?= $_POST['code_a'] ?>">
+    <input type="hidden" name="code_b" value="<?= $_POST['code_b'] ?>">
+    <input type="hidden" name="code_eb" value="<?= $_POST['code_eb'] ?>">
+    <input type="hidden" name="code_c1" value="<?= $_POST['code_c1'] ?>">
+    <input type="hidden" name="code_ec" value="<?= $_POST['code_ec'] ?>">
+
+    <div style="display: flex; align-items: center; gap: 10px;">
+        <label for="learners_license">Confirm Learner's License:</label>
+        <input type="file" id="learners_license" name="learners_license" required>
     </div>
 
-    <form method="post" enctype="multipart/form-data">
+    <button type="submit">
+        Confirm Booking
+    </button>
 
-        <input type="hidden" name="confirm_booking" value="1">
+</form>
 
-        <input type="hidden" name="package" value="<?= $package ?>">
+<?php } ?>
 
-        <input type="hidden" name="code_a" value="<?= $_POST['code_a'] ?>">
-        <input type="hidden" name="code_b" value="<?= $_POST['code_b'] ?>">
-        <input type="hidden" name="code_eb" value="<?= $_POST['code_eb'] ?>">
-        <input type="hidden" name="code_c1" value="<?= $_POST['code_c1'] ?>">
-        <input type="hidden" name="code_ec" value="<?= $_POST['code_ec'] ?>">
+<?php if($success == true){ ?>
 
-        <input type="hidden" name="learners_license" value="<?= $licence_document ?>">
+    <div class="success">
+        Successfully Booked!
+    </div>
 
-        <button type="submit">
-            Confirm Booking
+    <form action="/DSKMDrivingSchool/customers/index.html" method="post">
+
+        <button type="submit" class="logout-btn">
+            Logout
         </button>
 
     </form>
+
+<?php } ?>
 
 </div>
 

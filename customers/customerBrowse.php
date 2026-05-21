@@ -43,9 +43,7 @@
         <h2>Select Learner's License Code</h2>
 
         <div class="license-grid">
-
             <div class="license-card">
-
                 <label>Code A: Motorcycle</label>
 
                 <img 
@@ -65,37 +63,28 @@
             <div class="license-card">
 
                 <label>Code B (08): Light Motor Vehicle</label>
-
                 <img 
                     src="../incl/images/Light Motor Vehicle.png" 
                     alt="Car license icon"
                 >
 
                 <select name="code_b">
-
                     <option value="No">No</option>
                     <option value="Yes">Yes</option>
-
                 </select>
 
             </div>
 
             <div class="license-card">
-
                 <label>Code EB: Light Vehicle + Trailer</label>
-
                 <img 
                     src="../incl/images/Light Vehicle + Trailer.png" 
                     alt="Trailer license icon"
                 >
-
                 <select name="code_eb">
-
                     <option value="No">No</option>
                     <option value="Yes">Yes</option>
-
                 </select>
-
             </div>
 
             <div class="license-card">
