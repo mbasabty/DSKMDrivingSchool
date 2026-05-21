@@ -1,5 +1,7 @@
 <?php
     include_once '../incl/DatabaseConnection/dbconn.php';
+    session_start();
+
 
     $student_id = $_COOKIE['student_id'];
 
