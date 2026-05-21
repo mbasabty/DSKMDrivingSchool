@@ -213,8 +213,8 @@ section ol li::before {
   border-radius: 6px;
 }
 
-.instructor-list li:not(:first-child) {
-  border-left: 5px solid #0B1F33;
+.instructor-list li{
+  border-left: 5px solid #ffd220;
 }
 
 .instructor-initial {
