@@ -139,7 +139,7 @@
 
             <p class="register-text">
             Don't have an account?
-            <a href="customerRegistration.php">Register</a>
+            <a href="/DSKMDrivingSchool/customers/customerRegistration.php">Register</a>
             </p>
 
         </div>

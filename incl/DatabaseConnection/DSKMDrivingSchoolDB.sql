@@ -121,10 +121,10 @@ INSERT INTO booking_details
     selected_package
 )
 VALUES
-(1,1,'2026-05-20','10:00:00','Confirmed','licence1.pdf','Code 08','Gold Package'),
-(2,2,'2026-05-21','11:00:00','Confirmed','licence2.pdf','Code 10','Silver Package'),
-(3,3,'2026-05-22','12:00:00','Completed','licence3.pdf','Code 14','Premium Package'),
-(4,4,'2026-05-23','13:00:00','Pending','licence4.pdf','Code A','Basic Package');
+(1,1,'2026-05-20','10:00:00','Confirmed','licence1.pdf','Code 08','300'),
+(2,2,'2026-05-21','11:00:00','Confirmed','licence2.pdf','Code 10','300'),
+(3,3,'2026-05-22','12:00:00','Completed','licence3.pdf','Code 14','300'),
+(4,4,'2026-05-23','13:00:00','Pending','licence4.pdf','Code A','300');
  
 
 -- STUDENT PROGRESS -------------------------------

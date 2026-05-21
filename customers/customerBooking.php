@@ -1,59 +1,235 @@
 <?php
     session_start();
 
-    // Database connection
-     include_once '../incl/DatabaseConnection/dbconn.php';
+include_once '../incl/DatabaseConnection/dbconn.php';
 
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
+$student_id = $_COOKIE['student_id'];
 
-    // Get student ID from session
-    $student_id = $_SESSION['student_id'];
+$code = "";
 
-    // Get selected licence codes
-    $codes = [];
-    if ($_POST['code_a']  === 'Yes') $codes[] = 'Code A';
-    if ($_POST['code_b']  === 'Yes') $codes[] = 'Code B (08)';
-    if ($_POST['code_eb'] === 'Yes') $codes[] = 'Code EB';
-    if ($_POST['code_c1'] === 'Yes') $codes[] = 'Code C1/C (10)';
-    if ($_POST['code_ec'] === 'Yes') $codes[] = 'Code EC (14)';
-    $selected_licence_code = implode(', ', $codes);
+if ($_POST['code_a'] == "Yes") {
+    $code = "Code A";
+}
+elseif ($_POST['code_b'] == "Yes") {
+    $code = "Code 08";
+}
+elseif ($_POST['code_eb'] == "Yes") {
+    $code = "Code EB";
+}
+elseif ($_POST['code_c1'] == "Yes") {
+    $code = "Code C1/C";
+}
+elseif ($_POST['code_ec'] == "Yes") {
+    $code = "Code EC";
+}
 
-    // Get package price from form
-    $selected_package = $_POST['package'];
+$package = $_POST['package'];
 
-    // Look up service_id from service table using the package price
-    $price  = mysqli_real_escape_string($conn, $selected_package);
-    $result = mysqli_query($conn, "SELECT service_id FROM service WHERE service_price = '$price' LIMIT 1");
-    $row    = mysqli_fetch_assoc($result);
-    $service_id = $row ? $row['service_id'] : null;
+$vat_excl = $package / 1.15;
+$vat = $package - $vat_excl;
+$total = $package;
 
-    if (!$service_id) {
-        die("Error: No matching service found for the selected package.");
-    }
+$booking_date = date("Y-m-d");
+$booking_time = date("H:i:s");
 
-    // Upload licence document
-    $upload_dir = "uploads/licences/";
-    $file_name  = time() . "_" . basename($_FILES['learners_license']['name']);
-    $file_path  = $upload_dir . $file_name;
-    move_uploaded_file($_FILES['learners_license']['tmp_name'], $file_path);
+$service_id = 1;
+$booking_status = "Pending";
 
-    // Booking details
-    $booking_date   = date('Y-m-d');
-    $booking_time   = date('H:i:s');
-    $booking_status = 'Pending';
+$success = false;
 
-    // Insert into database
-    $sql = "INSERT INTO booking_details 
-            (student_id, service_id, booking_date, booking_time, booking_status, licence_document, selected_licence_code, selected_package)
-            VALUES ('$student_id', '$service_id', '$booking_date', '$booking_time', '$booking_status', '$file_path', '$selected_licence_code', '$selected_package')";
+if ($_POST['confirm_booking'] == 1) {
 
-    if (mysqli_query($conn, $sql)) {
-        echo "Booking successful!";
-    } else {
-        echo "Error: " . mysqli_error($conn);
-    }
+    $licence_document = $_FILES['learners_license']['name'];
 
-    mysqli_close($conn);
+    $target_folder = "../uploads/";
+
+    move_uploaded_file(
+        $_FILES['learners_license']['tmp_name'],
+        $target_folder . $licence_document
+    );
+
+    $sqlQuery = "
+    INSERT INTO booking_details
+    (
+        student_id,
+        service_id,
+        booking_date,
+        booking_time,
+        booking_status,
+        licence_document,
+        selected_licence_code,
+        selected_package
+    )
+    VALUES
+    (?,?,?,?,?,?,?,?)
+    ";
+
+    $sql = $conn->prepare($sqlQuery);
+
+    $sql->bind_param(
+        "iissssss",
+        $student_id,
+        $service_id,
+        $booking_date,
+        $booking_time,
+        $booking_status,
+        $licence_document,
+        $code,
+        $package
+    );
+
+    $success = $sql->execute();
+}
+
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Confirm Booking</title>
+
+<style>
+
+body{
+    font-family:Arial;
+    background:#f4f4f4;
+}
+
+.container{
+    width:500px;
+    margin:40px auto;
+    background:white;
+    padding:30px;
+    border-radius:10px;
+}
+
+h1{
+    text-align:center;
+}
+
+.summary{
+    margin-top:20px;
+}
+
+.summary p{
+    padding:10px 0;
+    border-bottom:1px solid #ddd;
+}
+
+.total{
+    font-size:20px;
+    font-weight:bold;
+    color:green;
+}
+
+button{
+    width:100%;
+    padding:15px;
+    background:#007bff;
+    border:none;
+    color:white;
+    font-size:16px;
+    border-radius:5px;
+    cursor:pointer;
+    margin-top:20px;
+}
+
+.success{
+    text-align:center;
+    color:green;
+    font-size:24px;
+    margin-top:20px;
+}
+
+.logout-btn{
+    background:red;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Booking Summary</h1>
+
+<div class="summary">
+
+    <p>
+        <strong>Licence Code:</strong>
+        <?= $code ?>
+    </p>
+
+    <p>
+        <strong>Selected Package:</strong>
+        R<?= number_format($package,2) ?>
+    </p>
+
+    <p>
+        <strong>VAT Exclusive:</strong>
+        R<?= number_format($vat_excl,2) ?>
+    </p>
+
+    <p>
+        <strong>VAT 15%:</strong>
+        R<?= number_format($vat,2) ?>
+    </p>
+
+    <p class="total">
+        Grand Total:
+        R<?= number_format($total,2) ?>
+    </p>
+
+</div>
+
+<?php if($success == false){ ?>
+
+<form method="post" enctype="multipart/form-data">
+
+    <input type="hidden" name="confirm_booking" value="1">
+
+    <input type="hidden" name="package" value="<?= $package ?>">
+
+    <input type="hidden" name="code_a" value="<?= $_POST['code_a'] ?>">
+    <input type="hidden" name="code_b" value="<?= $_POST['code_b'] ?>">
+    <input type="hidden" name="code_eb" value="<?= $_POST['code_eb'] ?>">
+    <input type="hidden" name="code_c1" value="<?= $_POST['code_c1'] ?>">
+    <input type="hidden" name="code_ec" value="<?= $_POST['code_ec'] ?>">
+
+    <div style="display: flex; align-items: center; gap: 10px;">
+        <label for="learners_license">Confirm Learner's License:</label>
+        <input type="file" id="learners_license" name="learners_license" required>
+    </div>
+
+    <button type="submit">
+        Confirm Booking
+    </button>
+
+</form>
+
+<?php } ?>
+
+<?php if($success == true){ ?>
+
+    <div class="success">
+        Successfully Booked!
+    </div>
+
+    <form action="/DSKMDrivingSchool/customers/index.html" method="post">
+
+        <button type="submit" class="logout-btn">
+            Logout
+        </button>
+
+    </form>
+
+<?php } ?>
+
+</div>
+
+</body>
+</html>
