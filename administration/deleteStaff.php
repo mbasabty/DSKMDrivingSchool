@@ -3,35 +3,40 @@ include_once "../incl/DatabaseConnection/dbConn.php";
 
 $message = "";
 
-// DELETE USER
+/* -------------------------
+   DELETE USER
+--------------------------*/
 if (array_key_exists('user_id', $_POST)) {
 
     $id = (int) $_POST['user_id'];
 
-    $deleteQuery = $conn->prepare("DELETE FROM `user` WHERE user_id = ?");
+    $stmt = $conn->prepare("DELETE FROM users WHERE user_id = ?");
 
-    if ($deleteQuery) {
-        $deleteQuery->bind_param("i", $id);
-        if ($deleteQuery->execute()) {
+    if ($stmt) {
+
+        $stmt->bind_param("i", $id);
+
+        if ($stmt->execute()) {
             $message = "User deleted successfully.";
         } else {
-
-            $message = "Could not delete user.";
+            $message = "Delete failed: " . $stmt->error;
         }
-        $deleteQuery->close();
+
+        $stmt->close();
+
     } else {
-
-        $message = "Database error: " . $conn->error;
-
+        $message = "Prepare failed: " . $conn->error;
     }
 }
 
-// LOAD USERS
-$staffResult = $conn->query("
-    SELECT *
-    FROM `user`
-    ORDER BY user_full_name ASC
-");
+/* -------------------------
+   LOAD USERS
+--------------------------*/
+$result = $conn->query("SELECT * FROM users ORDER BY user_full_name ASC");
+
+if (!$result) {
+    die("SQL Error: " . $conn->error);
+}
 ?>
 
 <!DOCTYPE html>
@@ -39,8 +44,9 @@ $staffResult = $conn->query("
 
 <head>
     <meta charset="UTF-8">
-    <title>Delete Staff</title>
-    <link rel="stylesheet" href="/DSKMDrivingSchool/incl/style/administration/deleteStaff.css">
+    <title>Delete Users</title>
+    <link rel="icon" type="image/x-icon" href="../incl/images/logo2.png">
+    <link rel="stylesheet" href="../incl/style/administration/addStaff.css"/>
 </head>
 
 <body>
@@ -48,74 +54,50 @@ $staffResult = $conn->query("
 <div class="register-wrapper">
 
     <div class="register-header">
-        <h1>Remove Staff</h1>
-        <p>Select a staff member to delete</p>
+        <h1>Delete Users</h1>
+        <p>Select a user to remove</p>
     </div>
 
     <div class="register-box">
 
         <?php if (!empty($message)): ?>
-
             <div class="message">
                 <?= htmlspecialchars($message) ?>
             </div>
-
         <?php endif; ?>
 
-        <?php if ($staffResult && $staffResult->num_rows > 0): ?>
+        <?php while ($row = $result->fetch_assoc()): ?>
 
-            <?php while ($user = $staffResult->fetch_assoc()): ?>
+            <div style="border:1px solid #ddd; padding:15px; margin-bottom:15px; border-radius:10px;">
 
-                <div class="staff-card">
+                <h3><?= htmlspecialchars($row['user_full_name']) ?></h3>
 
-                    <h3>
-                        <?= htmlspecialchars($user['first_name']) ?>
-                        <?= htmlspecialchars($user['last_name']) ?>
-                    </h3>
+                <p><b>Username:</b> <?= htmlspecialchars($row['user_name']) ?></p>
+                <p><b>Phone:</b> <?= htmlspecialchars($row['phone']) ?></p>
+                <p><b>Email:</b> <?= htmlspecialchars($row['email']) ?></p>
 
-                    <p>
-                        <strong>Username:</strong>
-                        <?= htmlspecialchars($user['user_name']) ?>
-                    </p>
+                <form method="post">
 
-                    <p>
-                        <strong>Phone:</strong>
-                        <?= htmlspecialchars($user['phone']) ?>
-                    </p>
+                    <input type="hidden"
+                           name="user_id"
+                           value="<?= $row['user_id'] ?>">
 
-                    <p>
-                        <strong>Email:</strong>
-                        <?= htmlspecialchars($user['email']) ?>
-                    </p>
+                    <button type="submit">
+                        Delete Staff
+                    </button>
 
-                    <form method="post">
+                </form>
 
-                        <input type="hidden"
-                               name="staff_id"
-                               value="<?= $user['staff_id'] ?>">
+            </div>
 
-                        <button type="submit">
-                            Delete Staff Member
-                        </button>
-
-                    </form>
-
-                </div>
-
-            <?php endwhile; ?>
-
-        <?php else: ?>
-
-            <p>No staff members found.</p>
-
-        <?php endif; ?>
-
-        <p class="login-text">
-            <a href="../updateStaff.php">
-                Back to Update Staff
+        <div class="outside-box">
+            <a href="/DSKMDrivingSchool/administration/adminDasboard.php">
+                <button type="button">
+                 HOME
+                </button>
             </a>
-        </p>
-
+        </div>
+        <?php endwhile; ?>
     </div>
 
 </div>

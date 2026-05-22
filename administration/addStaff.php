@@ -62,6 +62,7 @@
 <head>
     <meta charset="UTF-8">
     <title>User Registration</title>
+    <link rel="icon" type="image/x-icon" href="../incl/images/logo2.png">
     <link rel="stylesheet" href="/DSKMDrivingSchool/incl/style/administration/addStaff.css"/>
 </head>
 

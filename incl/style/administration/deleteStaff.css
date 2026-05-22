@@ -99,6 +99,12 @@ button:hover {
     transform: translateY(-2px);
 }
 
+.outside-box {
+    margin-top: 30px;
+    text-align: center;
+    font-weight: bold;
+}
+
 /* BACK LINK */
 .login-text {
     margin-top: 20px;
