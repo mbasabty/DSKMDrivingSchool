@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<!-- Login page for the remedies DB app -->
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Admin Dashboard</title>
-    <link rel = "stylesheet" href="../incl/style/administration/adminDashboard.css"> <!-- ../incl/css/SalesDashboard.css-->
+    <link rel = "stylesheet" href="../incl/style/administration/adminDashboard.css"> 
     <link rel = "icon" type="image/png" href="../../incl/images/logo.png">
 </head>
 
@@ -84,8 +83,7 @@ $greeting = $hour < 12 ? 'Good morning' : ($hour < 17 ? 'Good afternoon' : 'Good
   <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
-    <?php include 'incl/dbconn.php';
-    ?>
+    <?php include 'incl/dbconn.php'; ?>
 <div class="shell">
 
   <!-- Sidebar -->

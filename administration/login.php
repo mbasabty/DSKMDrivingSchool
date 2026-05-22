@@ -1,75 +1,38 @@
 <?php
-include_once '../incl/DatabaseConnection/dbconn.php';
+    include_once '../incl/DatabaseConnection/dbconn.php';
 
-$message = "";
+    $message = "";
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    $username = trim($_POST['user_name']);
-    $password = trim($_POST['user_pwd']);
+        $username = trim($_POST['user_name']);
+        $password = trim($_POST['user_pwd']);
 
-    // ---------------- USERS TABLE ----------------
-    $sqlUsers = "SELECT user_id, user_name, user_pwd, user_full_name, user_level_id
-                 FROM users
-                 WHERE user_name = ?
-                 LIMIT 1";
+        // ---------------- USERS TABLE ----------------
+        $sqlUsers = "SELECT user_id, user_name, user_pwd, user_full_name, user_level_id
+                    FROM users
+                    WHERE user_name = ?
+                    LIMIT 1";
 
-    $stmtUsers = $conn->prepare($sqlUsers);
+        $sqlUsers = $conn->prepare($sqlUsers);
+        $sqlUsers->bind_param("s", $username);
+        $sqlUsers->execute();
+        $resultUsers = $sqlUsers->get_result();
 
-    $stmtUsers->bind_param("s", $username);
-    $stmtUsers->execute();
+        if ($row = $resultUsers->fetch_assoc()) {
+            if ($password === $row['user_pwd']) {
 
-    $resultUsers = $stmtUsers->get_result();
+                setcookie("user_id", $row['user_id'], time() + 3600, "/");
+                setcookie("user_level_id", $row['user_level_id'], time() + 3600, "/");
 
-    if ($row = $resultUsers->fetch_assoc()) {
-
-        if ($password === $row['user_pwd']) {
-
-            setcookie("user_id", $row['user_id'], time() + 3600, "/");
-            setcookie("user_level_id", $row['user_level_id'], time() + 3600, "/");
-
-            if ($row['user_level_id'] == 1) {
-                header("Location: /DSKMDrivingSchool/administration/adminDasboard.php");
-                exit();
-            } elseif ($row['user_level_id'] == 2) {
-                header("Location: instructors.php");
-                exit();
-            } elseif ($row['user_level_id'] == 3) {
-                header("Location: ../customers/customerBrowse.php");
-                exit();
-            }
-
-        } else {
-            $message = "Incorrect password.";
-        }
-
-    } else {
-
-        // ---------------- STUDENT TABLE ----------------
-        $sqlStudent = "SELECT student_id, username, password, user_level_id
-                       FROM student
-                       WHERE username = ?
-                       LIMIT 1";
-
-        $stmtStudent = $conn->prepare($sqlStudent);
-        $stmtStudent->bind_param("s", $username);
-        $stmtStudent->execute();
-
-        $resultStudent = $stmtStudent->get_result();
-
-        if ($student = $resultStudent->fetch_assoc()) {
-
-            if ($password === $student['password']) {
-
-                // ✅ SET COOKIE HERE (THIS FIXES YOUR ERROR)
-                setcookie("student_id", $student['student_id'], time() + 3600, "/");
-                setcookie("user_level_id", $student['user_level_id'], time() + 3600, "/");
-
-                if ($student['user_level_id'] == 3) {
-                    header("Location: /DSKMDrivingSchool/customers/customerBrowse.php");
+                if ($row['user_level_id'] == 1) {
+                    header("Location: /DSKMDrivingSchool/administration/adminDasboard.php");
                     exit();
-                } else {
-                    header("Location: studentMenu.php");
+                } elseif ($row['user_level_id'] == 2) {
+                    header("Location: instructors.php");
+                    exit();
+                } elseif ($row['user_level_id'] == 3) {
+                    header("Location: ../customers/customerBrowse.php");
                     exit();
                 }
 
@@ -78,14 +41,42 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             }
 
         } else {
-            $message = "User not found.";
+
+            // ---------------- STUDENT TABLE ----------------
+            $sqlStudent = "SELECT student_id, username, password, user_level_id
+                        FROM student
+                        WHERE username = ?
+                        LIMIT 1";
+
+            $sqlStudent = $conn->prepare($sqlStudent);
+            $sqlStudent->bind_param("s", $username);
+            $sqlStudent->execute();
+
+            $resultStudent = $sqlStudent->get_result();
+
+            if ($student = $resultStudent->fetch_assoc()) {
+                if ($password === $student['password']) {
+                    
+                    setcookie("student_id", $student['student_id'], time() + 3600, "/");
+                    setcookie("user_level_id", $student['user_level_id'], time() + 3600, "/");
+
+                    if ($student['user_level_id'] == 3) {
+                        header("Location: /DSKMDrivingSchool/customers/customerBrowse.php");
+                        exit();
+                    } else {
+                        header("Location: studentMenu.php");
+                        exit();
+                    }
+                } else {
+                    $message = "Incorrect password.";
+                }
+            } else {
+                $message = "User not found.";
+            }
+            $sqlStudent->close();
         }
-
-        $stmtStudent->close();
+        $sqlUsers->close();
     }
-
-    $stmtUsers->close();
-}
 ?>
 
 <!DOCTYPE html>
