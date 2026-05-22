@@ -171,7 +171,6 @@ section ol li::before {
 }
 
 /* INSTRUCTORS */
-
 .instructor-list {
   list-style: none;
   display: grid;
@@ -197,6 +196,11 @@ section ol li::before {
   border-radius: 50%;
   overflow: hidden;  
   margin: 0 auto 12px;
+  color : black;
+}
+
+.instructor-initial p{
+  color : black;
 }
 
 .instructor-initial img {
