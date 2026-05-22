@@ -14,12 +14,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                  WHERE user_name = ?
                  LIMIT 1";
 
-    $stmtUsers = $conn->prepare($sqlUsers);
+    $queryUsers = $conn->prepare($sqlUsers);
 
-    $stmtUsers->bind_param("s", $username);
-    $stmtUsers->execute();
+    $queryUsers->bind_param("s", $username);
+    $queryUsers->execute();
 
-    $resultUsers = $stmtUsers->get_result();
+    $resultUsers = $queryUsers->get_result();
 
     if ($row = $resultUsers->fetch_assoc()) {
 
@@ -51,17 +51,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                        WHERE username = ?
                        LIMIT 1";
 
-        $stmtStudent = $conn->prepare($sqlStudent);
-        $stmtStudent->bind_param("s", $username);
-        $stmtStudent->execute();
-
-        $resultStudent = $stmtStudent->get_result();
+        $queryStudent = $conn->prepare($sqlStudent);
+        $queryStudent->bind_param("s", $username);
+        $queryStudent->execute();
+        
+        $resultStudent = $queryStudent->get_result();
 
         if ($student = $resultStudent->fetch_assoc()) {
-
             if ($password === $student['password']) {
 
-                // ✅ SET COOKIE HERE (THIS FIXES YOUR ERROR)
                 setcookie("student_id", $student['student_id'], time() + 3600, "/");
                 setcookie("user_level_id", $student['user_level_id'], time() + 3600, "/");
 
@@ -72,19 +70,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     header("Location: studentMenu.php");
                     exit();
                 }
-
             } else {
                 $message = "Incorrect password.";
             }
-
         } else {
             $message = "User not found.";
         }
 
-        $stmtStudent->close();
+        $queryStudent->close();
     }
 
-    $stmtUsers->close();
+    $queryUsers->close();
 }
 ?>
 
@@ -137,10 +133,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             </form>
 
+            </div>
+
             <p class="register-text">
             Don't have an account?
             <a href="/DSKMDrivingSchool/customers/customerRegistration.php">Register</a>
             </p>
+             <div class="outside-box">
+                <a href="/DSKMDrivingSchool/customers/customerBrowse.php">
+                    <button type="button">
+                        continue to browsing without login
+                    </button>
+                </a>
+            </div>
 
         </div>
     </div>

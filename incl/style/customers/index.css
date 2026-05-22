@@ -12,22 +12,22 @@ body {
 }
 
 /* HEADER */
-header {
-  background: url("../../images/bg4.jpg");
-  padding: 20px 60px; 
-  gap: 1px; 
+.header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: url(../../images/bg4.JPG);
+    padding: 35px;
 }
 
-header img {
-  width: 160px;
-  height: auto;
-  margin-bottom: 0;  
-  padding-top: 0;    
+.header img {
+    width: 140px; 
+    height: auto;
 }
 
-header p {
-  margin: 0;         
-  line-height: 1.2;
+.header-text {
+    display: flex;
+    flex-direction: column;
 }
 
 header p:first-of-type {
@@ -171,7 +171,6 @@ section ol li::before {
 }
 
 /* INSTRUCTORS */
-
 .instructor-list {
   list-style: none;
   display: grid;
@@ -197,6 +196,11 @@ section ol li::before {
   border-radius: 50%;
   overflow: hidden;  
   margin: 0 auto 12px;
+  color : black;
+}
+
+.instructor-initial p{
+  color : black;
 }
 
 .instructor-initial img {

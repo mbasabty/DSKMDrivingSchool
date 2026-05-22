@@ -1,13 +1,10 @@
 <?php
-    // Database connection
     include_once "../incl/DatabaseConnection/dbConn.php";
 
-    // Check connection
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // Fetch staff details
     $sql = "SELECT 
                 users.user_full_name,
                 users.phone,
@@ -58,9 +55,7 @@
 
                     <?php
                     if ($result->num_rows > 0) {
-
                         while($row = $result->fetch_assoc()) {
-
                             echo "
                                 <tr>
                                     <td>{$row['user_full_name']}</td>
@@ -70,9 +65,7 @@
                                 </tr>
                             ";
                         }
-
                     } else {
-
                         echo "
                             <tr>
                                 <td colspan='4' class='no-records'>
@@ -81,7 +74,6 @@
                             </tr>
                         ";
                     }
-
                     $conn->close();
                     ?>
                 </tbody>

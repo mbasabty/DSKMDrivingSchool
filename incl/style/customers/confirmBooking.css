@@ -1,0 +1,56 @@
+body{
+    font-family:Arial;
+    background: url(../../images/bg4.JPG);
+}
+
+.container{
+    width:500px;
+    margin:40px auto;
+    background:white;
+    padding:100px;
+    border-radius:10px;
+}
+
+h1{
+    text-align:center;
+}
+
+.summary{
+    margin-top:20px;
+}
+
+.summary p{
+    padding:10px 0;
+    border-bottom:1px solid #ddd;
+}
+
+.total{
+    font-size:20px;
+    font-weight:bold;
+    color:green;
+}
+
+button{
+    width:100%;
+    padding:15px;
+    background:rgb(244, 202, 47);
+    border:none;
+    color:red;
+    font-weight: bold;
+    font-size:16px;
+    border-radius:5px;
+    cursor:pointer;
+    margin-top:20px;
+}
+
+.success{
+    text-align:center;
+    color:green;
+    font-size:24px;
+    margin-top:20px;
+}
+
+.logout-btn{
+    background:red;
+    color: white;
+}
