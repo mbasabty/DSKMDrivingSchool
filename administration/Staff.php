@@ -79,6 +79,21 @@
                 </tbody>
             </table>
         </div>
+
+        <div class="outside-box">
+                <a href="/DSKMDrivingSchool/administration/addStaff.php">
+                    <button type="button">
+                        ADD STAFF
+                    </button>
+                </a>
+
+                <a href="#">
+                    <button type="button">
+                        DELETE STAFF
+                    </button>
+                </a>
+            </div>
+
     </div>
 </body>
 </html>
