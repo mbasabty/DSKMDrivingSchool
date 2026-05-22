@@ -136,9 +136,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </div>
 
             <p class="register-text">
-            Don't have an account?
-            <a href="/DSKMDrivingSchool/customers/customerRegistration.php">Register</a>
+                Don't have an account?
+                <a href="/DSKMDrivingSchool/customers/customerRegistration.php">Register</a>
             </p>
+            
              <div class="outside-box">
                 <a href="/DSKMDrivingSchool/customers/customerBrowse.php">
                     <button type="button">
