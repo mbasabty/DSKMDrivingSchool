@@ -1,42 +1,42 @@
 <?php
-// DATABASE CONNECTION
-include_once "../incl/DatabaseConnection/dbConn.php";
+    include_once "../incl/DatabaseConnection/dbConn.php";
 
-// CHECK CONNECTION
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
 
-if (isset($_POST['student_id']) && isset($_POST['status'])) {
+    if (!empty($_POST['student_id']) && !empty($_POST['status'])) {
 
-    $student_id = $_POST['student_id'];
-    $status = $_POST['status'];
+        $student_id = $_POST['student_id'];
+        $status = $_POST['status'];
+        $update = "UPDATE student
+                SET learners_status = ?
+                WHERE student_id = ?";
+        $sqlQuery = $conn->prepare($update);
 
-    $update = "UPDATE student
-               SET learners_status = ?
-               WHERE student_id = ?";
+        if ($sqlQuery) {
+            $sqlQuery->bind_param("si", $status, $student_id);
+            $sqlQuery->execute();
+            $sqlQuery->close();
+        } else {
+            die("Prepare failed: " . $conn->error);
+        }
+    }
 
-    $stmt = $conn->prepare($update);
-    $stmt->bind_param("si", $status, $student_id);
-
-    $stmt->execute();
-}
-
-$sql = "SELECT
-            student_id,
-            first_name,
-            last_name,
-            home_address,
-            email,
-            phone,
-            id_number,
-            learners_license_file,
-            learners_status,
-            date_registered
-        FROM student
-        ORDER BY date_registered DESC";
-
-$result = $conn->query($sql);
+    $sql = "SELECT
+                student_id,
+                first_name,
+                last_name,
+                home_address,
+                email,
+                phone,
+                id_number,
+                learners_license_file,
+                learners_status,
+                date_registered
+            FROM student
+            ORDER BY date_registered DESC";
+    $result = $conn->query($sql);
 ?>
 
 <!DOCTYPE html>
@@ -174,6 +174,5 @@ $result = $conn->query($sql);
 </html>
 
 <?php
-// CLOSE CONNECTION ONLY ONCE
 $conn->close();
 ?>
