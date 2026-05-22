@@ -102,7 +102,6 @@
             </div>
 
             <!-- PACKAGE SECTION -->
-
             <h2>Select Your Package</h2>
 
             <div class="package-scroll">
@@ -190,7 +189,6 @@
             </div>
 
             <!-- SUBMIT -->
-
             <input 
                 type="submit" 
                 value="Book Lesson" 

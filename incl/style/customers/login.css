@@ -8,7 +8,6 @@
 body {
     font-family: sans-serif; 
     min-height: 100vh;
-    /* BACKGROUND IMAGE */
     background: url("../../images/BG4.jpg");
     background-size: cover;
     background-position: center;
@@ -80,14 +79,9 @@ input {
     transition: 0.3s;
 }
 
-input:focus {
-    border-color: var(--secondary);
-    box-shadow: 0 0 0 3px rgba(108, 142, 173, 0.2);
-}
-
 /* BUTTON */
 button {
-    background: rgb(255, 221, 0);
+    background:black;
     color: white;
     border: none;
     padding: 14px;
@@ -96,7 +90,14 @@ button {
     font-weight: 500;
     cursor: pointer;
     transition: 0.3s ease;
+    font-weight: bold; 
 }
+.outside-box {
+    margin-top: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
 
 button:hover {
     background: black;

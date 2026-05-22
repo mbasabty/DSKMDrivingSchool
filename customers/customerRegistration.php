@@ -34,13 +34,13 @@
         )
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-        $stmt = $conn->prepare($sql);
+        $query = $conn->prepare($sql);
 
-        if (!$stmt) {
+        if (!$query) {
             die("Prepare failed: " . $conn->error);
         }
 
-        $stmt->bind_param(
+        $query->bind_param(
             "sssssssssss",
             $first_name,
             $last_name,
@@ -55,12 +55,12 @@
             $date_registered
         );
 
-        if ($stmt->execute()) {
+        if ($query->execute()) {
             $message = "Registration successful!";
         } else {
-            $message = "Insert error: " . $stmt->error;
+            $message = "Insert error: " . $query->error;
         }
-        $stmt->close();
+        $query->close();
     }
 ?>
 
@@ -78,13 +78,9 @@
 <body>
 
 <div class="register-wrapper">
-
     <div class="register-header">
-
         <h1>Register</h1>
-
         <p>Create your student driver account</p>
-
     </div>
 
     <div class="register-box">
@@ -94,7 +90,6 @@
             <div class="message">
                 <?= htmlspecialchars($message) ?>
             </div>
-
         <?php endif; ?>
 
         <form method="post">
@@ -144,17 +139,13 @@
         </form>
 
         <p class="login-text">
-
             Already have an account?
-
             <a href="/DSKMDrivingSchool/administration/login.php">
                 Login
             </a>
-
         </p>
 
     </div>
-
 </div>
 
 </body>

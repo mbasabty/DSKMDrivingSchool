@@ -1,12 +1,8 @@
 <?php
     include_once '../incl/DatabaseConnection/dbconn.php';
-    session_start();
-
 
     $student_id = $_COOKIE['student_id'];
-
     $code = "";
-
     if ($_POST['code_a'] == "Yes") {
         $code = "Code A";
         }
@@ -81,152 +77,82 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/x-icon" href="../incl/images/logo2.png">
-<title>Confirm Booking</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="../incl/images/logo2.png">
+        <link rel="stylesheet" href="/DSKMDrivingSchool/incl/style/customers/confirmBooking.css">
+        <title>Confirm Booking</title>
+    </head>
 
-<style>
+    <body>
+        <div class="container">
+            <h1>Booking Summary</h1>
 
-body{
-    font-family:Arial;
-    background:#f4f4f4;
-}
+            <div class="summary">
+                <p>
+                    <strong>Licence Code:</strong>
+                    <?= $code ?>
+                </p>
 
-.container{
-    width:500px;
-    margin:40px auto;
-    background:white;
-    padding:30px;
-    border-radius:10px;
-}
+                <p>
+                    <strong>Selected Package:</strong>
+                    R<?= number_format($package,2) ?>
+                </p>
 
-h1{
-    text-align:center;
-}
+                <p>
+                    <strong>VAT Exclusive:</strong>
+                    R<?= number_format($vat_excl,2) ?>
+                </p>
 
-.summary{
-    margin-top:20px;
-}
+                <p>
+                    <strong>VAT 15%:</strong>
+                    R<?= number_format($vat,2) ?>
+                </p>
 
-.summary p{
-    padding:10px 0;
-    border-bottom:1px solid #ddd;
-}
+                <p class="total">
+                    Grand Total:
+                    R<?= number_format($total,2) ?>
+                </p>
 
-.total{
-    font-size:20px;
-    font-weight:bold;
-    color:green;
-}
+            </div>
 
-button{
-    width:100%;
-    padding:15px;
-    background:#007bff;
-    border:none;
-    color:white;
-    font-size:16px;
-    border-radius:5px;
-    cursor:pointer;
-    margin-top:20px;
-}
+            <?php if($success == false){ ?>
 
-.success{
-    text-align:center;
-    color:green;
-    font-size:24px;
-    margin-top:20px;
-}
+            <form method="post" enctype="multipart/form-data">
 
-.logout-btn{
-    background:red;
-}
+                <input type="hidden" name="confirm_booking" value="1">
+                <input type="hidden" name="package" value="<?= $package ?>">
+                <input type="hidden" name="code_a" value="<?= $_POST['code_a'] ?>">
+                <input type="hidden" name="code_b" value="<?= $_POST['code_b'] ?>">
+                <input type="hidden" name="code_eb" value="<?= $_POST['code_eb'] ?>">
+                <input type="hidden" name="code_c1" value="<?= $_POST['code_c1'] ?>">
+                <input type="hidden" name="code_ec" value="<?= $_POST['code_ec'] ?>">
 
-</style>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <label for="learners_license">Confirm Learner's License:</label>
+                    <input type="file" id="learners_license" name="learners_license" required>
+                </div>
 
-</head>
+                <button type="submit">
+                    Confirm Booking
+                </button>
 
-<body>
+            </form>
 
-<div class="container">
+            <?php } ?>
+            <?php if($success == true){ ?>
 
-<h1>Booking Summary</h1>
+                <div class="success">
+                    Successfully Booked!
+                </div>
 
-<div class="summary">
-
-    <p>
-        <strong>Licence Code:</strong>
-        <?= $code ?>
-    </p>
-
-    <p>
-        <strong>Selected Package:</strong>
-        R<?= number_format($package,2) ?>
-    </p>
-
-    <p>
-        <strong>VAT Exclusive:</strong>
-        R<?= number_format($vat_excl,2) ?>
-    </p>
-
-    <p>
-        <strong>VAT 15%:</strong>
-        R<?= number_format($vat,2) ?>
-    </p>
-
-    <p class="total">
-        Grand Total:
-        R<?= number_format($total,2) ?>
-    </p>
-
-</div>
-
-<?php if($success == false){ ?>
-
-<form method="post" enctype="multipart/form-data">
-
-    <input type="hidden" name="confirm_booking" value="1">
-
-    <input type="hidden" name="package" value="<?= $package ?>">
-
-    <input type="hidden" name="code_a" value="<?= $_POST['code_a'] ?>">
-    <input type="hidden" name="code_b" value="<?= $_POST['code_b'] ?>">
-    <input type="hidden" name="code_eb" value="<?= $_POST['code_eb'] ?>">
-    <input type="hidden" name="code_c1" value="<?= $_POST['code_c1'] ?>">
-    <input type="hidden" name="code_ec" value="<?= $_POST['code_ec'] ?>">
-
-    <div style="display: flex; align-items: center; gap: 10px;">
-        <label for="learners_license">Confirm Learner's License:</label>
-        <input type="file" id="learners_license" name="learners_license" required>
-    </div>
-
-    <button type="submit">
-        Confirm Booking
-    </button>
-
-</form>
-
-<?php } ?>
-
-<?php if($success == true){ ?>
-
-    <div class="success">
-        Successfully Booked!
-    </div>
-
-    <form action="/DSKMDrivingSchool/customers/index.html" method="post">
-
-        <button type="submit" class="logout-btn">
-            Logout
-        </button>
-
-    </form>
-
-<?php } ?>
-
-</div>
-
-</body>
+                <form action="/DSKMDrivingSchool/customers/index.html" method="post">
+                    <button type="submit" class="logout-btn">
+                        Logout
+                    </button>
+                </form>
+            <?php } ?>
+        </div>
+    </body>
 </html>
