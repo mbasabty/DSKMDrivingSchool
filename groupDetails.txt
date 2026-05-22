@@ -13,7 +13,7 @@ Group members:
                                                                  customerReg
     ----------------------------------------------------------------------------------------------                                                             
     Dineo Booi                  4558963     contribution 100%    Index page
-                                                                 Login page
+                                                                 Login/Logout page
                                                                  ERD
     ----------------------------------------------------------------------------------------------                                                              
     Khanya Nkadimeng            4564420     contribution 100%    addStaff page
