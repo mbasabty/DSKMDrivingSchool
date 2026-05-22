@@ -18,7 +18,7 @@ VALUES ('Admin'), ('Instructor'), ('Student');
 -- USERS ----------------------------
 
 
-CREATE TABLE user (
+CREATE TABLE users (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     user_name VARCHAR(50),
     user_pwd VARCHAR(50),
@@ -28,7 +28,7 @@ CREATE TABLE user (
     user_level_id INT
 );
 
-INSERT INTO user (user_name,user_pwd,user_full_name,phone,email,user_level_id)
+INSERT INTO users (user_name,user_pwd,user_full_name,phone,email,user_level_id)
 VALUES
 ('admin','1234','Mbasa Batyi','0812345678','admin@dksm.co.za',1),
 ('instructor1','1234','Sipho Dlamini','0823456789','sipho@dksm.co.za',2),

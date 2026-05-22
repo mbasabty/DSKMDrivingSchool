@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<!-- Login page for the remedies DB app -->
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Admin Dashboard</title>
-    <link rel = "stylesheet" href="../incl/style/administration/adminDashboard.css"> <!-- ../incl/css/SalesDashboard.css-->
-    <link rel = "icon" type="image/png" href="../../incl/images/logo.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="icon" type="image/x-icon" href="/DSKMDrivingSchool/incl/images/logo2.png">
+  <link rel = "stylesheet" href="../incl/style/administration/adminDashboard.css">
 </head>
-
 <body>
 
 <div class="login-container">
@@ -74,16 +73,6 @@ $greeting = $hour < 12 ? 'Good morning' : ($hour < 17 ? 'Good afternoon' : 'Good
 */
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard</title>
-  <link rel="icon" type="image/x-icon" href="/DSKMDrivingSchool/incl/images/logo2.png">
-  <link rel="stylesheet" href="dashboard.css">
-</head>
-<body>
     <?php include 'incl/dbconn.php';
     ?>
 <div class="shell">

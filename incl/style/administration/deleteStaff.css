@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY */
+body {
+    font-family: sans-serif;
+    min-height: 100vh;
+    background: url("../../images/bg4.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+/* WRAPPER */
+.register-wrapper {
+    width: 100%;
+    max-width: 700px;
+}
+
+/* HEADER */
+.register-header {
+    text-align: center;
+    color: white;
+    margin-bottom: 25px;
+}
+
+.register-header h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.register-header p {
+    color: black;
+}
+
+/* MAIN BOX */
+.register-box {
+    background: rgba(255,255,255,0.95);
+    padding: 40px;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px black;
+}
+
+/* MESSAGE */
+.message {
+    background: #e8f5e9;
+    color: #2e7d32;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* STAFF CARD */
+.staff-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background: #fafafa;
+}
+
+.staff-card h3 {
+    margin-bottom: 10px;
+    color: black;
+}
+
+.staff-card p {
+    margin-bottom: 8px;
+    color: #333;
+}
+
+/* BUTTON */
+button {
+    background: black;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: rgb(253, 231, 34);
+    color: black;
+    transform: translateY(-2px);
+}
+
+.outside-box {
+    margin-top: 30px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* BACK LINK */
+.login-text {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.login-text a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-text a:hover {
+    text-decoration: underline;
+}

@@ -87,7 +87,7 @@
                     </button>
                 </a>
 
-                <a href="#">
+                <a href="/DSKMDrivingSchool/administration/deleteStaff.php">
                     <button type="button">
                         DELETE STAFF
                     </button>

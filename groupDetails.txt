@@ -1,0 +1,29 @@
+Group 10: 
+
+Service we render: DSKM Driving School
+
+Group members:
+    Name and Surname:           Std no:     Contribution %       Responsibilities
+    ----------------------------------------------------------------------------------------------
+    Mbasa Batyi (group leader)  4540469     contribution 100%    CSS 
+                                                                 Creating a skelatal structure to start from
+                                                                 Merging group members code
+                                                                 Browse page
+                                                                 Admin Dashboard page
+                                                                 customerReg
+    ----------------------------------------------------------------------------------------------                                                             
+    Dineo Booi                  4558963     contribution 100%    Index page
+                                                                 Login/Logout page
+                                                                 ERD
+    ----------------------------------------------------------------------------------------------                                                              
+    Khanya Nkadimeng            4564420     contribution 100%    addStaff page
+                                                                 deleteStaff page
+                                                                 update staff page
+                                                                 database
+    ----------------------------------------------------------------------------------------------                 
+    Sekwele Matjomane           4546163     contribution 100%    confirmBooking page
+                                                                 bookings page
+                                                                 database
+                                                                 ERD
+                                                                 
+    ----------------------------------------------------------------------------------------------
