@@ -12,23 +12,21 @@ body {
 }
 
 /* HEADER */
-
 header {
-  background: 
-    url("../../images/bg4.jpg");
-  padding: 20px 60px; /* reduce top padding */
-  gap: 1px; /* tighter spacing */
+  background: url("../../images/bg4.jpg");
+  padding: 20px 60px; 
+  gap: 1px; 
 }
 
 header img {
   width: 160px;
   height: auto;
-  margin-bottom: 0;   /* remove space under logo */
-  padding-top: 0;     /* ensure no extra push */
+  margin-bottom: 0;  
+  padding-top: 0;    
 }
 
 header p {
-  margin: 0;          /* remove default paragraph spacing */
+  margin: 0;         
   line-height: 1.2;
 }
 
@@ -45,7 +43,6 @@ header p:first-of-type {
 }
 
 /* NAVIGATION */
-
 nav {
   background-color: #000000;
   padding: 20px 60px;
@@ -70,7 +67,6 @@ nav a:hover {
 }
 
 /* SECTIONS */
-
 section {
   padding: 60px;
   border-bottom: 1px solid #D5DADF;
@@ -100,29 +96,22 @@ section p {
 }
 
 /* STATS */
-
 section > ul:not(.why-list):not(.instructor-list) {
   list-style: none;
-
   display: flex;
   gap: 24px;
   flex-wrap: wrap;
-
   margin-top: 24px;
 }
 
 section > ul:not(.why-list):not(.instructor-list) li {
   background: url("../../images/bg4.jpg");
-
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
   color: #ffffff;
-
   padding: 20px 30px;
   min-width: 150px;
-
   text-align: center;
   border-radius: 6px;
 }
@@ -134,13 +123,10 @@ section > ul:not(.why-list):not(.instructor-list) strong {
 }
 
 /* WHY CHOOSE US */
-
 .why-list {
   list-style: none;
-
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-
   gap: 20px;
   margin-top: 24px;
 }
@@ -153,23 +139,19 @@ section > ul:not(.why-list):not(.instructor-list) strong {
 }
 
 /* SERVICES */
-
 section ol {
   list-style: none;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
   margin-top: 24px;
-  counter-reset: service-counter;
 }
 
 section ol li {
   background:url("../../images/bg4.jpg");
-
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
   color: #ffffff;
   padding: 28px 24px;
   border-radius: 6px;
@@ -213,19 +195,18 @@ section ol li::before {
   width: 92px;
   height: 92px;
   border-radius: 50%;
-  overflow: hidden;   /* keeps image inside circle */
+  overflow: hidden;  
   margin: 0 auto 12px;
 }
 
 .instructor-initial img {
   width: 100%;
   height: 100%;
-  object-fit: cover;  /* makes image fit nicely */
+  object-fit: cover; 
   display: block;
 }
 
 /* REVIEWS */
-
 .reviews-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -240,13 +221,9 @@ section ol li::before {
   border-radius: 6px;
 }
 
-/* FOOTER */
-
 /* FOOTER CONTAINER ONLY */
-
 .footer-container .custom-footer {
   background: url("../../images/bg4.jpg");
-
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -257,8 +234,6 @@ section ol li::before {
   flex-wrap: wrap;
   gap: 20px;
 }
-
-/* Move button right */
 
 .footer-container .custom-footer a {
   margin-left: auto;
@@ -279,7 +254,6 @@ section ol li::before {
   color: black;
 }
 
-
 footer a {
   margin-left: auto;
   background-color: #ffffff;
@@ -293,8 +267,6 @@ footer a {
 footer p {
   color: black;
 }
-
-
 
 footer a:hover {
   background-color: rgb(253, 231, 34);
