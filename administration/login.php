@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         $queryStudent = $conn->prepare($sqlStudent);
         $queryStudent->bind_param("s", $username);
-        $squeryStudent->execute();
+        $queryStudent->execute();
         
         $resultStudent = $queryStudent->get_result();
 
