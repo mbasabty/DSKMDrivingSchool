@@ -1,224 +1,284 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard</title>
-  <link rel="icon" type="image/x-icon" href="/DSKMDrivingSchool/incl/images/logo2.png">
-  <link rel = "stylesheet" href="../incl/style/administration/adminDashboard.css">
-</head>
-<body>
-
-<div class="login-container">
-
-<h2>Sales Dashboard</h2>
-
 <?php
-/*
-// ============================================================
-//  REQUIRES
-// ============================================================
-// require_once 'incl/dbconn.php';
+    include_once "../incl/DatabaseConnection/dbConn.php";
 
-// ============================================================
-//  QUERY HELPERS — swap in your real SQL queries here
-// ============================================================
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
 
-function getStats(PDO $pdo): array {
+    $studentsQuery = "SELECT COUNT(*) AS total_students FROM student";
+    $studentsResult = $conn->query($studentsQuery);
+    $studentsData = $studentsResult->fetch_assoc();
+    $totalStudents = $studentsData['total_students'];
 
-    return [
-        'total_users' => 0,
-        'revenue'     => 0.00,
-        'orders'      => 0,
-        'growth'      => 0.0,
-    ];
-}
+    $bookingsQuery = "SELECT COUNT(*) AS total_bookings FROM booking_details";
+    $bookingsResult = $conn->query($bookingsQuery);
 
-function getRecentActivity(PDO $pdo): array {
-    return [];
-}
+    $totalBookings = 0;
 
-function getTopItems(PDO $pdo): array {
-    return [];
-}
+    if ($bookingsResult) {
+        $bookingsData = $bookingsResult->fetch_assoc();
+        $totalBookings = $bookingsData['total_bookings'];
+    }
 
-// ============================================================
-//  FETCH DATA
-// ============================================================
-$db_error = null;
-$stats    = ['total_users' => '—', 'revenue' => '—', 'orders' => '—', 'growth' => '—'];
-$activity = [];
-$top      = [];
+    $instructorsQuery = "SELECT COUNT(*) AS total_instructors
+                        FROM users
+                        WHERE user_level_id = 2";
 
-try {
-    $pdo      = getDBConnection();
-    $raw      = getStats($pdo);
-    $stats    = [
-        'total_users' => number_format((int)   $raw['total_users']),
-        'revenue'     => '$' . number_format((float) $raw['revenue'], 2),
-        'orders'      => number_format((int)   $raw['orders']),
-        'growth'      => number_format((float) $raw['growth'], 1) . '%',
-    ];
-    $activity = getRecentActivity($pdo);
-    $top      = getTopItems($pdo);
-} catch (Exception $e) {
-    $db_error = htmlspecialchars($e->getMessage());
-}
+    $instructorsResult = $conn->query($instructorsQuery);
+    $instructorsData = $instructorsResult->fetch_assoc();
+    $totalInstructors = $instructorsData['total_instructors'];
 
-// ============================================================
-//  TIME GREETING
-// ============================================================
-$hour     = (int) date('G');
-$greeting = $hour < 12 ? 'Good morning' : ($hour < 17 ? 'Good afternoon' : 'Good evening');
-*/
+    $adminsQuery = "SELECT COUNT(*) AS total_admins
+                    FROM users
+                    WHERE user_level_id = 1";
+
+    $adminsResult = $conn->query($adminsQuery);
+    $adminsData = $adminsResult->fetch_assoc();
+    $totalAdmins = $adminsData['total_admins'];
+
+    $recentStudentsQuery = "SELECT
+                                first_name,
+                                last_name,
+                                learners_status,
+                                date_registered
+                            FROM student
+                            ORDER BY date_registered DESC
+                            LIMIT 5";
+
+    $recentStudentsResult = $conn->query($recentStudentsQuery);
+
+    $staffQuery = "SELECT
+                        user_full_name,
+                        email
+                    FROM users
+                    ORDER BY user_full_name ASC
+                    LIMIT 5";
+
+    $staffResult = $conn->query($staffQuery);
 ?>
 
-    <?php include 'incl/dbconn.php';
-    ?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="icon" type="image/x-icon" href="/DSKMDrivingSchool/incl/images/logo2.png">
+    <link rel="stylesheet" href="../incl/style/administration/adminDashboard.css">
+
+</head>
+
+<body>
 <div class="shell">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <div class="wordmark">
+                DSKM<em>Driving School</em>
+            </div>
+            <div class="sub">
+                Administration
+            </div>
+        </div>
+        <ul class="nav">
+            <li>
+                <a href="#"
+                   class="active">
+                    Overview
+                </a>
+            </li>
 
-  <!-- Sidebar -->
-  <aside class="sidebar">
-    <div class="sidebar-logo">
-      <div class="wordmark">
-        DSKM<em>Driving School</em>
-      </div>
-        <div class="sub">Administration</div>
-      </div>
+            <li>
+                <a href="/DSKMDrivingSchool/administration/students.php">
+                    Students
+                </a>
+            </li>
 
-    <ul class="nav">
-      <li><a href="#" class="active">Overview</a></li>
-      <li><a href="/DSKMDrivingSchool/administration/students.php">Students</a></li>
-      <li><a href="/DSKMDrivingSchool/administration/Bookings.php">Bookings</a></li>
-      <li><a href="/DSKMDrivingSchool/administration/staff.php">Staff</a></li>
-      <li><a href="/DSKMDrivingSchool/customers/index.html">Logout</a></li>
-    </ul>
+            <li>
+                <a href="/DSKMDrivingSchool/administration/Bookings.php">
+                    Bookings
+                </a>
+            </li>
 
-    <div class="sidebar-foot">
-      <?php echo date('l, j M Y'); ?>
+            <li>
+                <a href="/DSKMDrivingSchool/administration/staff.php">
+                    Staff
+                </a>
+            </li>
+            <li>
+                <a href="/DSKMDrivingSchool/customers/index.html">
+                    Logout
+                </a>
+            </li>
+        </ul>
+        <div class="sidebar-foot">
+            <?php echo date('l, j M Y'); ?>
+        </div>
+    </aside>
+    <!-- MAIN -->
+    <div class="main">
+        <!-- TOPBAR -->
+        <header class="topbar">
+            <div class="topbar-title">
+                <h2>
+                    Welcome Back Admin
+                </h2>
+                <p>
+                    Here's what's happening today
+                </p>
+            </div>
+            <div class="topbar-actions">
+                <span class="badge">
+                    Live
+                </span>
+                <div class="avatar">
+                    AD
+                </div>
+            </div>
+        </header>
+        <!-- CONTENT -->
+        <main class="content">
+            <!-- STATS -->
+            <div class="section-head">
+                <h3>At a Glance</h3>
+                <div class="divider-line"></div>
+            </div>
+            <div class="stat-grid">
+                <!-- TOTAL STUDENTS -->
+                <div class="stat-card">
+                    <div class="label">
+                        Total Students
+                    </div>
+                    <div class="value">
+                        <?php echo $totalStudents; ?>
+                    </div>
+                    <div class="delta">
+                        Registered students
+                    </div>
+                </div>
+                <!-- BOOKINGS -->
+                <div class="stat-card">
+                    <div class="label">
+                        Total Bookings
+                    </div>
+                    <div class="value">
+                        <?php echo $totalBookings; ?>
+                    </div>
+                    <div class="delta">
+                        All bookings
+                    </div>
+                </div>
+                <!-- INSTRUCTORS -->
+                <div class="stat-card">
+                    <div class="label">
+                        Instructors
+                    </div>
+                    <div class="value">
+                        <?php echo $totalInstructors; ?>
+                    </div>
+                    <div class="delta">
+                        Active instructors
+                    </div>
+                </div>
+                <!-- ADMINS -->
+                <div class="stat-card">
+
+                    <div class="label">
+                        Admins
+                    </div>
+                    <div class="value">
+                        <?php echo $totalAdmins; ?>
+                    </div>
+                    <div class="delta">
+                        System administrators
+                    </div>
+                </div>
+            </div>
+            <!-- DETAILS -->
+            <div class="section-head"
+                 style="margin-top:1.8rem">
+                <h3>Details</h3>
+                <div class="divider-line"></div>
+            </div>
+            <div class="lower-grid">
+                <!-- RECENT STUDENTS -->
+                <div class="panel">
+                    <div class="panel-header">
+                        <h4>
+                            Recent Students
+                        </h4>
+                    </div>
+                    <?php
+                    if ($recentStudentsResult->num_rows > 0) {
+                        while ($row = $recentStudentsResult->fetch_assoc()) {
+                            echo "
+                            <div class='activity-row'>
+                                <div>
+                                    <strong>
+                                        {$row['first_name']} {$row['last_name']}
+                                    </strong>
+                                    <p>
+                                        {$row['learners_status']}
+                                    </p>
+
+                                </div>
+                                <span>
+                                    {$row['date_registered']}
+                                </span>
+
+                            </div>
+                            ";
+                        }
+                    } else {
+                        echo "
+                        <div class='empty'>
+                            <em>
+                                No students found
+                            </em>
+                        </div>
+                        ";
+                    }
+                    ?>
+                </div>
+                <!-- STAFF MEMBERS -->
+                <div class="panel">
+                    <div class="panel-header">
+                        <h4>
+                            Staff Members
+                        </h4>
+                    </div>
+                    <?php
+                    if ($staffResult->num_rows > 0) {
+                        while ($row = $staffResult->fetch_assoc()) {
+                            echo "
+                            <div class='activity-row'>
+                                <div>
+                                    <strong>
+                                        {$row['user_full_name']}
+                                    </strong>
+                                    <p>
+                                        {$row['email']}
+                                    </p>
+                                </div>
+                            </div>
+                            ";
+                        }
+                    } else {
+                        echo "
+                        <div class='empty'>
+                            <em>
+                                No staff found
+                            </em>
+                        </div>
+                        ";
+                    }
+                    ?>
+                </div>
+            </div>
+        </main>
     </div>
-  </aside>
-
-  <!-- Main -->
-  <div class="main">
-
-    <!-- Topbar -->
-    <header class="topbar">
-      <div class="topbar-title">
-        <h2>Welcom Back Admin</h2>
-        <p>Here's what's happening today</p>
-      </div>
-
-      <div class="topbar-actions">
-        <span class="badge">Live</span>
-        <div class="avatar" title="Profile">AD</div>
-      </div>
-    </header>
-
-    <!-- Content -->
-    <main class="content">
-
-      <?php /* if ($db_error): */ ?>
-      <!--
-        <div class="error-banner">
-          <strong>Database error:</strong> <?php /* echo $db_error; */ ?>
-        </div>
-      -->
-      <?php /* endif; */ ?>
-
-      <!-- Stat cards -->
-      <div class="section-head">
-        <h3>At a Glance</h3>
-        <div class="divider-line"></div>
-      </div>
-
-      <div class="stat-grid">
-        <div class="stat-card">
-          <div class="label">Total Students</div>
-          <div class="value"><?php /* echo $stats['total_users']; */ ?>0</div>
-          <div class="delta">All time</div>
-        </div>
-
-        <div class="stat-card">
-          <div class="label">Monthly Revenue</div>
-          <div class="value"><?php /* echo $stats['revenue']; */ ?>R0.00</div>
-          <div class="delta">This month</div>
-        </div>
-
-        <div class="stat-card">
-          <div class="label">Bookings</div>
-          <div class="value"><?php /* echo $stats['orders']; */ ?>0</div>
-          <div class="delta">Since midnight</div>
-        </div>
-
-        <div class="stat-card">
-          <div class="label">Available Instructors</div>
-          <div class="value"><?php /* echo $stats['growth']; */ ?>0</div>
-          <div class="delta">vs last period</div>
-        </div>
-      </div>
-
-      <!-- Details -->
-      <div class="section-head" style="margin-top:1.8rem">
-        <h3>Details</h3>
-        <div class="divider-line"></div>
-      </div>
-
-      <div class="lower-grid">
-
-        <!-- Recent Activity -->
-        <div class="panel">
-          <div class="panel-header">
-            <h4>Recent Activity</h4>
-            <a href="#" class="see-all">See all</a>
-          </div>
-
-          <div class="empty">
-            <em>No activity yet</em>
-          </div>
-
-          <?php /*
-          if (!empty($activity)) {
-              foreach ($activity as $row) {
-          */ ?>
-                <!-- activity row -->
-          <?php /*
-              }
-          }
-          */ ?>
-        </div>
-
-        <!-- Top Items -->
-        <div class="panel">
-          <div class="panel-header">
-            <h4>Top Items</h4>
-            <a href="#" class="see-all">See all</a>
-          </div>
-
-          <div class="empty">
-            <em>No data yet</em>
-          </div>
-
-          <?php /*
-          if (!empty($top)) {
-              foreach ($top as $item) {
-          */ ?>
-                <!-- item row -->
-          <?php /*
-              }
-          }
-          */ ?>
-        </div>
-
-      </div>
-    </main>
-  </div>
 </div>
-
-</body>
-</html>
-
-</div>
-
+<?php $conn->close(); ?>
 </body>
 </html>
