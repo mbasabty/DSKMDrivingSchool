@@ -17,7 +17,6 @@
         $conn->query($sql);
     }
 
-
     $sql = "SELECT
                 student_id,
                 first_name,
