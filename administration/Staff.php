@@ -81,18 +81,21 @@
         </div>
 
         <div class="outside-box">
-                <a href="/DSKMDrivingSchool/administration/addStaff.php">
-                    <button type="button">
-                        ADD STAFF
-                    </button>
+                <a class="staff-btn"
+                href="/DSKMDrivingSchool/administration/addStaff.php">
+                ADD STAFF
                 </a>
 
-                <a href="/DSKMDrivingSchool/administration/deleteStaff.php">
-                    <button type="button">
-                        DELETE STAFF
-                    </button>
+                <a class="staff-btn"
+                href="/DSKMDrivingSchool/administration/deleteStaff.php">
+                DELETE STAFF
                 </a>
-            </div>
+
+                <a class="staff-btn"
+                href="/DSKMDrivingSchool/administration/updateStaff.php">
+                UPDATE STAFF
+                </a>
+        </div>
 
     </div>
 </body>

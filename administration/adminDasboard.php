@@ -91,7 +91,6 @@ $greeting = $hour < 12 ? 'Good morning' : ($hour < 17 ? 'Good afternoon' : 'Good
       <li><a href="/DSKMDrivingSchool/administration/students.php">Students</a></li>
       <li><a href="/DSKMDrivingSchool/administration/Bookings.php">Bookings</a></li>
       <li><a href="/DSKMDrivingSchool/administration/staff.php">Staff</a></li>
-      <li><a href="#">Sales</a></li>
       <li><a href="/DSKMDrivingSchool/customers/index.html">Logout</a></li>
     </ul>
 
