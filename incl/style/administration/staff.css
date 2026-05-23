@@ -10,6 +10,8 @@
     --approved:#10b981;
     --pending:#f59e0b;
     --declined:#ef4444;
+    --primary:#000000;
+    --secondary:#ffffff;
 }
 
 /* ── BODY ────────────────────────────────────── */
@@ -34,6 +36,8 @@ body{
     width:170px;
     flex-shrink:0;
     background:url("../../images/BG4.jpg");
+    background-size:cover;
+    background-position:center;
     display:flex;
     flex-direction:column;
     padding:2rem 0;
@@ -88,7 +92,7 @@ body{
     text-transform:uppercase;
     text-decoration:none;
     color:black;
-    transition:color .2s, background .2s;
+    transition:all .2s;
     border-left:2px solid transparent;
 }
 
@@ -216,6 +220,8 @@ body{
 /* ── STAT CARD ──────────────────────────────── */
 .stat-card{
     background:url("../../images/BG4.jpg");
+    background-size:cover;
+    background-position:center;
     border:1px solid rgba(107,140,110,.22);
     border-radius:6px;
     padding:1.3rem 1.4rem;
@@ -263,9 +269,17 @@ body{
     letter-spacing:.04em;
 }
 
+/* ── LOWER GRID ─────────────────────────────── */
+.lower-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:1.5rem;
+    margin-top:1rem;
+}
+
 /* ── PANEL ──────────────────────────────────── */
 .panel{
-    background:rgba(255,255,255,.65);
+    background:rgba(255,255,255,.75);
     border:1px solid rgba(107,140,110,.22);
     border-radius:6px;
     overflow:hidden;
@@ -285,6 +299,47 @@ body{
     font-weight:400;
     font-size:.98rem;
     color:black;
+}
+
+/* ── SEE ALL LINK ───────────────────────────── */
+.see-all{
+    text-decoration:none;
+    font-size:.75rem;
+    color:black;
+    border-bottom:1px solid black;
+}
+
+.see-all:hover{
+    opacity:.7;
+}
+
+/* ── ACTIVITY ROW ───────────────────────────── */
+.activity-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:1rem 1.3rem;
+    border-bottom:1px solid rgba(107,140,110,.08);
+}
+
+.activity-row:last-child{
+    border-bottom:none;
+}
+
+.activity-row strong{
+    font-size:.82rem;
+    color:black;
+}
+
+.activity-row p{
+    font-size:.72rem;
+    color:#555;
+    margin-top:.2rem;
+}
+
+.activity-row span{
+    font-size:.7rem;
+    color:#666;
 }
 
 /* ── SEARCH BOX ─────────────────────────────── */
@@ -340,6 +395,80 @@ tbody tr:hover{
     background:rgba(220,232,220,.25);
 }
 
+/* ── STATUS ─────────────────────────────────── */
+.status{
+    display:inline-block;
+    padding:.2rem .7rem;
+    border-radius:50px;
+    font-size:.68rem;
+    font-weight:500;
+    border:1px solid black;
+}
+
+.status.approved{
+    background:rgba(16,185,129,.12);
+    color:var(--approved);
+}
+
+.status.pending{
+    background:rgba(245,158,11,.12);
+    color:var(--pending);
+}
+
+.status.declined{
+    background:rgba(239,68,68,.12);
+    color:var(--declined);
+}
+
+/* ── FILE LINK ──────────────────────────────── */
+.file-link{
+    color:black;
+    text-decoration:none;
+    border-bottom:1px solid black;
+    padding-bottom:1px;
+}
+
+.file-link:hover{
+    opacity:.7;
+}
+
+/* ── ACTION BUTTONS ─────────────────────────── */
+.action-buttons{
+    display:flex;
+    gap:.5rem;
+}
+
+.action-buttons form{
+    margin:0;
+}
+
+/* ── BUTTONS ────────────────────────────────── */
+.btn{
+    border:1px solid black;
+    background:white;
+    color:black;
+    padding:.4rem .8rem;
+    border-radius:4px;
+    font-size:.72rem;
+    cursor:pointer;
+    transition:all .2s;
+}
+
+.btn:hover{
+    background:black;
+    color:white;
+}
+
+.btn-approve:hover{
+    background:var(--approved);
+    border-color:var(--approved);
+}
+
+.btn-decline:hover{
+    background:var(--declined);
+    border-color:var(--declined);
+}
+
 /* ── STAFF ACTION BUTTONS ───────────────────── */
 .outside-box{
     margin-top:20px;
@@ -368,6 +497,7 @@ tbody tr:hover{
 }
 
 /* ── EMPTY STATE ────────────────────────────── */
+.empty,
 .no-records{
     text-align:center;
     padding:2rem;
