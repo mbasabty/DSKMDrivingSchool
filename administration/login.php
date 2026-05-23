@@ -1,87 +1,25 @@
 <?php
-include_once '../incl/DatabaseConnection/dbconn.php';
+    include_once "../incl/DatabaseConnection/dbConn.php";
 
-$message = "";
+    $user_name = $_COOKIE['user_name'];
+    $logged_user = $user_name ? $user_name : "Guest";
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-
-    $username = trim($_POST['user_name']);
-    $password = trim($_POST['user_pwd']);
-
-    // ---------------- USERS TABLE ----------------
-    $sqlUsers = "SELECT user_id, user_name, user_pwd, user_full_name, user_level_id
-                 FROM users
-                 WHERE user_name = ?
-                 LIMIT 1";
-
-    $queryUsers = $conn->prepare($sqlUsers);
-
-    $queryUsers->bind_param("s", $username);
-    $queryUsers->execute();
-
-    $resultUsers = $queryUsers->get_result();
-
-    if ($row = $resultUsers->fetch_assoc()) {
-
-        if ($password === $row['user_pwd']) {
-
-            setcookie("user_id", $row['user_id'], time() + 3600, "/");
-            setcookie("user_level_id", $row['user_level_id'], time() + 3600, "/");
-
-            if ($row['user_level_id'] == 1) {
-                header("Location: /DSKMDrivingSchool/administration/adminDasboard.php");
-                exit();
-            } elseif ($row['user_level_id'] == 2) {
-                header("Location: instructors.php");
-                exit();
-            } elseif ($row['user_level_id'] == 3) {
-                header("Location: ../customers/customerBrowse.php");
-                exit();
-            }
-
-        } else {
-            $message = "Incorrect password.";
-        }
-
-    } else {
-
-        // ---------------- STUDENT TABLE ----------------
-        $sqlStudent = "SELECT student_id, username, password, user_level_id
-                       FROM student
-                       WHERE username = ?
-                       LIMIT 1";
-
-        $queryStudent = $conn->prepare($sqlStudent);
-        $queryStudent->bind_param("s", $username);
-        $queryStudent->execute();
-        
-        $resultStudent = $queryStudent->get_result();
-
-        if ($student = $resultStudent->fetch_assoc()) {
-            if ($password === $student['password']) {
-
-                setcookie("student_id", $student['student_id'], time() + 3600, "/");
-                setcookie("user_level_id", $student['user_level_id'], time() + 3600, "/");
-
-                if ($student['user_level_id'] == 3) {
-                    header("Location: /DSKMDrivingSchool/customers/customerBrowse.php");
-                    exit();
-                } else {
-                    header("Location: studentMenu.php");
-                    exit();
-                }
-            } else {
-                $message = "Incorrect password.";
-            }
-        } else {
-            $message = "User not found.";
-        }
-
-        $queryStudent->close();
+    if ($conn->connect_error) {
+        echo "Connection failed: " . $conn->connect_error;
+        exit;
     }
 
-    $queryUsers->close();
-}
+    $sql = "SELECT 
+        users.user_full_name,
+        users.phone,
+        users.email,
+        user_level.user_level_name
+    FROM users
+    INNER JOIN user_level 
+        ON users.user_level_id = user_level.user_level_id
+    ORDER BY users.user_full_name ASC";
+
+    $result = $conn->query($sql);
 ?>
 
 <!DOCTYPE html>

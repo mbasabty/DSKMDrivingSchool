@@ -1,38 +1,21 @@
 <?php
+    include_once "../incl/DatabaseConnection/dbConn.php";
 
-include_once "../incl/DatabaseConnection/dbConn.php";
+    if ($conn->connect_error) {
+        echo "Connection failed: " . $conn->connect_error;
+        exit;
+    }
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+    $sql = "UPDATE users SET
+        user_name = '{$_POST['username']}',
+        user_pwd = '{$_POST['password']}',
+        user_full_name = '{$_POST['first_name']} {$_POST['last_name']}',
+        phone = '{$_POST['phone']}',
+        email = '{$_POST['email']}',
+        user_level_id = '{$_POST['user_access_id']}'
+    WHERE user_id = '{$_POST['staff_id']}'";
 
-// Get values from form
-$staff_id = $_POST['staff_id'];
-$first_name = $_POST['first_name'];
-$last_name = $_POST['last_name'];
-$username = $_POST['username'];
-$password = $_POST['password'];
-$phone = $_POST['phone'];
-$email = $_POST['email'];
-$user_access_id = $_POST['user_access_id'];
-
-// Combine full name
-$full_name = $first_name . " " . $last_name;
-
-// SQL UPDATE
-$sql = "UPDATE users SET
-        user_name='$username',
-        user_pwd='$password',
-        user_full_name='$full_name',
-        phone='$phone',
-        email='$email',
-        user_level_id='$user_access_id'
-        WHERE user_id='$staff_id'";
-
-// Run query
-$result = mysqli_query($conn, $sql);
-
+    mysqli_query($conn, $sql);
 ?>
 
 <!DOCTYPE html>

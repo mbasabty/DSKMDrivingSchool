@@ -1,42 +1,22 @@
 <?php
-include_once "../incl/DatabaseConnection/dbConn.php";
+    include_once "../incl/DatabaseConnection/dbConn.php";
 
-$message = "";
+    $message = "";
 
-/* -------------------------
-   DELETE USER
---------------------------*/
-if (array_key_exists('user_id', $_POST)) {
-
-    $id = (int) $_POST['user_id'];
-
-    $stmt = $conn->prepare("DELETE FROM users WHERE user_id = ?");
-
-    if ($stmt) {
-
-        $stmt->bind_param("i", $id);
-
-        if ($stmt->execute()) {
-            $message = "User deleted successfully.";
-        } else {
-            $message = "Delete failed: " . $stmt->error;
-        }
-
-        $stmt->close();
-
-    } else {
-        $message = "Prepare failed: " . $conn->error;
+    /* DELETE USER */
+    if ($_POST['user_id']) {
+        $id = $_POST['user_id'];
+        $sql = "DELETE FROM users WHERE user_id = '$id'";
+        $conn->query($sql);
+        $message = "User deleted successfully.";
     }
-}
 
-/* -------------------------
-   LOAD USERS
---------------------------*/
-$result = $conn->query("SELECT * FROM users ORDER BY user_full_name ASC");
+    /* LOAD USERS */
+    $result = $conn->query("SELECT * FROM users ORDER BY user_full_name ASC");
 
-if (!$result) {
-    die("SQL Error: " . $conn->error);
-}
+    if (!$result) {
+        echo "SQL Error: " . $conn->error;
+    }
 ?>
 
 <!DOCTYPE html>

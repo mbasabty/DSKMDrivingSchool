@@ -1,55 +1,30 @@
 <?php
     include_once "../incl/DatabaseConnection/dbConn.php";
 
-    $message = "";
+    if ($_POST) {
 
-    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        $user_name = $_POST['user_name'];
+        $user_pwd = $_POST['user_pwd'];
+        $user_full_name = $_POST['user_full_name'];
+        $phone = $_POST['phone'];
+        $email = $_POST['email'];
+        $user_level_id = $_POST['user_level_id'];
 
-        $user_name = trim($_POST['user_name']);
-        $user_pwd = trim($_POST['user_pwd']);
-        $user_full_name = trim($_POST['user_full_name']);
-        $phone = trim($_POST['phone']);
-        $email = trim($_POST['email']);
-        $user_level_id = trim($_POST['user_level_id']);
+        $sql = "INSERT INTO users 
+                (user_name, user_pwd, user_full_name, phone, email, user_level_id)
+                VALUES (
+                    '$user_name',
+                    '$user_pwd',
+                    '$user_full_name',
+                    '$phone',
+                    '$email',
+                    '$user_level_id'
+                )";
 
-        $sql = "INSERT INTO `users`
-        (
-            user_name,
-            user_pwd,
-            user_full_name,
-            phone,
-            email,
-            user_level_id
-        )
-        VALUES (?, ?, ?, ?, ?, ?)";
-
-        $query = $conn->prepare($sql);
-
-        if ($query === false) {
-
-            die("SQL Error: " . $conn->error);
-
-        }
-
-        $query->bind_param(
-            "sssssi",
-            $user_name,
-            $user_pwd,
-            $user_full_name,
-            $phone,
-            $email,
-            $user_level_id
-        );
-
-        if ($query->execute()) {
-            $message = "User registered successfully!";
+        if ($conn->query($sql)) {
+            echo "User registered successfully!";
         } else {
-            $message = "Execute Error: " . $query->error;
-        }
-
-        // ONLY CLOSE IF QUERY EXISTS
-        if ($query instanceof mysqli_stmt) {
-            $query->close();
+            echo "Error: " . $conn->error;
         }
     }
 

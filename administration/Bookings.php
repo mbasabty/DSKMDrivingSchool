@@ -1,37 +1,33 @@
 <?php
     include_once "../incl/DatabaseConnection/dbConn.php";
-
     if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
+        echo "Connection failed: " . $conn->connect_error;
+        exit;
     }
 
-    if ($_SERVER['REQUEST_METHOD'] == "POST") {
-
+    if ($_POST) {
         $booking_details_id = $_POST['booking_details_id'];
         $status = $_POST['status'];
-        $update = "UPDATE booking_details
-                   SET booking_status = ?
-                   WHERE booking_details_id = ?";
-
-        $sqlQuery = $conn->prepare($update);
-        $sqlQuery->bind_param("si", $status, $booking_details_id);
-
-        $sqlQuery->execute();
+        $sql = "UPDATE booking_details 
+                SET booking_status = '$status'
+                WHERE booking_details_id = '$booking_details_id'";
+        $conn->query($sql);
     }
 
     $sql = "SELECT
-                booking_details.booking_details_id,
-                booking_details.booking_date,
-                booking_details.booking_time,
-                booking_details.booking_status,
-                booking_details.licence_document,
-                booking_details.selected_licence_code,
-                booking_details.selected_package,
-                student.first_name,
-                student.last_name
-            FROM booking_details
-            INNER JOIN student ON booking_details.student_id = student.student_id
-            ORDER BY booking_details.booking_date DESC";
+        booking_details.booking_details_id,
+        booking_details.booking_date,
+        booking_details.booking_time,
+        booking_details.booking_status,
+        booking_details.licence_document,
+        booking_details.selected_licence_code,
+        booking_details.selected_package,
+        student.first_name,
+        student.last_name
+    FROM booking_details
+    INNER JOIN student 
+        ON booking_details.student_id = student.student_id
+    ORDER BY booking_details.booking_date DESC";
 
     $result = $conn->query($sql);
 ?>

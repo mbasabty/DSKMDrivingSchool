@@ -2,59 +2,37 @@
     include_once "../incl/DatabaseConnection/dbConn.php";
 
     if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
+        echo "Connection failed: " . $conn->connect_error;
+        exit;
     }
 
-    $studentsQuery = "SELECT COUNT(*) AS total_students FROM student";
-    $studentsResult = $conn->query($studentsQuery);
-    $studentsData = $studentsResult->fetch_assoc();
-    $totalStudents = $studentsData['total_students'];
+    /* TOTALS */
+    $totalStudents = $conn->query("SELECT COUNT(*) AS total_students 
+                                   FROM student") ->fetch_assoc()['total_students'];
 
-    $bookingsQuery = "SELECT COUNT(*) AS total_bookings FROM booking_details";
-    $bookingsResult = $conn->query($bookingsQuery);
+    $totalBookings = $conn->query("SELECT COUNT(*) AS total_bookings 
+                                   FROM booking_details") ->fetch_assoc()['total_bookings'];
 
-    $totalBookings = 0;
+    $totalInstructors = $conn->query("SELECT COUNT(*) AS total_instructors 
+                                      FROM users WHERE user_level_id = 2") ->fetch_assoc()['total_instructors'];
 
-    if ($bookingsResult) {
-        $bookingsData = $bookingsResult->fetch_assoc();
-        $totalBookings = $bookingsData['total_bookings'];
-    }
+    $totalAdmins = $conn->query("SELECT COUNT(*) AS total_admins 
+                                 FROM users WHERE user_level_id = 1") ->fetch_assoc()['total_admins'];
 
-    $instructorsQuery = "SELECT COUNT(*) AS total_instructors
-                        FROM users
-                        WHERE user_level_id = 2";
+    /* RECENT DATA */
+    $recentStudentsResult = $conn->query("
+        SELECT first_name, last_name, learners_status, date_registered
+        FROM student
+        ORDER BY date_registered DESC
+        LIMIT 5
+    ");
 
-    $instructorsResult = $conn->query($instructorsQuery);
-    $instructorsData = $instructorsResult->fetch_assoc();
-    $totalInstructors = $instructorsData['total_instructors'];
-
-    $adminsQuery = "SELECT COUNT(*) AS total_admins
-                    FROM users
-                    WHERE user_level_id = 1";
-
-    $adminsResult = $conn->query($adminsQuery);
-    $adminsData = $adminsResult->fetch_assoc();
-    $totalAdmins = $adminsData['total_admins'];
-
-    $recentStudentsQuery = "SELECT
-                                first_name,
-                                last_name,
-                                learners_status,
-                                date_registered
-                            FROM student
-                            ORDER BY date_registered DESC
-                            LIMIT 5";
-
-    $recentStudentsResult = $conn->query($recentStudentsQuery);
-
-    $staffQuery = "SELECT
-                        user_full_name,
-                        email
-                    FROM users
-                    ORDER BY user_full_name ASC
-                    LIMIT 5";
-
-    $staffResult = $conn->query($staffQuery);
+    $staffResult = $conn->query("
+        SELECT user_full_name, email
+        FROM users
+        ORDER BY user_full_name ASC
+        LIMIT 5
+    ");
 ?>
 
 <!DOCTYPE html>

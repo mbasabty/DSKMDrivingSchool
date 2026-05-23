@@ -2,18 +2,19 @@
     include_once "../incl/DatabaseConnection/dbConn.php";
 
     if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
+        echo "Connection failed: " . $conn->connect_error;
+        exit;
     }
 
     $sql = "SELECT 
-                users.user_full_name,
-                users.phone,
-                users.email,
-                user_level.user_level_name
-            FROM users
-            INNER JOIN user_level 
-            ON users.user_level_id = user_level.user_level_id
-            ORDER BY users.user_full_name ASC";
+        users.user_full_name,
+        users.phone,
+        users.email,
+        user_level.user_level_name
+    FROM users
+    INNER JOIN user_level 
+        ON users.user_level_id = user_level.user_level_id
+    ORDER BY users.user_full_name ASC";
 
     $result = $conn->query($sql);
 ?>
