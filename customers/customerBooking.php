@@ -1,72 +1,72 @@
 <?php
-include_once '../incl/DatabaseConnection/dbconn.php';
+    include_once '../incl/DatabaseConnection/dbconn.php';
 
-$student_id = $_COOKIE['student_id'];
+    $student_id = $_COOKIE['student_id'];
 
-$code = "";
+    $code = "";
 
-if ($_POST['code_a'] == "Yes") {
-    $code = "Code A";
-}
-elseif ($_POST['code_b'] == "Yes") {
-    $code = "Code 08";
-}
-elseif ($_POST['code_eb'] == "Yes") {
-    $code = "Code EB";
-}
-elseif ($_POST['code_c1'] == "Yes") {
-    $code = "Code C1/C";
-}
-elseif ($_POST['code_ec'] == "Yes") {
-    $code = "Code EC";
-}
+    if ($_POST['code_a'] == "Yes") {
+        $code = "Code A";
+        }
+        elseif ($_POST['code_b'] == "Yes") {
+            $code = "Code 08";
+            }
+            elseif ($_POST['code_eb'] == "Yes") {
+                $code = "Code EB";
+                }
+                elseif ($_POST['code_c1'] == "Yes") {
+                    $code = "Code C1/C";
+                    }
+                    elseif ($_POST['code_ec'] == "Yes") {
+                        $code = "Code EC";
+                        }
 
-$package = $_POST['package'];
+    $package = $_POST['package'];
 
-$vat_excl = $package / 1.15;
-$vat = $package - $vat_excl;
-$total = $package;
+    $vat_excl = $package / 1.15;
+    $vat = $package - $vat_excl;
+    $total = $package;
 
-$booking_date = date("Y-m-d");
-$booking_time = date("H:i:s");
+    $booking_date = date("Y-m-d");
+    $booking_time = date("H:i:s");
 
-$service_id = 1;
-$booking_status = "Pending";
+    $service_id = 1;
+    $booking_status = "Pending";
 
-$success = false;
+    $success = false;
 
-if ($_POST['confirm_booking'] == 1) {
+    if ($_POST['confirm_booking'] == 1) {
 
-    $file_name = $_FILES['learners_license']['name'];
-    $file_tmp = $_FILES['learners_license']['tmp_name'];
+        $file_name = $_FILES['learners_license']['name'];
+        $file_tmp = $_FILES['learners_license']['tmp_name'];
 
-    move_uploaded_file($file_tmp, "../uploads/" . $file_name);
+        move_uploaded_file($file_tmp, "../uploads/" . $file_name);
 
-    $sql = "INSERT INTO booking_details
-    (
-        student_id,
-        service_id,
-        booking_date,
-        booking_time,
-        booking_status,
-        licence_document,
-        selected_licence_code,
-        selected_package
-    )
-    VALUES
-    (
-        '$student_id',
-        '$service_id',
-        '$booking_date',
-        '$booking_time',
-        '$booking_status',
-        '$file_name',
-        '$code',
-        '$package'
-    )";
+        $sql = "INSERT INTO booking_details
+        (
+            student_id,
+            service_id,
+            booking_date,
+            booking_time,
+            booking_status,
+            licence_document,
+            selected_licence_code,
+            selected_package
+        )
+        VALUES
+        (
+            '$student_id',
+            '$service_id',
+            '$booking_date',
+            '$booking_time',
+            '$booking_status',
+            '$file_name',
+            '$code',
+            '$package'
+        )";
 
-    $success = $conn->query($sql);
-}
+        $success = $conn->query($sql);
+    }
 ?>
 
 <!DOCTYPE html>
