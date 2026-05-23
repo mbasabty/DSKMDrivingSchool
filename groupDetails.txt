@@ -20,6 +20,7 @@ Group members:
                                                                  deleteStaff page
                                                                  update staff page
                                                                  database
+                                                                 designed the logo
     ----------------------------------------------------------------------------------------------                 
     Sekwele Matjomane           4546163     contribution 100%    confirmBooking page
                                                                  bookings page
