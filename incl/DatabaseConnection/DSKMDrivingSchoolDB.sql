@@ -1,11 +1,10 @@
-
--- DATABASE ----------------------------
+-- DATABASE --
 
 CREATE DATABASE IF NOT EXISTS DKSM_Driving_School;
 USE DKSM_Driving_School;
 
 
--- USER LEVEL ----------------------------
+-- USER LEVEL --
 CREATE TABLE user_level (
     user_level_id INT AUTO_INCREMENT PRIMARY KEY,
     user_level_name VARCHAR(30) NOT NULL
@@ -15,8 +14,7 @@ INSERT INTO user_level (user_level_name)
 VALUES ('Admin'), ('Instructor'), ('Student');
 
 
--- USERS ----------------------------
-
+-- USERS --
 
 CREATE TABLE users (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -30,13 +28,18 @@ CREATE TABLE users (
 
 INSERT INTO users (user_name,user_pwd,user_full_name,phone,email,user_level_id)
 VALUES
-('admin','1234','Mbasa Batyi','0812345678','admin@dksm.co.za',1),
-('instructor1','1234','Sipho Dlamini','0823456789','sipho@dksm.co.za',2),
-('instructor2','1234','Jane Smith','0834567890','jane@dksm.co.za',2);
+('admin','GH00','Grant Hearn','0812345678','admin@dksm.co.za',1),
+('instructor1','SD01','Sipho Dlamini','0823456789','sipho@dksm.co.za',2),
+('instructor2','MB02','Mbasa Batyi','0834567890','mbasas@dksm.co.za',2),
+('instructor3','SM03','Sekwele Matjomane','08454567890','sekwele@dksm.co.za',2),
+('instructor4','KN04','Khanya Nkadimeng','04543367890','khanya@dksm.co.za',2),
+('instructor5','DB05','Dineo Booi','0546567890','dineo@dksm.co.za',2),
+('instructor6','ET06','Enrique Thomas','0756567890','enrique@dksm.co.za',2),
+('instructor7','ON7','Olwethu Ngcobo','0834458890','olwethu@dksm.co.za',2),
+('instructor8','GM8','Griffiths Moshoeshoe','0834561290','griffiths@dksm.co.za',2);
 
 
--- STUDENTS -------------------------------
-
+-- STUDENTS ---
 
 CREATE TABLE student (
     student_id INT AUTO_INCREMENT PRIMARY KEY, 
@@ -68,7 +71,11 @@ VALUES
 ('Lerato','Nkosi','lerato','234 Kingsway str','1234','lerato@gmail.com','0812345678','0201011234088','uploads/lerato.pdf','Approved',3),
 ('Siphesihle','Dlamini','sipho','2A Church str','1234','sipho@gmail.com','0823456789','0105055678088','uploads/sipho.pdf','Approved',3),
 ('Ayanda','Mthembu','ayanda','324 Queens str','1234','ayanda@gmail.com','0811111111','0001015009088','uploads/ayanda.pdf','Approved',3),
-('Thando','Zulu','thando','678 Owens str','1234','thando@gmail.com','0822222222','0102026009088','uploads/thando.pdf','Pending',3);
+('Thando','Zulu','thando','678 Owens str','1234','thando@gmail.com','0822222222','0102026009088','uploads/thando.pdf','Pending',3),
+('Nomsa','Khumalo','nomsa','45 Market str','1234','nomsa@gmail.com','0834567890','9903123456088','uploads/nomsa.pdf','Approved',3),
+('Bongani','Mahlangu','bongani','88 Oak str','1234','bongani@gmail.com','0845678901','9804156789088','uploads/bongani.pdf','Pending',3),
+('Zanele','Ndlovu','zanele','12 River str','1234','zanele@gmail.com','0819876543','0112233445088','uploads/zanele.pdf','Approved',3),
+('Siyabonga','Maseko','siyabonga','56 Hill str','1234','siyabonga@gmail.com','0829988776','0006078899088','uploads/siyabonga.pdf','Pending',3);
 
 
 
@@ -124,57 +131,9 @@ VALUES
 (1,1,'2026-05-20','10:00:00','Confirmed','licence1.pdf','Code 08','300'),
 (2,2,'2026-05-21','11:00:00','Confirmed','licence2.pdf','Code 10','300'),
 (3,3,'2026-05-22','12:00:00','Completed','licence3.pdf','Code 14','300'),
-(4,4,'2026-05-23','13:00:00','Pending','licence4.pdf','Code A','300');
+(4,4,'2026-05-23','13:00:00','Pending','licence4.pdf','Code A','300'),
+(5,5,'2026-05-24','09:00:00','Confirmed','licence5.pdf','Code 08','300'),
+(6,6,'2026-05-25','10:30:00','Pending','licence6.pdf','Code 10','300'),
+(7,7,'2026-05-26','11:45:00','Completed','licence7.pdf','Code 14','300'),
+(8,8,'2026-05-27','14:15:00','Cancelled','licence8.pdf','Code A','300');
  
-
--- STUDENT PROGRESS -------------------------------
-
-
-CREATE TABLE student_progress (
-    progress_id INT AUTO_INCREMENT PRIMARY KEY,
-    student_id INT,
-    booking_id INT,
-    progress_date DATE,
-    skill VARCHAR(100),
-    comment VARCHAR(255),
-    readiness_level VARCHAR(50)
-);
-
-INSERT INTO student_progress
-(student_id,booking_id,progress_date,skill,comment,readiness_level)
-VALUES
-(1,1,'2026-05-20','Parking','Good','Intermediate'),
-(2,2,'2026-05-21','Turning','Improving','Intermediate'),
-(3,3,'2026-05-22','Full Control','Test Ready','Ready'),
-(4,4,'2026-05-23','Clutch','Needs practice','Beginner');
-
-
--- DRIVER TEST APPLICATION (NO FOREIGN KEYS) -------------------------------
- 
-
-CREATE TABLE drivers_test_application (
-    application_id INT AUTO_INCREMENT PRIMARY KEY,
-
-    student_id INT,
-    booking_id INT,
-
-    application_date DATETIME DEFAULT CURRENT_TIMESTAMP,
-
-    application_status VARCHAR(30) DEFAULT 'Pending',
-
-    form_file VARCHAR(255),
-    id_copy_file VARCHAR(255),
-    proof_of_address_file VARCHAR(255),
-    eye_test_file VARCHAR(255)
-);
-
-INSERT INTO drivers_test_application
-(student_id,booking_id,
-form_file,id_copy_file,proof_of_address_file,eye_test_file,
-application_status)
-
-VALUES
-(1,1,'form1.pdf','id1.pdf','addr1.pdf','eye1.pdf','Approved'),
-(2,2,'form2.pdf','id2.pdf','addr2.pdf','eye2.pdf','Pending'),
-(3,3,'form3.pdf','id3.pdf','addr3.pdf','eye3.pdf','Approved'),
-(4,4,'form4.pdf','id4.pdf','addr4.pdf','eye4.pdf','Rejected');
