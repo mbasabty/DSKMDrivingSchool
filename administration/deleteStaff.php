@@ -1,42 +1,21 @@
 <?php
-include_once "../incl/DatabaseConnection/dbConn.php";
+    include_once "../incl/DatabaseConnection/dbConn.php";
 
-$message = "";
+    $message = "";
 
-/* -------------------------
-   DELETE USER
---------------------------*/
-if (array_key_exists('user_id', $_POST)) {
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['user_id'])) {
+        $id = $_POST['user_id'];
+        $sql = "DELETE FROM users WHERE user_id = '$id'";
 
-    $id = (int) $_POST['user_id'];
-
-    $stmt = $conn->prepare("DELETE FROM users WHERE user_id = ?");
-
-    if ($stmt) {
-
-        $stmt->bind_param("i", $id);
-
-        if ($stmt->execute()) {
+        if ($conn->query($sql)) {
             $message = "User deleted successfully.";
         } else {
-            $message = "Delete failed: " . $stmt->error;
+            $message = "Delete failed: " . $conn->error;
         }
-
-        $stmt->close();
-
-    } else {
-        $message = "Prepare failed: " . $conn->error;
     }
-}
 
-/* -------------------------
-   LOAD USERS
---------------------------*/
-$result = $conn->query("SELECT * FROM users ORDER BY user_full_name ASC");
-
-if (!$result) {
-    die("SQL Error: " . $conn->error);
-}
+    $result = $conn->query("SELECT * FROM users ORDER BY user_full_name ASC");
+    $conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -60,44 +39,37 @@ if (!$result) {
 
     <div class="register-box">
 
-        <?php if (!empty($message)): ?>
+        <?php if ($message != "") { ?>
             <div class="message">
-                <?= htmlspecialchars($message) ?>
+                <?php echo $message; ?>
             </div>
-        <?php endif; ?>
+        <?php } ?>
 
-        <?php while ($row = $result->fetch_assoc()): ?>
+        <?php while ($row = $result->fetch_assoc()) { ?>
 
             <div style="border:1px solid #ddd; padding:15px; margin-bottom:15px; border-radius:10px;">
 
-                <h3><?= htmlspecialchars($row['user_full_name']) ?></h3>
+                <h3><?php echo $row['user_full_name']; ?></h3>
 
-                <p><b>Username:</b> <?= htmlspecialchars($row['user_name']) ?></p>
-                <p><b>Phone:</b> <?= htmlspecialchars($row['phone']) ?></p>
-                <p><b>Email:</b> <?= htmlspecialchars($row['email']) ?></p>
+                <p><b>Username:</b> <?php echo $row['user_name']; ?></p>
+                <p><b>Phone:</b> <?php echo $row['phone']; ?></p>
+                <p><b>Email:</b> <?php echo $row['email']; ?></p>
 
                 <form method="post">
-
-                    <input type="hidden"
-                           name="user_id"
-                           value="<?= $row['user_id'] ?>">
-
-                    <button type="submit">
-                        Delete Staff
-                    </button>
-
+                    <input type="hidden" name="user_id" value="<?php echo $row['user_id']; ?>">
+                    <button type="submit">Delete User</button>
                 </form>
 
             </div>
 
-        <div class="outside-box">
-            <a href="/DSKMDrivingSchool/administration/adminDasboard.php">
-                <button type="button">
-                 HOME
-                </button>
-            </a>
-        </div>
-        <?php endwhile; ?>
+        <?php } ?>
+
+        <br>
+
+        <a href="/DSKMDrivingSchool/administration/adminDasboard.php">
+            <button type="button">HOME</button>
+        </a>
+
     </div>
 
 </div>
