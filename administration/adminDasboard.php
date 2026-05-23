@@ -5,7 +5,7 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // COUNTS (simplified)
+    // COUNTS 
     $totalStudents = $conn->query("SELECT COUNT(*) AS c 
                                    FROM student")->fetch_assoc()['c'];
 

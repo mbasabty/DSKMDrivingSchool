@@ -1,14 +1,3 @@
-:root {
-    --primary: #0B1F33;
-    --secondary: #6C8EAD;
-    --success: #28a745;
-    --danger: #dc3545;
-    --warning: #ffc107;
-    --white: #ffffff;
-    --yellow: #ffd84c;
-}
-
-/* RESET */
 * {
     margin: 0;
     padding: 0;
@@ -18,12 +7,17 @@
 /* BODY */
 body {
     min-height: 100vh;
-    background: url("../../images/BG4.jpg");
+
+    background:
+        linear-gradient(rgba(11, 31, 51, 0.92), rgba(11, 31, 51, 0.92)),
+        url("../../images/mainBg.JPG");
+
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+
     font-family: Arial, sans-serif;
-    color: var(--white);
+    color: #ffffff;
     padding: 20px;
 }
 
@@ -41,11 +35,17 @@ body {
 .students-header h2 {
     font-size: 2rem;
     margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.students-header p {
+    color: #D5DADF;
 }
 
 /* CARD */
 .students-box {
-    background: rgba(16, 2, 2, 0.75);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(108, 142, 173, 0.25);
     border-radius: 12px;
     padding: 25px;
     backdrop-filter: blur(6px);
@@ -59,34 +59,38 @@ table {
     min-width: 1400px;
 }
 
-/* HEADER */
+/* TABLE HEADER */
 thead {
-    background: var(--yellow);
+    background: #6C8EAD;
 }
 
 thead th {
     padding: 14px;
     text-align: left;
-    color: var(--white);
+    color: #ffffff;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-/* BODY */
+/* TABLE BODY */
 tbody tr {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.04);
     transition: 0.3s ease;
 }
 
 tbody tr:nth-child(even) {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.07);
 }
 
 tbody tr:hover {
-    background: rgba(255, 255, 255, 0.12);
+    background: rgba(108, 142, 173, 0.18);
 }
 
 tbody td {
     padding: 12px;
     border-bottom: 1px solid rgba(255,255,255,0.08);
+    color: #ffffff;
 }
 
 /* STATUS */
@@ -95,14 +99,17 @@ tbody td {
     border-radius: 20px;
     font-weight: bold;
     display: inline-block;
+    font-size: 13px;
 }
 
-.approved {
+.approved,
+.confirmed {
     background: rgba(40,167,69,0.2);
     color: #4cff88;
 }
 
-.declined {
+.declined,
+.cancelled {
     background: rgba(220,53,69,0.2);
     color: #ff6b81;
 }
@@ -110,6 +117,11 @@ tbody td {
 .pending {
     background: rgba(255,193,7,0.2);
     color: #ffd54f;
+}
+
+.completed {
+    background: rgba(108, 142, 173, 0.25);
+    color: #b7d4f0;
 }
 
 /* BUTTONS */
@@ -128,25 +140,27 @@ tbody td {
     transition: 0.3s ease;
 }
 
+/* CONFIRM BUTTON */
 .btn-approve {
-    background: var(--success);
+    background: green;
 }
 
 .btn-approve:hover {
-    background: #218838;
+    background: grey;
 }
 
+/* COMPLETE BUTTON */
 .btn-decline {
-    background: var(--danger);
+    background: red;
 }
 
 .btn-decline:hover {
-    background: #c82333;
+    background: grey;
 }
 
 /* FILE LINK */
 .file-link {
-    color: #87cefa;
+    color: #9ecbff;
     text-decoration: none;
     font-weight: bold;
 }
@@ -155,29 +169,30 @@ tbody td {
     text-decoration: underline;
 }
 
+/* HOME BUTTON CONTAINER */
 .outside-box {
     margin-top: 20px;
     text-align: center;
 }
 
-/* Button styling */
+/* HOME BUTTON */
 .outside-box button {
-    padding: 10px 20px;
-    background-color: #000;   /* BLACK */
-    color: #fff;
+    padding: 10px 22px;
+    background-color: black;
+    color: #ffffff;
     border: none;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 6px;
     font-size: 14px;
+    font-weight: bold;
     transition: 0.3s ease;
 }
 
-/* Hover effect */
 .outside-box button:hover {
-    background-color: #333;   /* dark grey on hover */
+    background-color: #6C8EAD;
 }
 
-/* Optional: remove default link styling */
+/* LINK RESET */
 .outside-box a {
     text-decoration: none;
 }

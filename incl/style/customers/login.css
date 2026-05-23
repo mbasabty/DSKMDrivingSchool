@@ -8,7 +8,8 @@
 body {
     font-family: sans-serif; 
     min-height: 100vh;
-    background: url("../../images/BG4.jpg");
+    background:linear-gradient(rgba(11, 31, 51, 0.9), rgba(11, 31, 51, 0.9)),
+             url("../../images/mainBg.JPG");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -38,7 +39,7 @@ body {
 
 .login-header p {
     font-size: 1rem;
-    color: black;
+    color: white;
     opacity: 0.9;
 }
 
@@ -108,12 +109,12 @@ button:hover {
 .register-text {
     margin-top: 20px;
     font-size: 0.95rem;
-    color: #444;
+    color: white;
 }
 
 /* REGISTER LINK */
 .register-text a {
-    color: black;
+    color: white;
     font: bold;
     text-decoration: none;
     font-weight: bold;
