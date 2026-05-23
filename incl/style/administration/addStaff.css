@@ -8,7 +8,8 @@
 body {
     font-family: sans-serif;
     min-height: 100vh;
-    background: url("../../images/bg4.jpg");
+    background:linear-gradient(rgba(11, 31, 51, 0.9), rgba(11, 31, 51, 0.9)),
+                url("../../images/mainBg.JPG");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -38,7 +39,7 @@ body {
 
 .register-header p {
     opacity: 0.9;
-    color : black;
+    color : white;
 }
 
 /* REGISTER BOX */
@@ -95,7 +96,6 @@ button {
 }
 
 button:hover {
-    background: rgb(253, 231, 34);
     transform: translateY(-2px);
 }
 

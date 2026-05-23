@@ -1,6 +1,7 @@
 body{
     font-family:Arial;
-    background: url(../../images/bg4.JPG);
+     background:linear-gradient(rgba(11, 31, 51, 0.9), rgba(11, 31, 51, 0.9)),
+                url("../../images/mainBg.JPG");
 }
 
 .container{
@@ -33,9 +34,9 @@ h1{
 button{
     width:100%;
     padding:15px;
-    background:rgb(244, 202, 47);
+    background:black;
     border:none;
-    color:red;
+    color:white;
     font-weight: bold;
     font-size:16px;
     border-radius:5px;
