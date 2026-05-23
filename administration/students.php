@@ -1,18 +1,15 @@
 <?php
-    // DATABASE CONNECTION
     include_once "../incl/DatabaseConnection/dbConn.php";
 
-    // CHECK CONNECTION
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    if (isset($_POST['student_id']) && isset($_POST['status'])) {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['student_id'] !== '' && $_POST['status'] !== '') {
         $student_id = $_POST['student_id'];
-        $status     = $_POST['status'];
-
+        $status = $_POST['status'];
         $update = "UPDATE student SET learners_status = ? WHERE student_id = ?";
-        $stmt   = $conn->prepare($update);
+        $stmt = $conn->prepare($update);
         $stmt->bind_param("si", $status, $student_id);
         $stmt->execute();
     }
@@ -24,18 +21,23 @@
             FROM student
             ORDER BY date_registered DESC";
 
-    $result      = $conn->query($sql);
-    $total       = $result ? $result->num_rows : 0;
-
-    // Count statuses
-    $approved = $pending = $declined = 0;
+    $result = $conn->query($sql);
+    $total = $result ? $result->num_rows : 0;
+    $approved = 0;
+    $pending = 0;
+    $declined = 0;
     $rows = [];
+
     if ($result && $result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
             $rows[] = $row;
-            if ($row['learners_status'] === 'Approved')  $approved++;
-            elseif ($row['learners_status'] === 'Declined') $declined++;
-            else $pending++;
+            if ($row['learners_status'] === 'Approved') {
+                $approved++;
+            } elseif ($row['learners_status'] === 'Declined') {
+                $declined++;
+            } else {
+                $pending++;
+            }
         }
     }
 ?>
@@ -211,14 +213,7 @@
     </div>
 </div>
 
-<script>
-    function filterTable() {
-        const q = document.getElementById('searchInput').value.toLowerCase();
-        document.querySelectorAll('#studentsTable tbody tr').forEach(row => {
-            row.style.display = row.textContent.toLowerCase().includes(q) ? '' : 'none';
-        });
-    }
-</script>
+<script src="/DSKMDrivingSchool/incl/js/searchbar.js"></script>
 
 <?php $conn->close(); ?>
 </body>

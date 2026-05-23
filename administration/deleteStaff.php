@@ -1,42 +1,29 @@
 <?php
-include_once "../incl/DatabaseConnection/dbConn.php";
+    include_once "../incl/DatabaseConnection/dbConn.php";
 
-$message = "";
+    $message = "";
 
-/* -------------------------
-   DELETE USER
---------------------------*/
-if (array_key_exists('user_id', $_POST)) {
+    if (array_key_exists('user_id', $_POST)) {
 
-    $id = (int) $_POST['user_id'];
-
-    $stmt = $conn->prepare("DELETE FROM users WHERE user_id = ?");
-
-    if ($stmt) {
-
-        $stmt->bind_param("i", $id);
-
-        if ($stmt->execute()) {
-            $message = "User deleted successfully.";
+        $id = (int) $_POST['user_id'];
+        $deleteQuery = $conn->prepare("DELETE FROM users WHERE user_id = ?");
+        if ($deleteQuery) {
+            $deleteQuery->bind_param("i", $id);
+            if ($deleteQuery->execute()) {
+                $message = "User deleted successfully.";
+            } else {
+                $message = "Delete failed: " . $deleteQuery->error;
+            }
+            $deleteQuery->close();
         } else {
-            $message = "Delete failed: " . $stmt->error;
+            $message = "Prepare failed: " . $conn->error;
         }
-
-        $stmt->close();
-
-    } else {
-        $message = "Prepare failed: " . $conn->error;
     }
-}
 
-/* -------------------------
-   LOAD USERS
---------------------------*/
-$result = $conn->query("SELECT * FROM users ORDER BY user_full_name ASC");
-
-if (!$result) {
-    die("SQL Error: " . $conn->error);
-}
+    $result = $conn->query("SELECT * FROM users ORDER BY user_full_name ASC");
+    if (!$result) {
+        die("SQL Error: " . $conn->error);
+    }
 ?>
 
 <!DOCTYPE html>
@@ -71,7 +58,6 @@ if (!$result) {
             <div style="border:1px solid #ddd; padding:15px; margin-bottom:15px; border-radius:10px;">
 
                 <h3><?= htmlspecialchars($row['user_full_name']) ?></h3>
-
                 <p><b>Username:</b> <?= htmlspecialchars($row['user_name']) ?></p>
                 <p><b>Phone:</b> <?= htmlspecialchars($row['phone']) ?></p>
                 <p><b>Email:</b> <?= htmlspecialchars($row['email']) ?></p>

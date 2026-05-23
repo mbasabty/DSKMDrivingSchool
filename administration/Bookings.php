@@ -466,26 +466,7 @@ if ($result && $result->num_rows > 0) {
 
 </div>
 
-<script>
-
-function filterTable() {
-
-    const q = document.getElementById('searchInput')
-                      .value
-                      .toLowerCase();
-
-    document.querySelectorAll('#bookingsTable tbody tr')
-        .forEach(row => {
-
-            row.style.display =
-                row.textContent.toLowerCase().includes(q)
-                ? ''
-                : 'none';
-
-        });
-}
-
-</script>
+<script src="/DSKMDrivingSchool/incl/js/searchbar.js">
 
 <?php $conn->close(); ?>
 

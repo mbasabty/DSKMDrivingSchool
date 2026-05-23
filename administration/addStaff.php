@@ -47,7 +47,6 @@
             $message = "Execute Error: " . $query->error;
         }
 
-        // ONLY CLOSE IF QUERY EXISTS
         if ($query instanceof mysqli_stmt) {
             $query->close();
         }

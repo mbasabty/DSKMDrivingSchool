@@ -15,19 +15,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                  LIMIT 1";
 
     $queryUsers = $conn->prepare($sqlUsers);
-
     $queryUsers->bind_param("s", $username);
     $queryUsers->execute();
-
     $resultUsers = $queryUsers->get_result();
 
     if ($row = $resultUsers->fetch_assoc()) {
-
         if ($password === $row['user_pwd']) {
-
             setcookie("user_id", $row['user_id'], time() + 3600, "/");
             setcookie("user_level_id", $row['user_level_id'], time() + 3600, "/");
-
             if ($row['user_level_id'] == 1) {
                 header("Location: /DSKMDrivingSchool/administration/adminDasboard.php");
                 exit();
@@ -38,7 +33,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 header("Location: ../customers/customerBrowse.php");
                 exit();
             }
-
         } else {
             $message = "Incorrect password.";
         }
@@ -54,15 +48,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $queryStudent = $conn->prepare($sqlStudent);
         $queryStudent->bind_param("s", $username);
         $queryStudent->execute();
-        
         $resultStudent = $queryStudent->get_result();
-
         if ($student = $resultStudent->fetch_assoc()) {
             if ($password === $student['password']) {
-
                 setcookie("student_id", $student['student_id'], time() + 3600, "/");
                 setcookie("user_level_id", $student['user_level_id'], time() + 3600, "/");
-
                 if ($student['user_level_id'] == 3) {
                     header("Location: /DSKMDrivingSchool/customers/customerBrowse.php");
                     exit();
@@ -76,10 +66,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         } else {
             $message = "User not found.";
         }
-
         $queryStudent->close();
     }
-
     $queryUsers->close();
 }
 ?>

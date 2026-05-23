@@ -48,80 +48,69 @@ $result = mysqli_query($conn, $sql);
 </head>
 
 <body>
-
-<div class="register-wrapper">
-
-    <div class="register-header">
-        <h1>Update Staff</h1>
-
-        <p>
-            Enter Staff ID and fill in the fields you would like to update
-        </p>
-
-        <?php
-            if ($result) {
-                echo "<p style='color:green;'>
-                        Staff updated successfully
-                      </p>";
-            } else {
-                echo "<p style='color:red;'>
-                        Error: " . mysqli_error($conn) . "
-                      </p>";
-            }
-        ?>
-    </div>
-
-    <div class="register-box">
-
-        <form action="updateStaff.php" method="post">
-
+    <div class="register-wrapper">
+        <div class="register-header">
+            <h1>Update Staff</h1>
             <p>
-
-                <input type="number"
-                       name="staff_id"
-                       placeholder="Staff ID"
-                       required><br><br>
-
-                <input type="text"
-                       name="first_name"
-                       placeholder="First Name"><br><br>
-
-                <input type="text"
-                       name="last_name"
-                       placeholder="Last Name"><br><br>
-
-                <input type="text"
-                       name="username"
-                       placeholder="Username"><br><br>
-
-                <input type="text"
-                       name="password"
-                       placeholder="Password"><br><br>
-
-                <input type="text"
-                       name="phone"
-                       placeholder="Contact Number"><br><br>
-
-                <input type="email"
-                       name="email"
-                       placeholder="Email Address"><br><br>
-
-                <input type="number"
-                       name="user_access_id"
-                       placeholder="User Access Level"><br><br>
-
-                <input type="submit"
-                       value="Update Staff"><br><br>
-
+                Enter Staff ID and fill in the fields you would like to update
             </p>
 
-        </form>
+            <?php
+                if ($result) {
+                    echo "<p style='color:green;'>
+                            Staff updated successfully
+                        </p>";
+                } else {
+                    echo "<p style='color:red;'>
+                            Error: " . mysqli_error($conn) . "
+                        </p>";
+                }
+            ?>
+        </div>
 
+        <div class="register-box">
+            <form action="updateStaff.php" method="post">
+                <p>
+                    <input type="number"
+                        name="staff_id"
+                        placeholder="Staff ID"
+                        required><br><br>
+
+                    <input type="text"
+                        name="first_name"
+                        placeholder="First Name"><br><br>
+
+                    <input type="text"
+                        name="last_name"
+                        placeholder="Last Name"><br><br>
+
+                    <input type="text"
+                        name="username"
+                        placeholder="Username"><br><br>
+
+                    <input type="text"
+                        name="password"
+                        placeholder="Password"><br><br>
+
+                    <input type="text"
+                        name="phone"
+                        placeholder="Contact Number"><br><br>
+
+                    <input type="email"
+                        name="email"
+                        placeholder="Email Address"><br><br>
+
+                    <input type="number"
+                        name="user_access_id"
+                        placeholder="User Access Level"><br><br>
+
+                    <input type="submit"
+                        value="Update Staff"><br><br>
+                </p>
+            </form>
+        </div>
     </div>
-
-</div>
-
-</body>
+    </body>
 </html>
 
 <?php
