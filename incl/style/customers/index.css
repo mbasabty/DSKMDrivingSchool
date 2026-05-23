@@ -49,14 +49,14 @@ header p:first-of-type {
 
 /* NAVIGATION */
 nav {
-  background-color: #0B1F33;
+  background-color: white;
   padding: 20px 60px;
   text-align: right;
 }
 
 nav a {
-  background-color: #ffffff;
-  color: #0B1F33;
+  background-color: black;
+  color: white;
   text-decoration: none;
   font-weight: bold;
   font-size: 14px;
