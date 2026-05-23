@@ -1,43 +1,43 @@
 <?php
-// DATABASE CONNECTION
-include_once "../incl/DatabaseConnection/dbConn.php";
+    // DATABASE CONNECTION
+    include_once "../incl/DatabaseConnection/dbConn.php";
 
-// CHECK CONNECTION
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-if (isset($_POST['student_id']) && isset($_POST['status'])) {
-    $student_id = $_POST['student_id'];
-    $status     = $_POST['status'];
-
-    $update = "UPDATE student SET learners_status = ? WHERE student_id = ?";
-    $stmt   = $conn->prepare($update);
-    $stmt->bind_param("si", $status, $student_id);
-    $stmt->execute();
-}
-
-$sql = "SELECT
-            student_id, first_name, last_name, home_address,
-            email, phone, id_number, learners_license_file,
-            learners_status, date_registered
-        FROM student
-        ORDER BY date_registered DESC";
-
-$result      = $conn->query($sql);
-$total       = $result ? $result->num_rows : 0;
-
-// Count statuses
-$approved = $pending = $declined = 0;
-$rows = [];
-if ($result && $result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        $rows[] = $row;
-        if ($row['learners_status'] === 'Approved')  $approved++;
-        elseif ($row['learners_status'] === 'Declined') $declined++;
-        else $pending++;
+    // CHECK CONNECTION
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
     }
-}
+
+    if (isset($_POST['student_id']) && isset($_POST['status'])) {
+        $student_id = $_POST['student_id'];
+        $status     = $_POST['status'];
+
+        $update = "UPDATE student SET learners_status = ? WHERE student_id = ?";
+        $stmt   = $conn->prepare($update);
+        $stmt->bind_param("si", $status, $student_id);
+        $stmt->execute();
+    }
+
+    $sql = "SELECT
+                student_id, first_name, last_name, home_address,
+                email, phone, id_number, learners_license_file,
+                learners_status, date_registered
+            FROM student
+            ORDER BY date_registered DESC";
+
+    $result      = $conn->query($sql);
+    $total       = $result ? $result->num_rows : 0;
+
+    // Count statuses
+    $approved = $pending = $declined = 0;
+    $rows = [];
+    if ($result && $result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $rows[] = $row;
+            if ($row['learners_status'] === 'Approved')  $approved++;
+            elseif ($row['learners_status'] === 'Declined') $declined++;
+            else $pending++;
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
