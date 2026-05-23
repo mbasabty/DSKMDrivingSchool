@@ -9,7 +9,6 @@ if ($conn->connect_error) {
 
 // Get values from form
 $staff_id = $_POST['staff_id'];
-
 $first_name = $_POST['first_name'];
 $last_name = $_POST['last_name'];
 $username = $_POST['username'];
