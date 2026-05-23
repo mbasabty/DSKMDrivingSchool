@@ -155,18 +155,29 @@ tbody td {
     text-decoration: underline;
 }
 
-/* MOBILE */
-@media (max-width: 768px) {
+.outside-box {
+    margin-top: 20px;
+    text-align: center;
+}
 
-    .students-header h2 {
-        font-size: 1.6rem;
-    }
+/* Button styling */
+.outside-box button {
+    padding: 10px 20px;
+    background-color: #000;   /* BLACK */
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: 0.3s ease;
+}
 
-    .students-box {
-        padding: 15px;
-    }
+/* Hover effect */
+.outside-box button:hover {
+    background-color: #333;   /* dark grey on hover */
+}
 
-    table {
-        min-width: 1400px;
-    }
+/* Optional: remove default link styling */
+.outside-box a {
+    text-decoration: none;
 }

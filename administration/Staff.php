@@ -1,21 +1,21 @@
 <?php
-    include_once "../incl/DatabaseConnection/dbConn.php";
+include_once "../incl/DatabaseConnection/dbConn.php";
 
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+if ($conn->connect_error) {
+    echo "Connection failed: " . $conn->connect_error;
+}
 
-    $sql = "SELECT 
-                users.user_full_name,
-                users.phone,
-                users.email,
-                user_level.user_level_name
-            FROM users
-            INNER JOIN user_level 
-            ON users.user_level_id = user_level.user_level_id
-            ORDER BY users.user_full_name ASC";
+$sql = "SELECT 
+            users.user_full_name,
+            users.phone,
+            users.email,
+            user_level.user_level_name
+        FROM users
+        INNER JOIN user_level 
+        ON users.user_level_id = user_level.user_level_id
+        ORDER BY users.user_full_name ASC";
 
-    $result = $conn->query($sql);
+$result = $conn->query($sql);
 ?>
 
 <!DOCTYPE html>
@@ -30,73 +30,80 @@
 
 <body>
 
-    <div class="staff-wrapper">
+<div class="staff-wrapper">
 
-        <!-- HEADER -->
-        <div class="staff-header">
-            <h2>Staff Table</h2>
-            <p>View all registered staff members</p>
-        </div>
+    <!-- HEADER -->
+    <div class="staff-header">
+        <h2>Staff Table</h2>
+        <p>View all registered staff members</p>
+    </div>
 
-        <!-- TABLE CARD -->
-        <div class="staff-box">
+    <!-- TABLE CARD -->
+    <div class="staff-box">
 
-            <table>
-                <thead>
+        <table>
+            <thead>
+                <tr>
+                    <th>Staff Full Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Position</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+            <?php
+            if ($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()) {
+                    echo "
+                        <tr>
+                            <td>{$row['user_full_name']}</td>
+                            <td>{$row['phone']}</td>
+                            <td>{$row['email']}</td>
+                            <td>{$row['user_level_name']}</td>
+                        </tr>
+                    ";
+                }
+            } else {
+                echo "
                     <tr>
-                        <th>Staff Full Name</th>
-                        <th>Phone</th>
-                        <th>Email</th>
-                        <th>Position</th>
+                        <td colspan='4' class='no-records'>
+                            No records found
+                        </td>
                     </tr>
-                </thead>
+                ";
+            }
+            $conn->close();
+            ?>
 
-                <tbody>
-
-                    <?php
-                    if ($result->num_rows > 0) {
-                        while($row = $result->fetch_assoc()) {
-                            echo "
-                                <tr>
-                                    <td>{$row['user_full_name']}</td>
-                                    <td>{$row['phone']}</td>
-                                    <td>{$row['email']}</td>
-                                    <td>{$row['user_level_name']}</td>
-                                </tr>
-                            ";
-                        }
-                    } else {
-                        echo "
-                            <tr>
-                                <td colspan='4' class='no-records'>
-                                    No records found
-                                </td>
-                            </tr>
-                        ";
-                    }
-                    $conn->close();
-                    ?>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="outside-box">
-                <a class="staff-btn"
-                href="/DSKMDrivingSchool/administration/addStaff.php">
-                ADD STAFF
-                </a>
-
-                <a class="staff-btn"
-                href="/DSKMDrivingSchool/administration/deleteStaff.php">
-                DELETE STAFF
-                </a>
-
-                <a class="staff-btn"
-                href="/DSKMDrivingSchool/administration/updateStaff.php">
-                UPDATE STAFF
-                </a>
-        </div>
+            </tbody>
+        </table>
 
     </div>
+
+    <!-- BUTTONS -->
+    <div class="outside-box">
+
+        <a class="staff-btn" href="/DSKMDrivingSchool/administration/addStaff.php">
+            ADD STAFF
+        </a>
+
+        <a class="staff-btn" href="/DSKMDrivingSchool/administration/deleteStaff.php">
+            DELETE STAFF
+        </a>
+
+        <a class="staff-btn" href="/DSKMDrivingSchool/administration/updateStaff.php">
+            UPDATE STAFF
+        </a>
+
+        <a class="staff-btn" href="/DSKMDrivingSchool/administration/adminDasboard.php">
+            HOME
+        </a>
+
+    </div>
+
+</div>
+
 </body>
 </html>

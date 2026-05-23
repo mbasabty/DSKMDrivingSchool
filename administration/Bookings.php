@@ -168,7 +168,15 @@
                     </tbody>
                 </table>
             </div>
-        </div>
+            <div class="outside-box" style="margin-top:20px; text-align:center;">
+
+            <a href="/DSKMDrivingSchool/administration/adminDasboard.php">
+                <button type="button" >
+                    HOME
+                </button>
+            </a>
+
+            </div>
     </body>
 </html>
 

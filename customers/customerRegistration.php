@@ -1,67 +1,64 @@
 <?php
-    include_once '../incl/DatabaseConnection/dbconn.php';
+include_once '../incl/DatabaseConnection/dbconn.php';
 
-    $message = "";
+$message = "";
 
-    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-        $first_name = trim($_POST['first_name']);
-        $last_name = trim($_POST['surname']);
-        $email = trim($_POST['email_address']);
-        $phone = trim($_POST['phone_number']);
-        $address = trim($_POST['home_address']);
-        $id_number = trim($_POST['id_number']);
-        $username = trim($_POST['username']);
-        $password_plain = $_POST['password'];
+    $first_name = $_POST['first_name'];
+    $last_name = $_POST['surname'];
+    $email = $_POST['email_address'];
+    $phone = $_POST['phone_number'];
+    $address = $_POST['home_address'];
+    $id_number = $_POST['id_number'];
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
-        $license_file = NULL;
-        $learners_status = "Pending";
-        $date_registered = date("Y-m-d H:i:s");
+    $learners_status = "Pending";
+    $date_registered = date("Y-m-d H:i:s");
+    $license_file = NULL;
 
-        $sql = "INSERT INTO student
-        (
-            first_name,
-            last_name,
-            username,
-            home_address,
-            password,
-            email,
-            phone,
-            id_number,
-            learners_license_file,
-            learners_status,
-            date_registered
-        )
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO student
+    (
+        first_name,
+        last_name,
+        username,
+        home_address,
+        password,
+        email,
+        phone,
+        id_number,
+        learners_license_file,
+        learners_status,
+        date_registered
+    )
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-        $query = $conn->prepare($sql);
+    $stmt = $conn->prepare($sql);
 
-        if (!$query) {
-            die("Prepare failed: " . $conn->error);
-        }
+    $stmt->bind_param(
+        "sssssssssss",
+        $first_name,
+        $last_name,
+        $username,
+        $address,
+        $password,
+        $email,
+        $phone,
+        $id_number,
+        $license_file,
+        $learners_status,
+        $date_registered
+    );
 
-        $query->bind_param(
-            "sssssssssss",
-            $first_name,
-            $last_name,
-            $username,
-            $address,
-            $password_plain,
-            $email,
-            $phone,
-            $id_number,
-            $license_file,
-            $learners_status,
-            $date_registered
-        );
-
-        if ($query->execute()) {
-            $message = "Registration successful!";
-        } else {
-            $message = "Insert error: " . $query->error;
-        }
-        $query->close();
+    if ($stmt->execute()) {
+        $message = "Registration successful!";
+    } else {
+        $message = "Error: " . $stmt->error;
     }
+
+    $stmt->close();
+}
 ?>
 
 <!DOCTYPE html>
