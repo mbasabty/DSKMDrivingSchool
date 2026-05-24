@@ -125,7 +125,7 @@
             Successfully Booked!
         </div>
 
-        <form action="/DSKMDrivingSchool/customers/index.html" method="post">
+        <form action="/DSKMDrivingSchool/index.html" method="post">
             <button type="submit">Logout</button>
         </form>
 
