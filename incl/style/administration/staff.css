@@ -1,11 +1,11 @@
-/* RESET */
+/* reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* BODY */
+/* body */
 body {
     min-height: 100vh;
     background:
@@ -19,14 +19,14 @@ body {
     padding: 20px;
 }
 
-/* WRAPPER */
+/* wrapper */
 .staff-wrapper {
     width: 100%;
     max-width: 1400px;
     margin: auto;
 }
 
-/* HEADER */
+/* header */
 .staff-header {
     text-align: center;
     margin-bottom: 25px;
@@ -42,7 +42,7 @@ body {
     color: #D5DADF;
 }
 
-/* CARD */
+/* card */
 .staff-box {
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(108, 142, 173, 0.25);
@@ -52,14 +52,14 @@ body {
     overflow-x: auto;
 }
 
-/* TABLE */
+/* table */
 table {
     width: 100%;
     border-collapse: collapse;
     min-width: 900px;
 }
 
-/* TABLE HEADER */
+
 thead {
     background: #6C8EAD;
 }
@@ -73,7 +73,7 @@ thead th {
     letter-spacing: 1px;
 }
 
-/* TABLE BODY */
+
 tbody tr {
     background: rgba(255, 255, 255, 0.04);
     transition: 0.3s ease;
@@ -94,7 +94,7 @@ tbody td {
     font-size: 0.95rem;
 }
 
-/* BUTTON CONTAINER */
+
 .outside-box {
     margin-top: 20px;
     display: flex;
@@ -102,7 +102,7 @@ tbody td {
     gap: 15px;
 }
 
-/* BUTTON */
+
 .staff-btn {
     text-decoration: none;
     padding: 10px 22px;
@@ -118,7 +118,7 @@ tbody td {
     background-color: grey;
 }
 
-/* NO RECORDS */
+
 .no-records {
     text-align: center;
     color: #ff6b81;
@@ -126,7 +126,6 @@ tbody td {
     padding: 20px;
 }
 
-/* SCROLLBAR */
 .staff-box::-webkit-scrollbar {
     height: 10px;
 }

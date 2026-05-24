@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-/* BODY */
+/* body */
 body {
     font-family: sans-serif; 
     min-height: 100vh;
@@ -19,14 +19,14 @@ body {
     padding: 20px;
 }
 
-/* MAIN WRAPPER */
+/* main wrapper */
 .login-wrapper {
     width: 100%;
     max-width: 420px;
     text-align: center;
 }
 
-/* HEADER */
+/* header */
 .login-header {
     margin-bottom: 25px;
     color: white;
@@ -43,7 +43,7 @@ body {
     opacity: 0.9;
 }
 
-/* LOGIN CARD */
+/* login */
 .login-box {
     background: rgba(255,255,255,0.95);
     padding: 40px;
@@ -52,7 +52,7 @@ body {
     backdrop-filter: blur(5px);
 }
 
-/* ERROR MESSAGE */
+/* error msg */
 .error {
     background: #ffe5e5;
     color: #b00020; /* fixed typo */
@@ -62,14 +62,14 @@ body {
     font-size: 0.95rem;
 }
 
-/* FORM */
+/* form */
 form {
     display: flex;
     flex-direction: column;
     gap: 18px;
 }
 
-/* INPUTS */
+/* inputs */
 input {
     padding: 14px;
     border: 1px solid #ccc;
@@ -80,7 +80,7 @@ input {
     transition: 0.3s;
 }
 
-/* BUTTON */
+/* buttons */
 button {
     background:black;
     color: white;
@@ -105,14 +105,14 @@ button:hover {
     transform: translateY(-2px);
 }
 
-/* REGISTER TEXT */
+/* register */
 .register-text {
     margin-top: 20px;
     font-size: 0.95rem;
     color: white;
 }
 
-/* REGISTER LINK */
+/* register link */
 .register-text a {
     color: white;
     font: bold;

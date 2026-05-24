@@ -1,7 +1,7 @@
 -- DATABASE --
 
-CREATE DATABASE IF NOT EXISTS DKSM_Driving_School;
-USE DKSM_Driving_School;
+CREATE DATABASE IF NOT EXISTS DSKM_Driving_School;
+USE DSKM_Driving_School;
 
 
 -- USER LEVEL --
