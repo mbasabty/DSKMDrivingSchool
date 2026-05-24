@@ -2,23 +2,23 @@
     include_once "../incl/DatabaseConnection/dbConn.php";
 
     if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
+        echo "Connection failed: " . $conn->connect_error ;
     }
 
     // COUNTS 
-    $totalStudents = $conn->query("SELECT COUNT(*) AS c 
-                                   FROM student")->fetch_assoc()['c'];
+    $totalStudents = $conn->query("SELECT COUNT(*) AS students
+                                   FROM student")->fetch_assoc()['students'];
 
-    $totalBookings = $conn->query("SELECT COUNT(*) AS c 
-                                   FROM booking_details")->fetch_assoc()['c'];
+    $totalBookings = $conn->query("SELECT COUNT(*) AS bookings
+                                   FROM booking_details")->fetch_assoc()['bookings'];
 
-    $totalInstructors = $conn->query("SELECT COUNT(*) AS c 
+    $totalInstructors = $conn->query("SELECT COUNT(*) AS staff
                                       FROM users 
-                                      WHERE user_level_id = 2")->fetch_assoc()['c'];
+                                      WHERE user_level_id = 2")->fetch_assoc()['staff'];
 
-    $totalAdmins = $conn->query("SELECT COUNT(*) AS c 
+    $totalAdmins = $conn->query("SELECT COUNT(*) AS staff 
                                  FROM users 
-                                 WHERE user_level_id = 1")->fetch_assoc()['c'];
+                                 WHERE user_level_id = 1")->fetch_assoc()['staff'];
 
     // LISTS
     $recentStudents = $conn->query("
@@ -77,7 +77,8 @@
         <!-- TOPBAR -->
         <header class="topbar">
             <div class="topbar-title">
-                <h2>Welcome Back Admin</h2>
+                <h2>Welcome back Admin</h2>
+                <br>
                 <p>Here's what's happening today</p>
             </div>
         </header>

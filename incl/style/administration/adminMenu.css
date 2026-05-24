@@ -1,18 +1,12 @@
-:root {
-    --primary: #0B1F33;
-    --secondary: #6C8EAD;
-    --white: #ffffff;
-    --background: #E6E8EA;
-}
 
-/* RESET */
+/* reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* BODY */
+/* body */
 body {
     min-height: 100vh;
     background: url("../../images/BG4.jpg");
@@ -28,7 +22,7 @@ body {
     padding: 20px;
 }
 
-/* TITLE */
+/* title */
 h2 {
     font-size: 2rem;
     margin-bottom: 10px;
@@ -36,7 +30,7 @@ h2 {
     color: var(--white);
 }
 
-/* WELCOME TEXT */
+
 .welcome {
     color: red;
     font-size: 1rem;
@@ -44,13 +38,12 @@ h2 {
     text-align: center;
 }
 
-/* MAIN CONTAINER */
 .page-container {
     width: 100%;
     max-width: 420px;
 }
 
-/* CARD */
+
 .button-group {
     width: 100%;
     padding: 40px 30px;
@@ -64,7 +57,7 @@ h2 {
     text-align: center;
 }
 
-/* BUTTON LINKS */
+
 .button-group a {
     width: 100%;
     text-decoration: none;
@@ -77,24 +70,9 @@ h2 {
     transition: 0.3s ease;
 }
 
-/* HOVER EFFECT */
+
 .button-group a:hover {
     background: #d6d6d6;
     transform: translateY(-2px);
 }
 
-/* MOBILE */
-@media (max-width: 480px) {
-    .button-group {
-        padding: 30px 20px;
-    }
-    h2 {
-        font-size: 1.8rem;
-    }
-    .welcome {
-        font-size: 0.95rem;
-    }
-    .button-group a {
-        font-size: 0.95rem;
-    }
-}

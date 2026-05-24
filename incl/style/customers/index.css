@@ -1,11 +1,11 @@
-/* RESET */
+/* rest */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* BODY */
+/* body */
 body {
   font-family: Arial, Helvetica, sans-serif;
   background-color: #E6E8EA;
@@ -13,7 +13,7 @@ body {
   line-height: 1.6;
 }
 
-/* HEADER */
+/* headers */
 .header {
   display: flex;
   align-items: center;
@@ -47,7 +47,7 @@ header p:first-of-type {
   opacity: 0.9;
 }
 
-/* NAVIGATION */
+/* nav */
 nav {
   background-color: white;
   padding: 20px 60px;
@@ -71,7 +71,7 @@ nav a:hover {
   color: #ffffff;
 }
 
-/* SECTIONS */
+/* sections */
 section {
   padding: 60px;
   border-bottom: 1px solid #D5DADF;
@@ -97,9 +97,10 @@ section p {
   font-size: 16px;
   color: #0B1F33;
   max-width: 700px;
+  justify-content:center;
 }
 
-/* STATS */
+/* stats */
 section > ul:not(.why-list):not(.instructor-list) {
   list-style: none;
   display: flex;
@@ -124,7 +125,7 @@ section > ul:not(.why-list):not(.instructor-list) strong {
   color: #fff;
 }
 
-/* WHY CHOOSE US */
+/* why choose us */
 .why-list {
   list-style: none;
   display: grid;
@@ -140,7 +141,7 @@ section > ul:not(.why-list):not(.instructor-list) strong {
   border-radius: 6px;
 }
 
-/* SERVICES */
+/* services */
 section ol {
   list-style: none;
   display: grid;
@@ -173,7 +174,7 @@ section ol li {
 section ol li p {
     color: #ffffff;
 }
-/* INSTRUCTORS */
+/* instructors */
 .instructor-list {
   list-style: none;
   display: grid;
@@ -204,7 +205,7 @@ section ol li p {
   object-fit: cover;
 }
 
-/* REVIEWS */
+/* reviews */
 .reviews-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -219,7 +220,7 @@ section ol li p {
   border-radius: 6px;
 }
 
-/* FOOTER */
+/* footer */
 .footer-container .custom-footer {
   background:
     linear-gradient(rgba(11, 31, 51, 0.95), rgba(11, 31, 51, 0.95)),

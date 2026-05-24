@@ -18,7 +18,7 @@ Group members:
     ----------------------------------------------------------------------------------------------                                                              
     Khanya Nkadimeng            4564420     contribution 100%    addStaff page
                                                                  deleteStaff page
-                                                                 update staff page
+                                                                 updateStaff page
                                                                  database
                                                                  designed the logo
     ----------------------------------------------------------------------------------------------                 
@@ -42,4 +42,4 @@ GITHUB REPOSITORY (PROJECT EVIDENCE)
 The project repository was used for version control and integration of all group work.
 
 Repository Link:
-https://github.com/mbasabty/IFS242-DSKMDrivingSchool.git
+https://github.com/mbasabty/DSKMDrivingSchool.git

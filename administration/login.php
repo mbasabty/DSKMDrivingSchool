@@ -41,7 +41,7 @@
                     setcookie("student_id", $student['student_id'], time() + 3600, "/");
                     setcookie("user_level_id", $student['user_level_id'], time() + 3600, "/");
                     if ($student['user_level_id'] == 3) {
-                        header("Location: /DSKMDrivingSchool/customers/customerBrowse.php");
+                        header("Location: /DSKMDrivingSchool/customers/customerBrowse.html");
                         exit();
                     } else {
                         header("Location: studentMenu.php");
@@ -110,7 +110,7 @@
     </p>
 
     <div class="outside-box">
-        <a href="/DSKMDrivingSchool/customers/customerBrowse.php">
+        <a href="/DSKMDrivingSchool/customers/customerBrowse.html">
             <button type="button">
                 Continue browsing without login
             </button>

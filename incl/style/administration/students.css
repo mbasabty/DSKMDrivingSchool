@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-/* BODY */
+/* body */
 body {
     min-height: 100vh;
 
@@ -21,12 +21,12 @@ body {
     padding: 20px;
 }
 
-/* WRAPPER */
+/* wrapper */
 .students-wrapper {
     width: 100%;
 }
 
-/* HEADER */
+/* header */
 .students-header {
     text-align: center;
     margin-bottom: 25px;
@@ -42,7 +42,7 @@ body {
     color: #D5DADF;
 }
 
-/* CARD */
+/* caard */
 .students-box {
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(108, 142, 173, 0.25);
@@ -52,14 +52,14 @@ body {
     overflow-x: auto;
 }
 
-/* TABLE */
+/* table */
 table {
     width: 100%;
     border-collapse: collapse;
     min-width: 1400px;
 }
 
-/* TABLE HEADER */
+
 thead {
     background: #6C8EAD;
 }
@@ -73,7 +73,7 @@ thead th {
     letter-spacing: 1px;
 }
 
-/* TABLE BODY */
+
 tbody tr {
     background: rgba(255, 255, 255, 0.04);
     transition: 0.3s ease;
@@ -93,7 +93,7 @@ tbody td {
     color: #ffffff;
 }
 
-/* STATUS */
+/* stat */
 .status {
     padding: 6px 12px;
     border-radius: 20px;
@@ -124,7 +124,7 @@ tbody td {
     color: #b7d4f0;
 }
 
-/* BUTTONS */
+/* btn */
 .action-buttons {
     display: flex;
     gap: 10px;
@@ -140,7 +140,7 @@ tbody td {
     transition: 0.3s ease;
 }
 
-/* CONFIRM BUTTON */
+/* CONFIRM btn */
 .btn-approve {
     background: green;
 }
@@ -149,7 +149,7 @@ tbody td {
     background: grey;
 }
 
-/* COMPLETE BUTTON */
+/* COMPLETE btn */
 .btn-decline {
     background: red;
 }
@@ -158,7 +158,7 @@ tbody td {
     background: grey;
 }
 
-/* FILE LINK */
+
 .file-link {
     color: #9ecbff;
     text-decoration: none;
@@ -169,13 +169,13 @@ tbody td {
     text-decoration: underline;
 }
 
-/* HOME BUTTON CONTAINER */
+
 .outside-box {
     margin-top: 20px;
     text-align: center;
 }
 
-/* HOME BUTTON */
+
 .outside-box button {
     padding: 10px 22px;
     background-color: black;

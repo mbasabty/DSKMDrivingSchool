@@ -1,21 +1,21 @@
 <?php
-include_once "../incl/DatabaseConnection/dbConn.php";
+    include_once "../incl/DatabaseConnection/dbConn.php";
 
-if ($conn->connect_error) {
-    echo "Connection failed: " . $conn->connect_error;
-}
+    if ($conn->connect_error) {
+        echo "Connection failed: " . $conn->connect_error;
+    }
 
-$sql = "SELECT 
-            users.user_full_name,
-            users.phone,
-            users.email,
-            user_level.user_level_name
-        FROM users
-        INNER JOIN user_level 
-        ON users.user_level_id = user_level.user_level_id
-        ORDER BY users.user_full_name ASC";
+    $sql = "SELECT 
+                users.user_full_name,
+                users.phone,
+                users.email,
+                user_level.user_level_name
+            FROM users
+            INNER JOIN user_level 
+            ON users.user_level_id = user_level.user_level_id
+            ORDER BY users.user_full_name ASC";
 
-$result = $conn->query($sql);
+    $result = $conn->query($sql);
 ?>
 
 <!DOCTYPE html>
@@ -98,7 +98,7 @@ $result = $conn->query($sql);
         </a>
 
         <a class="staff-btn" href="/DSKMDrivingSchool/administration/adminDasboard.php">
-            HOME
+            BACK
         </a>
 
     </div>

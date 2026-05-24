@@ -1,7 +1,16 @@
 # DSKMDrivingSchool Website Setup
-
 ## Overview
-IFS242 is a group assignment that contributes approximately 40% of our final semester mark. The project involves designing and programming a functional server-side website that sells products or offers services to customers. The website is accessible to both customers and administrators.
+IFS242 is a group assignment that contributes approximately 40% of our final semester mark. 
+The project involves designing and programming a functional server-side website that offers a service to customers. 
+The website is accessible to both customers and administrators.
+
+---
+
+## Requirements
+Before running the project, make sure you have the following installed:
+
+- MAMP
+- A web browser
 
 ---
 
@@ -42,16 +51,10 @@ incl/DatabaseConnection/
 Update credentials:
 
 <?php
-
-mysqli_report(MYSQLI_REPORT_ERROR);
-
-$conn = new mysqli(
-    "localhost",
-    "your_username",
-    "your_password",
-    "DKSM_Driving_School"
-);
-
+    mysqli_report(MYSQLI_REPORT_ERROR);
+    $conn = new mysqli(
+        "localhost","your_username","your_password","DKSM_Driving_School"
+    );
 ?>
 
 IMPORTANT: Replace username and password with your own MAMP/MySQL credentials.
@@ -59,34 +62,33 @@ IMPORTANT: Replace username and password with your own MAMP/MySQL credentials.
 ---
 
 ### 5. Import Database
-Make sure the database DKSM_Driving_School is imported into phpMyAdmin.
+Make sure the database DKSM_Driving_School is imported into phpMyAdmin by refreshing after
+importing the .sql fie
+
+"DSKMDrivingSchoolDB.sql"
 
 ---
 
 ### 6. Open the Website
 Open your browser and go to:
 
-http://localhost:8888/DSKMDrivingSchool/Customers/
-
----
-
-## Note About Ports
-- Default MAMP port: 8888
-- If it does not work, check MAMP port settings
-- Some systems use port 80
-
----
+http://localhost/DSKMDrivingSchool/Customers/
 
 ## Access Levels
 
 Customers:
-- Browse services
 - View driving school information
+- Browse services
+- Book a service
 
-Administrators:
-- Manage website content
+Administrator:
+- Manage staff and bookings
 - Access admin dashboard
-- Login via same login page (auto redirect)
+- Login via same login page as customers
+
+    To access the admin dashboard use:
+    username: admin
+    password: GH00
 
 ---
 
