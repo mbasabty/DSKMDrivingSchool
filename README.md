@@ -14,6 +14,14 @@ Before running the project, make sure you have the following installed:
 
 ---
 
+## Requirements
+Before running the project, make sure you have the following installed:
+
+- MAMP
+- A web browser
+
+---
+
 ## Setup Instructions
 
 ### 1. Start Your Server
@@ -22,7 +30,7 @@ Open MAMP and ensure that both Apache and MySQL servers are running.
 ---
 
 ### 2. Download the Project Folder
-Download the project folder:
+Download or clone the project folder:
 
 DSKMDrivingSchool
 
@@ -36,10 +44,8 @@ MAMP/htdocs/DSKMDrivingSchool
 ---
 
 ### 4. Database Configuration
-Firstly, locate the .sql file of the database under the folder "groupDetails" 
-and import onto your myPHPAdmin. 
+Open the database connection file:
 
-Secondly, open the database connection file:
 incl/DatabaseConnection/
 
 Update credentials:
