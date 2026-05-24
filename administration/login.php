@@ -62,7 +62,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Login - DSKM Driving School</title>
 
     <link rel="icon" type="image/x-icon" href="../incl/images/logo2.png">
     <link rel="stylesheet" href="../incl/style/customers/login.css">
@@ -99,6 +99,7 @@
 
             <button type="submit">Login</button>
         </form>
+
     </div>
 
     <p class="register-text">

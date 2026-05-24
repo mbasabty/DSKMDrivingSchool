@@ -75,7 +75,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confirm Booking</title>
+    <title>Confirm Booking - DSKM Driving School</title>
     <link rel="icon" type="image/x-icon" href="../incl/images/logo2.png">
     <link rel="stylesheet" href="/DSKMDrivingSchool/incl/style/customers/confirmBooking.css">
 </head>
@@ -89,13 +89,9 @@
     <div class="summary">
 
         <p><strong>Licence Code:</strong> <?= $code ?></p>
-
         <p><strong>Selected Package:</strong> R<?= number_format($package,2) ?></p>
-
         <p><strong>VAT Exclusive:</strong> R<?= number_format($vat_excl,2) ?></p>
-
         <p><strong>VAT 15%:</strong> R<?= number_format($vat,2) ?></p>
-
         <p class="total">Grand Total: R<?= number_format($total,2) ?></p>
 
     </div>

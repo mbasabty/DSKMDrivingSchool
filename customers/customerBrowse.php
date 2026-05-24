@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book your lesson</title>
+    <title>Book your lesson - DSKM Driving School</title>
     <link rel="icon" type="image/x-icon" href="../incl/images/logo2.png">
     <link rel="stylesheet" href="../incl/style/customers/customerBrowse.css">
 </head>
@@ -79,7 +79,7 @@
                 <div class="license-card">
                     <label>Code C1/C (10): Medium/Heavy Trucks</label>
                     <img 
-                        src="../incl/images/MediumTrucks.png" 
+                        src="../incl/images/MediumTruck.png" 
                         alt="Truck license icon"
                     >
                     <select name="code_c1">
@@ -91,7 +91,7 @@
                 <div class="license-card">
                     <label>Code EC (14): Heavy Trucks</label>
                     <img 
-                        src="../incl/images/HeavyTrucks.png" 
+                        src="../incl/images/HeavyTruck.png" 
                         alt="Heavy truck icon"
                     >
                     <select name="code_ec">
