@@ -1,8 +1,6 @@
 <?php
 
-/* 
- * DB connection include file.
- */
+/* DB connection include file. */
 
 mysqli_report(MYSQLI_REPORT_ERROR);
     $conn = new mysqli(

@@ -57,16 +57,16 @@ CREATE TABLE student (
     date_registered DATETIME DEFAULT CURRENT_TIMESTAMP);
 
 INSERT INTO student (
-first_name,
-last_name,
-username,
-home_address,
-password,
-email,
-phone,
-id_number,
-learners_license_file,
-learners_status,user_level_id) 
+    first_name,
+    last_name,
+    username,
+    home_address,
+    password,
+    email,
+    phone,
+    id_number,
+    learners_license_file,
+    learners_status,user_level_id) 
 VALUES 
 ('Lerato','Nkosi','lerato','234 Kingsway str','1234','lerato@gmail.com','0812345678','0201011234088','uploads/lerato.pdf','Approved',3),
 ('Siphesihle','Dlamini','sipho','2A Church str','1234','sipho@gmail.com','0823456789','0105055678088','uploads/sipho.pdf','Approved',3),
