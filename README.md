@@ -5,30 +5,6 @@ IFS242 is a group assignment that contributes approximately 40% of our final sem
 
 ---
 
-## Folder Structure
-
-DSKMDrivingSchool/
-│
-├── administration/
-│
-├── customers/
-│
-├── incl/
-│   ├── DatabaseConnection/
-│   ├── images/
-│   ├── js/
-│   └── style/
-│       ├── administration/
-│       └── customers/
-│
-├── nbproject/
-│
-├── groupDetails.txt
-│
-└── README.md
-
----
-
 ## Requirements
 Before running the project, make sure you have the following installed:
 
