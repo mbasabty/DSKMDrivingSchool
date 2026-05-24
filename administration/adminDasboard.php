@@ -62,7 +62,7 @@
             <li><a href="/DSKMDrivingSchool/administration/students.php">Students</a></li>
             <li><a href="/DSKMDrivingSchool/administration/Bookings.php">Bookings</a></li>
             <li><a href="/DSKMDrivingSchool/administration/staff.php">Staff</a></li>
-            <li><a href="/DSKMDrivingSchool/customers/index.html">Logout</a></li>
+            <li><a href="/DSKMDrivingSchool/index.html">Logout</a></li>
         </ul>
 
         <div class="sidebar-foot">
