@@ -1,7 +1,9 @@
 # DSKMDrivingSchool Website Setup
 
 ## Overview
-IFS242 is a group assignment that contributes approximately 40% of our final semester mark. The project involves designing and programming a functional server-side website that sells products or offers services to customers. The website is accessible to both customers and administrators.
+IFS242 is a group assignment that contributes approximately 40% of our final semester mark. 
+The project involves designing and programming a functional server-side website that sells products or offers services to customers. 
+The website is accessible to both customers and administrators.
 
 ---
 
@@ -35,4 +37,4 @@ http://localhost/DSKMDrivingSchool/Customers/
 
 ## Access
 - **Customers:** Can browse and use the website services.
-- **Administrators:** Can manage the website through the admin functionality.
+- **Administrators:** Can manage the website through the admin functionality. They log in using the same login page as customers and will be redirected to their respective dashboard after successful login.

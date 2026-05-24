@@ -18,7 +18,7 @@ Group members:
     ----------------------------------------------------------------------------------------------                                                              
     Khanya Nkadimeng            4564420     contribution 100%    addStaff page
                                                                  deleteStaff page
-                                                                 update staff page
+                                                                 updateStaff page
                                                                  database
                                                                  designed the logo
     ----------------------------------------------------------------------------------------------                 
