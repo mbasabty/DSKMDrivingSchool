@@ -5,30 +5,6 @@ IFS242 is a group assignment that contributes approximately 40% of our final sem
 
 ---
 
-## Folder Structure
-
-DSKMDrivingSchool/
-│
-├── administration/
-│
-├── customers/
-│
-├── incl/
-│   ├── DatabaseConnection/
-│   ├── images/
-│   ├── js/
-│   └── style/
-│       ├── administration/
-│       └── customers/
-│
-├── nbproject/
-│
-├── groupDetails.txt
-│
-└── README.md
-
----
-
 ## Requirements
 Before running the project, make sure you have the following installed:
 
@@ -45,7 +21,7 @@ Open MAMP and ensure that both Apache and MySQL servers are running.
 ---
 
 ### 2. Download the Project Folder
-Download or clone the project folder:
+Download the project folder:
 
 DSKMDrivingSchool
 
@@ -70,10 +46,7 @@ Update credentials:
 mysqli_report(MYSQLI_REPORT_ERROR);
 
 $conn = new mysqli(
-    "localhost",
-    "your_username",
-    "your_password",
-    "DKSM_Driving_School"
+    "localhost","your_username","your_password","DKSM_Driving_School"
 );
 
 ?>
@@ -90,27 +63,21 @@ Make sure the database DKSM_Driving_School is imported into phpMyAdmin.
 ### 6. Open the Website
 Open your browser and go to:
 
-http://localhost:8888/DSKMDrivingSchool/Customers/
+http://localhost/DSKMDrivingSchool/Customers/
 
----
-
-## Note About Ports
-- Default MAMP port: 8888
-- If it does not work, check MAMP port settings
-- Some systems use port 80
-
----
 
 ## Access Levels
 
 Customers:
-- Browse services
 - View driving school information
+- Browse services
+- Book a service
+
 
 Administrators:
-- Manage website content
+- Manage staff and bookings
 - Access admin dashboard
-- Login via same login page (auto redirect)
+- Login via same login page as customers
 
 ---
 
