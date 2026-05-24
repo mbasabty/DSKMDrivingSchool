@@ -151,7 +151,6 @@
                                                         class='btn btn-decline'>
                                                         Complete
                                                 </button>
-
                                             </form>
                                         </div>
                                     </td>

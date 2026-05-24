@@ -113,7 +113,7 @@
                         required
                     >
                     <h3>R200</h3>
-                    <p>1 x Lesson (Personal Car)</p>
+                    <p>1 x Lesson (Personal Vehicle)</p>
                 </label>
 
                 <label class="package-card">
@@ -123,7 +123,7 @@
                         value="300"
                     >
                     <h3>R300</h3>
-                    <p>1 x Lesson (Driving School Car)</p>
+                    <p>1 x Lesson (Driving School Vehicle)</p>
                 </label>
 
                 <label class="package-card">
@@ -133,7 +133,7 @@
                         value="1770"
                     >
                     <h3>R1770</h3>
-                    <p>6 x Lessons (Driving School Car)</p>
+                    <p>6 x Lessons (Driving School Vehicle)</p>
                 </label>
 
                 <label class="package-card">
@@ -143,7 +143,7 @@
                         value="2720"
                     >
                     <h3>R2720</h3>
-                    <p>6 x Lessons + Test Car</p>
+                    <p>6 x Lessons + Test Vehicle</p>
                 </label>
 
                 <label class="package-card">
@@ -163,7 +163,7 @@
                         value="3850"
                     >
                     <h3>R3850</h3>
-                    <p>10 x Lessons + Test Car</p>
+                    <p>10 x Lessons + Test Vehicle</p>
                 </label>
 
                 <label class="package-card">
@@ -183,7 +183,7 @@
                         value="6650"
                     >
                     <h3>R6650</h3>
-                    <p>20 x Lessons + Test Car</p>
+                    <p>20 x Lessons + Test Vehicle</p>
                 </label>
 
             </div>
