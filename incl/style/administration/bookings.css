@@ -8,15 +8,12 @@
 /* BODY */
 body {
     min-height: 100vh;
-
     background:
         linear-gradient(rgba(11, 31, 51, 0.92), rgba(11, 31, 51, 0.92)),
         url("../../images/mainBg.JPG");
-
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
     font-family: Arial, sans-serif;
     color: #ffffff;
     padding: 20px;

@@ -39,7 +39,7 @@ body {
 
 .register-header p {
     opacity: 0.9;
-    color : black;
+    color : white;
 }
 
 /* REGISTER BOX */
@@ -96,7 +96,6 @@ button {
 }
 
 button:hover {
-    background: rgb(253, 231, 34);
     transform: translateY(-2px);
 }
 

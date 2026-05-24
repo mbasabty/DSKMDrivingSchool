@@ -1,9 +1,3 @@
-:root {
-    --primary: #0B1F33;
-    --secondary: #6C8EAD;
-    --white: #ffffff;
-    --background: #E6E8EA;
-}
 
 /* RESET */
 * {
@@ -83,18 +77,3 @@ h2 {
     transform: translateY(-2px);
 }
 
-/* MOBILE */
-@media (max-width: 480px) {
-    .button-group {
-        padding: 30px 20px;
-    }
-    h2 {
-        font-size: 1.8rem;
-    }
-    .welcome {
-        font-size: 0.95rem;
-    }
-    .button-group a {
-        font-size: 0.95rem;
-    }
-}

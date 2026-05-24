@@ -2,7 +2,7 @@
     include_once "../incl/DatabaseConnection/dbConn.php";
 
     if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
+        echo "Connection failed: " . $conn->connect_error ;
     }
 
     // COUNTS 
@@ -77,7 +77,8 @@
         <!-- TOPBAR -->
         <header class="topbar">
             <div class="topbar-title">
-                <h2>Welcome Back Admin</h2>
+                <h2>Welcome back Admin</h2>
+                <br>
                 <p>Here's what's happening today</p>
             </div>
         </header>

@@ -59,7 +59,7 @@ input[type="file"] {
     border-radius: 8px;
     border: 1px solid #dcdcdc;
     display: grid;
-    grid-template-rows: auto 80px auto; /* label | image | select */
+    grid-template-rows: auto 80px auto; 
     justify-items: center;
     gap: 10px;
 }
@@ -75,13 +75,13 @@ input[type="file"] {
 .license-card img {
     width: 120px;
     height: auto;
-    margin: 0 auto; /* keeps image centered */
+    margin: 0 auto; 
 }
 
 /* selects all align perfectly now */
 .license-card select {
-    width: 100%;      /* same width everywhere */
-    max-width: 180px; /* keeps all equal size */
+    width: 100%;     
+    max-width: 180px;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;

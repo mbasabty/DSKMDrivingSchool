@@ -66,8 +66,8 @@
 
         <br>
 
-        <a href="/DSKMDrivingSchool/administration/adminDasboard.php">
-            <button type="button">HOME</button>
+        <a href="/DSKMDrivingSchool/administration/staff.php">
+            <button type="button">BACK</button>
         </a>
 
     </div>
