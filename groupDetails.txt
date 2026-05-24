@@ -28,3 +28,18 @@ Group members:
                                                                  ERD
                                                                  
     ----------------------------------------------------------------------------------------------
+
+NOTE ON COLLABORATION
+
+The project was managed through a single GitHub repository controlled by the group leader. 
+Group members developed their assigned sections individually and submitted their files to 
+the group leader for integration and merging into the final project.
+All final integration, merging, and coordination of code were handled by the group leader. 
+Individual contributions are reflected in the responsibilities listed above.
+
+GITHUB REPOSITORY (PROJECT EVIDENCE)
+
+The project repository was used for version control and integration of all group work.
+
+Repository Link:
+https://github.com/mbasabty/IFS242-ServicesWebsite.git

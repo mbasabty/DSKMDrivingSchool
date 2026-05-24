@@ -23,7 +23,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Delete Users</title>
+    <title>Delete Users - DSKM Driving School</title>
     <link rel="icon" type="image/x-icon" href="../incl/images/logo2.png">
     <link rel="stylesheet" href="../incl/style/administration/addStaff.css"/>
 </head>

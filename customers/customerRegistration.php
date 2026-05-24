@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
 
-    <title>Student Driver Registration</title>
+    <title>Student Driver Registration - DSKM Driving School</title>
     <link rel="icon" type="image/x-icon" href="../incl/images/logo2.png">
     <link rel="stylesheet" href="../incl/style/customers/customerReg.css">
 </head>
