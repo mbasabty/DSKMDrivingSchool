@@ -66,7 +66,7 @@ importing the .sql fie
 ### 6. Open the Website
 Open your browser and go to:
 
-http://localhost/DSKMDrivingSchool/Customers/
+http://localhost/DSKMDrivingSchool/
 
 ## Access Levels
 
