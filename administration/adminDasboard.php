@@ -6,19 +6,19 @@
     }
 
     // COUNTS 
-    $totalStudents = $conn->query("SELECT COUNT(*) AS c 
-                                   FROM student")->fetch_assoc()['c'];
+    $totalStudents = $conn->query("SELECT COUNT(*) AS students
+                                   FROM student")->fetch_assoc()['students'];
 
-    $totalBookings = $conn->query("SELECT COUNT(*) AS c 
-                                   FROM booking_details")->fetch_assoc()['c'];
+    $totalBookings = $conn->query("SELECT COUNT(*) AS bookings
+                                   FROM booking_details")->fetch_assoc()['bookings'];
 
-    $totalInstructors = $conn->query("SELECT COUNT(*) AS c 
+    $totalInstructors = $conn->query("SELECT COUNT(*) AS staff
                                       FROM users 
-                                      WHERE user_level_id = 2")->fetch_assoc()['c'];
+                                      WHERE user_level_id = 2")->fetch_assoc()['staff'];
 
-    $totalAdmins = $conn->query("SELECT COUNT(*) AS c 
+    $totalAdmins = $conn->query("SELECT COUNT(*) AS staff 
                                  FROM users 
-                                 WHERE user_level_id = 1")->fetch_assoc()['c'];
+                                 WHERE user_level_id = 1")->fetch_assoc()['staff'];
 
     // LISTS
     $recentStudents = $conn->query("
