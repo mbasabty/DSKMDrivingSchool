@@ -78,9 +78,9 @@ Administrator:
 - Access admin dashboard
 - Login via same login page as customers
 
-    To access the admin dashboard use:
-    username: admin
-    password: GH00
+- To access the admin dashboard use:
+- - username: admin
+- - password: GH00
 
 ---
 
