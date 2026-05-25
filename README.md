@@ -14,14 +14,6 @@ Before running the project, make sure you have the following installed:
 
 ---
 
-## Requirements
-Before running the project, make sure you have the following installed:
-
-- MAMP
-- A web browser
-
----
-
 ## Setup Instructions
 
 ### 1. Start Your Server
