@@ -1,5 +1,5 @@
 <?php
-    include_once '../incl/DatabaseConnection/dbconn.php';
+    include_once __DIR__ . '/../incl/DatabaseConnection/dbConn.php';
 
     $message = "";
 
